@@ -21,7 +21,7 @@ DerivedData/
 *.xcworkspacedata
 
 Weather.xcodeproj/
-Weather.xcworkspace
+Weather.xcworkspace/
 
 # CocoaPods
 #
