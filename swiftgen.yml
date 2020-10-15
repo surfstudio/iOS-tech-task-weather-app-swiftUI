@@ -1,0 +1,27 @@
+xcassets:
+  - inputs: 
+      - Weather/Resources/Images/Assets.xcassets
+    outputs:
+      - templateName: swift4
+        output: Weather/Resources/Constants/Images.swift
+        params:
+          enumName: Styles
+          publicAccess: true
+
+fonts:
+  inputs:
+    - Weather/Resources/Fonts
+  outputs:
+    - templateName: swift4
+      output: Weather/Resources/Constants/Fonts.swift
+      params:
+        publicAccess: true
+
+strings:
+  inputs:
+    - Weather/Resources/Strings/Localizable.strings
+  outputs:
+    - templateName: structured-swift4
+      output: Weather/Resources/Constants/Strings.swift
+      params:
+        publicAccess: true

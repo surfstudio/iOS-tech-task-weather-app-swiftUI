@@ -1,0 +1,25 @@
+fastlane_version "2.58.0"
+
+default_platform :ios
+
+platform :ios do
+    lane :tag_app_icon do |options|
+
+        version_number = options[:version_number]
+        build_number = options[:build_number]
+
+        if version_number.nil?
+          throw "Required version_number parameter"
+        end
+
+        if build_number.nil?
+          throw "Required build_number parameter"
+        end
+
+        ENV['version_number'] = version_number
+        ENV['build_number'] = build_number
+
+        sh("../tagger/ex", "--versionNumber=#{version_number} --buildNumber=#{build_number}")
+
+      end
+end

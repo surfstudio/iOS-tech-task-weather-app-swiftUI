@@ -1,0 +1,34 @@
+### Headers settings
+company: Surf
+
+### Xcode project settings
+project_name: Weather
+xcodeproj_path: Weather.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_targets: [WeatherDebug, WeatherRelease]
+
+# The file path for new modules
+project_file_path: Weather/Flows
+
+# The Xcode group path to new modules
+project_group_path: Weather/Flows
+
+### Tests generation settings section
+# The tests target name
+test_target: UnitTests
+
+# The file path for new tests
+test_file_path: UnitTests/Tests/
+
+# The Xcode group path to new tests
+test_group_path: UnitTests/Tests/
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+templates:
+- {name: surf_mvp_coordinatable_module}
+- {name: surf_mvp_coordinatable_alert}

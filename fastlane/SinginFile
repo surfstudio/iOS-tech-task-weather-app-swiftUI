@@ -1,0 +1,110 @@
+require "spaceship"
+
+platform :ios do
+    lane :load_signins do |options|
+
+    	appleId = options[:appleId]
+		debug_app_name = options[:debug_app_name]
+		prod_app_name = options[:prod_app_name]
+
+		debug_bundle_id = options[:debug_bundle_id]
+		release_bundle_id = options[:prod_bundle_id]
+
+		debug_dev_provision = options[:debug_dev_provision]
+		debug_release_provision = options[:debug_release_provision]
+
+		prod_dev_provision = options[:prod_dev_provision]
+		prod_release_provision = options[:prod_release_provision]
+
+
+		dev_cert_id = "2CHTV8UC68"
+		release_cert_id = "576WPM7M3F"
+
+		Spaceship.login(appleId)
+
+		Spaceship.select_team
+
+		puts "Проверка ids ..."
+		allApps = Spaceship.app.all
+
+		debugApp = allApps.detect{ |app| app.bundle_id == debug_bundle_id }
+		prodApp = allApps.detect{ |app| app.bundle_id == release_bundle_id }
+
+		if debugApp.nil?
+			app = Spaceship.app.create!(bundle_id: debug_bundle_id, name: debug_app_name)
+			puts "Создано приложение " + "с именем " + app.name + " и bundle_id: " + app.bundle_id
+		end
+
+		if prodApp.nil?
+			app = Spaceship.app.create!(bundle_id: release_bundle_id, name: prod_app_name)
+			puts "Создано приложение " + "с именем " + app.name + " и bundle_id: " + app.bundle_id
+		end
+
+		certificates = Spaceship.certificate.all
+
+		dev_cert = certificates.detect{ |cert| cert.id == dev_cert_id }
+		release_cert = certificates.detect{ |cert| cert.id == release_cert_id }
+
+		# проверяем наличие сертификатов
+
+		if dev_cert.nil?
+			abort("Сертификат с индентификатором: " + dev_cert_id + " отстутствует")
+		end
+
+		if release_cert.nil?
+			abort("Сертификат с индентификатором: " + release_cert_id + " отстутствует")
+		end
+
+		# сохраняем сертификаты
+
+		directory_name = "../signin"
+		Dir.mkdir(directory_name) unless File.exists?(directory_name)
+
+		File.write(directory_name + "/dev.cer", dev_cert.download)
+		File.write(directory_name + "/dist.cer", release_cert.download)
+
+		puts "Сертификаты загружены и сохранены"
+
+		puts "Проверяем наличие профайлов..."
+
+		active_status = "Active"
+		dev_debug_profile = Spaceship.provisioning_profile.development.find_by_bundle_id(bundle_id: debug_bundle_id).detect{ |prof| prof.status == active_status}
+		dev_release_profile = Spaceship.provisioning_profile.app_store.find_by_bundle_id(bundle_id: debug_bundle_id).detect{ |prof| prof.status == active_status}
+
+		prod_debug_profile = Spaceship.provisioning_profile.development.find_by_bundle_id(bundle_id: release_bundle_id).detect{ |prof| prof.status == active_status}
+		prod_release_profile = Spaceship.provisioning_profile.app_store.find_by_bundle_id(bundle_id: release_bundle_id).detect{ |prof| prof.status == active_status}
+
+		provision_ext = ".mobileprovision"
+
+		if dev_debug_profile.nil?
+			dev_debug_profile = Spaceship.provisioning_profile.development.create!(bundle_id: debug_bundle_id,
+		                                                        		           certificate: dev_cert)
+		end
+
+		if dev_release_profile.nil?
+			dev_release_profile = Spaceship.provisioning_profile.app_store.create!(bundle_id: debug_bundle_id,
+		                                                        	               certificate: release_cert)
+		end
+
+		if prod_debug_profile.nil?
+			prod_debug_profile = Spaceship.provisioning_profile.development.create!(bundle_id: release_bundle_id,
+		                                                        		            certificate: dev_cert)
+		end
+
+		if prod_release_profile.nil?
+			prod_release_profile = Spaceship.provisioning_profile.app_store.create!(bundle_id: release_bundle_id,
+		                                                       				        certificate: release_cert)
+		end
+
+		puts "Загружаем профайлы..."
+
+		File.write(directory_name + "/" + debug_dev_provision + provision_ext, dev_debug_profile.download)
+		File.write(directory_name + "/" + debug_release_provision + provision_ext, dev_release_profile.download)
+
+		File.write(directory_name + "/" + prod_dev_provision + provision_ext, prod_debug_profile.download)
+		File.write(directory_name + "/" + prod_release_provision + provision_ext, prod_release_profile.download)
+
+		puts "😎 Генерерация сертификатов и профайлов успешно завершена"
+    
+    end
+end

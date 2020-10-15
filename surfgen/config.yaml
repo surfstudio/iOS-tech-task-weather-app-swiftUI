@@ -1,0 +1,31 @@
+# Generation Pathes
+
+entities_path: # write path to enities
+entries_path: # write path to entries
+enums_path: # write path to enums
+
+# Project Info
+
+# Path to .xcodeproj file where generated files are supposed to be added
+project_path: # write path to .xcodeproj file
+
+# Name of root main project directory. Used to detect correct subgroup in project tree
+project_main_group: # write main group name
+
+# Targets in provided Project for generated files
+targets:
+#    - Write Project Targets
+
+# Types of models supposed to be generated, current values: \"nodeKitEntry\" and \"nodeKitEntity\"
+generation_types:
+  - nodeKitEntity
+  - nodeKitEntry
+  - enum
+
+# Resources Pathes
+
+# Path to template files.
+templates_path: ./surfgen/Templates
+
+# Path to black list file. Model names in this list will be ignored during generation proccess
+# black_list_path: 

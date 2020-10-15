@@ -1,0 +1,20 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+
+import XCTest
+@testable import {{ module_info.product_module_name }}Release
+
+final class {{ module_info.name }}ModuleConfiguratorTests: XCTestCase {
+
+    // MARK: - Tests
+
+    func testDeallocation() {
+        assertDeallocation(of: {
+            let (view, input) = {{ module_info.name }}ModuleConfigurator().configure()
+            return (view, [input])
+        })
+    }
+
+}
