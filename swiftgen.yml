@@ -5,7 +5,7 @@ xcassets:
       - templateName: swift4
         output: Weather/Resources/Constants/Images.swift
         params:
-          enumName: Styles
+          enumName: Asset
           publicAccess: true
 
 fonts:
@@ -19,7 +19,7 @@ fonts:
 
 strings:
   inputs:
-    - Weather/Resources/Strings/Localizable.strings
+    - Weather/Resources/Strings/en.lproj/Localizable.strings
   outputs:
     - templateName: structured-swift4
       output: Weather/Resources/Constants/Strings.swift
