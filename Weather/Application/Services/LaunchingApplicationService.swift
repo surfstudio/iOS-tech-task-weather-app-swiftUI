@@ -2,7 +2,6 @@
 //  Copyright © 2020 Surf. All rights reserved.
 //
 
-import FirebaseCore
 import PluggableApplicationDelegate
 
 final class LaunchingApplicationService: NSObject, ApplicationService {
