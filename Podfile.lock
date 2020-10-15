@@ -70,7 +70,12 @@ PODS:
   - PluggableApplicationDelegate (0.3.0)
   - PromisesObjC (1.2.11)
   - ReactiveDataDisplayManager (5.0.1)
+  - SurfUtils/CommonButton (10.0.5)
+  - SurfUtils/KeyboardPresentable (10.0.5)
+  - SurfUtils/SkeletonView (10.0.5)
   - SurfUtils/StringAttributes (10.0.5)
+  - SurfUtils/UIStyle (10.0.5)
+  - SurfUtils/XibView (10.0.5)
   - SwiftGen (6.1.0)
   - SwiftLint (0.30.1)
 
@@ -80,7 +85,12 @@ DEPENDENCIES:
   - NodeKit (from `https://github.com/surfstudio/NodeKit.git`, tag `3.2.0`)
   - PluggableApplicationDelegate (from `https://github.com/surfstudio/PluggableApplicationDelegate.git`, commit `b24aabe3f34d51072cee5cac3b576dbb1f4ca9ec`)
   - ReactiveDataDisplayManager (from `https://github.com/surfstudio/ReactiveDataDisplayManager`, tag `5.0.1`)
+  - SurfUtils/CommonButton (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
+  - SurfUtils/KeyboardPresentable (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
+  - SurfUtils/SkeletonView (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
   - SurfUtils/StringAttributes (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
+  - SurfUtils/UIStyle (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
+  - SurfUtils/XibView (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
   - SwiftGen (~> 6.1.0)
   - SwiftLint (~> 0.30.1)
 
@@ -147,10 +157,10 @@ SPEC CHECKSUMS:
   PluggableApplicationDelegate: 245f6c90f0bd11c493b99250c75fcf213b808bce
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   ReactiveDataDisplayManager: 2e394d7baa86eb6399e36dc2c0bb637afaa311e0
-  SurfUtils: 31a3bf546204f0051480c923a0fde978334eaa66
+  SurfUtils: bcd29f844fd8c70f1c785cc94ebcca681f31a2fa
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
 
-PODFILE CHECKSUM: 8474c8681168d43bf70e9345b96948b9643c972e
+PODFILE CHECKSUM: ecf79e699d8badda575e867771b69a96194c2f85
 
 COCOAPODS: 1.7.3

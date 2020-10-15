@@ -17,7 +17,23 @@
 // MARK: - Asset Catalogs
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-public enum Styles {
+public enum Asset {
+  public enum Color {
+
+    public static let black = ColorAsset(name: "Color/black")
+    public static let black40 = ColorAsset(name: "Color/black40")
+    public static let white = ColorAsset(name: "Color/white")
+  }
+  public enum Image {
+
+    public enum ErrorView {
+      public static let emptyState = ImageAsset(name: "Image/ErrorView/empty_state")
+      public static let errorState = ImageAsset(name: "Image/ErrorView/error_state")
+    }
+    public enum NavigationItem {
+      public static let back = ImageAsset(name: "Image/NavigationItem/back")
+    }
+  }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

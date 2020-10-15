@@ -1,0 +1,3 @@
+protocol DismissableView {
+    func didDismiss()
+}
