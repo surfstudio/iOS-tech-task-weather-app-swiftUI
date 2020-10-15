@@ -15,6 +15,15 @@ init:
 	chmod +x commit-msg
 	ln -s -f ../../commit-msg .git/hooks/commit-msg
 
+	chmod +x prepare-commit-msg
+	ln -s -f ../../prepare-commit-msg .git/hooks/prepare-commit-msg
+
+	chmod +x post-checkout
+	ln -s -f ../../post-checkout .git/hooks/post-checkout
+
+	chmod +x post-merge
+	ln -s -f ../../post-merge .git/hooks/post-merge
+
 merge:
 	-sh ./scripts/merge.sh
 
@@ -99,3 +108,7 @@ analytics_tests:
 	./data-collector/ex tests --projectId=$(projectJiraId) --baseURL=$(serverUrl) --path=$(report)
 analytics_duplicates:
 	./data-collector/ex duplicates --projectId=$(projectJiraId) --baseURL=$(serverUrl) --path=$(report)
+
+pbxproj:
+	xcodegen generate
+	-bundle exec pod install

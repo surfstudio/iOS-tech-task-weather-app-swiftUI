@@ -40,12 +40,25 @@ targets:
         base:
           PRODUCT_BUNDLE_IDENTIFIER: ru.surfstudio.weather.debug
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Debug
+          CODE_SIGN_IDENTITY: "iPhone Developer"
+          CODE_SIGN_STYLE: Manual
+          DEVELOPMENT_TEAM: EFAAG9GXN4
+          PROVISIONING_PROFILE_SPECIFIER: "ru.surfstudio.weather.debug Development"
+          MARKETING_VERSION: "1.0.0"
+          CURRENT_PROJECT_VERSION: 1
+          VERSIONING_SYSTEM: "apple-generic"
+          DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+        configs:
+          Debug:
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS: "DEBUG TRI_DEBUG_BUILD"
+            EXCLUDED_ARCHS[sdk=iphonesimulator*]: "arm64"
       preBuildScripts:
         - script: ${PODS_ROOT}/SwiftGen/bin/swiftgen config run
           name: SwiftGen
       postCompileScripts:
         - script: ${SRCROOT}/Pods/SwiftLint/swiftlint --config "${SRCROOT}/.swiftlint.yml"
           name: Swiftlint
+        
     # Release target
     WeatherRelease:
       type: application
