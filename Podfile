@@ -13,8 +13,6 @@ def common_pods
     utils
     surf_utils
 
-    pod 'Firebase/Core'
-
     pod 'PluggableApplicationDelegate', :git => "https://github.com/surfstudio/PluggableApplicationDelegate.git", :commit=>"b24aabe3f34d51072cee5cac3b576dbb1f4ca9ec"
     pod 'ReactiveDataDisplayManager', :git=>"https://github.com/surfstudio/ReactiveDataDisplayManager", :tag=>"5.0.1"
     pod 'NodeKit', :git => "https://github.com/surfstudio/NodeKit.git", :tag=>"3.2.0"
