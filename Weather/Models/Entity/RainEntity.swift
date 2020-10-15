@@ -5,7 +5,7 @@
 
 import NodeKit
 
-struct CityRainEntity: Codable {
+struct RainEntity: Codable {
     /// Объем осадков (дождь), выпавших за последний час.
     /// В миллиметрах.
     let lastOneHour: Double?
@@ -14,8 +14,8 @@ struct CityRainEntity: Codable {
     let lastThreeHours: Double?
 }
 
-extension CityRainEntity: DTODecodable {
-    static func from(dto: CityRainEntry) throws -> CityRainEntity {
+extension RainEntity: DTODecodable {
+    static func from(dto: RainEntry) throws -> RainEntity {
         .init(lastOneHour: dto.h1, lastThreeHours: dto.h3)
     }
 }

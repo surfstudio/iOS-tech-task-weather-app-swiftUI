@@ -5,7 +5,7 @@
 
 import NodeKit
 
-struct CityWeatherConditionsEntity {
+struct WeatherConditionsEntity {
     let id: Int
     let main: String
     let description: String
@@ -13,8 +13,8 @@ struct CityWeatherConditionsEntity {
     let type: WeatherType
 }
 
-extension CityWeatherConditionsEntity: DTODecodable {
-    static func from(dto: CityWeatherConditionsEntry) throws -> CityWeatherConditionsEntity {
+extension WeatherConditionsEntity: DTODecodable {
+    static func from(dto: WeatherConditionsEntry) throws -> WeatherConditionsEntity {
         return .init(id: dto.id,
                      main: dto.main,
                      description: dto.description,

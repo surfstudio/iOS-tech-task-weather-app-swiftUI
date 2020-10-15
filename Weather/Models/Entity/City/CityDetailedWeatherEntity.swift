@@ -7,13 +7,13 @@ import NodeKit
 
 struct CityDetailedWeatherEntity {
     let coords: CoordEntity
-    let weather: [CityWeatherConditionsEntity]
+    let weather: [WeatherConditionsEntity]
     let base: String
     let main: CityMainWeatherInfoEntity
-    let wind: CityWindEntity?
+    let wind: WindEntity?
     let clouds: CityCloundEntity?
-    let rain: CityRainEntity?
-    let snow: CitySnowEntity?
+    let rain: RainEntity?
+    let snow: SnowEntity?
     let time: Date
     let systemInfo: CitySystemInfoEntity
     let timezone: Int
