@@ -13,7 +13,7 @@ extension UIStyle {
                           textColor: Asset.Color.black.color,
                           lineHeight: 17.0,
                           kern: .zero,
-                          alignment: .left)
+                          alignment: .center)
     }
 }
 // swiftlint:enable all

@@ -86,6 +86,12 @@
 		8979601B25386FDC00204FDA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8979601D25386FDC00204FDA /* Localizable.strings */; };
 		89796026253870A000204FDA /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89796025253870A000204FDA /* Types.swift */; };
 		89796027253870A000204FDA /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89796025253870A000204FDA /* Types.swift */; };
+		89796046253874D800204FDA /* SnackDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89796045253874D800204FDA /* SnackDisplayable.swift */; };
+		89796047253874D800204FDA /* SnackDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89796045253874D800204FDA /* SnackDisplayable.swift */; };
+		8979604C2538750D00204FDA /* ErrorDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8979604B2538750D00204FDA /* ErrorDisplayable.swift */; };
+		8979604D2538750D00204FDA /* ErrorDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8979604B2538750D00204FDA /* ErrorDisplayable.swift */; };
+		897960522538754400204FDA /* Error+NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897960512538754400204FDA /* Error+NetworkError.swift */; };
+		897960532538754400204FDA /* Error+NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897960512538754400204FDA /* Error+NetworkError.swift */; };
 		8E588C09152D75C85E5476E4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C720BA025ABEA7505B2EC3D8 /* Router.swift */; };
 		9966144163E4EF0F5227CC23 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8CC4C2BFE499186D7F036 /* Fonts.swift */; };
 		9F12F2BF586E49C4BABD6D28 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA17B2600B162B945231D80 /* LoadingView.swift */; };
@@ -203,6 +209,9 @@
 		8979601C25386FDC00204FDA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8979601E25386FF700204FDA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		89796025253870A000204FDA /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		89796045253874D800204FDA /* SnackDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackDisplayable.swift; sourceTree = "<group>"; };
+		8979604B2538750D00204FDA /* ErrorDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDisplayable.swift; sourceTree = "<group>"; };
+		897960512538754400204FDA /* Error+NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+NetworkError.swift"; sourceTree = "<group>"; };
 		A404478B7E915DE9DB0FB672 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A60193FF4226A4F39A98F878 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		ACD834B6309302461D8A806F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -348,6 +357,8 @@
 				08AC14F65E62F9E938AECB1F /* Presentable.swift */,
 				C720BA025ABEA7505B2EC3D8 /* Router.swift */,
 				8979601425386FCA00204FDA /* DismissableView.swift */,
+				89796045253874D800204FDA /* SnackDisplayable.swift */,
+				8979604B2538750D00204FDA /* ErrorDisplayable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -675,6 +686,7 @@
 			isa = PBXGroup;
 			children = (
 				CF9079DA14EE09BC32B6FBB0 /* UIKit */,
+				897960512538754400204FDA /* Error+NetworkError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1024,6 +1036,7 @@
 				BD3676ED487B4C15362DAC1C /* LoadingViewAbstract.swift in Sources */,
 				DB4C72830C71BA21E76C65BE /* LoadingViewBlock.swift in Sources */,
 				89795FB625386B3900204FDA /* TabBarStyle.swift in Sources */,
+				8979604D2538750D00204FDA /* ErrorDisplayable.swift in Sources */,
 				E50174C5522360B5A902FD94 /* LoadingViewBlockAbstract.swift in Sources */,
 				89795FBA25386B3900204FDA /* NavigationBarStyle.swift in Sources */,
 				E569E0A65ADCBC93241D5F3D /* LoadingViewConfig.swift in Sources */,
@@ -1041,6 +1054,8 @@
 				89795FD825386B3900204FDA /* StaticStyles+UIView.swift in Sources */,
 				1957C19020B28CE0E0FDE375 /* ThirteenInteractiveTransitionDriver.swift in Sources */,
 				B0D8D9C34E24AAC66944C913 /* ThirteenPresentAnimation.swift in Sources */,
+				89796047253874D800204FDA /* SnackDisplayable.swift in Sources */,
+				897960532538754400204FDA /* Error+NetworkError.swift in Sources */,
 				DD94A71C1FF63D72F540C3D6 /* ThirteenPresentationViewController.swift in Sources */,
 				89795F9A25386B3900204FDA /* StaticStyles+UILabel.swift in Sources */,
 				8979601625386FCA00204FDA /* DismissableView.swift in Sources */,
@@ -1094,6 +1109,7 @@
 				74ADE8FFED7A90FDF1FE44BE /* LoadingViewAbstract.swift in Sources */,
 				E7F15E0D2CEFB8B063AFEEAB /* LoadingViewBlock.swift in Sources */,
 				89795FB525386B3900204FDA /* TabBarStyle.swift in Sources */,
+				8979604C2538750D00204FDA /* ErrorDisplayable.swift in Sources */,
 				1EFE9A36D38C008A195C47F9 /* LoadingViewBlockAbstract.swift in Sources */,
 				89795FB925386B3900204FDA /* NavigationBarStyle.swift in Sources */,
 				ECD05CF701D6399A5453EC05 /* LoadingViewConfig.swift in Sources */,
@@ -1111,6 +1127,8 @@
 				89795FD725386B3900204FDA /* StaticStyles+UIView.swift in Sources */,
 				F7441FFE1BD95AFB5FF28A66 /* ThirteenInteractiveTransitionDriver.swift in Sources */,
 				543C04474C9E5AD0111DC6C6 /* ThirteenPresentAnimation.swift in Sources */,
+				89796046253874D800204FDA /* SnackDisplayable.swift in Sources */,
+				897960522538754400204FDA /* Error+NetworkError.swift in Sources */,
 				2E818B3998D92970EDFF0036 /* ThirteenPresentationViewController.swift in Sources */,
 				89795F9925386B3900204FDA /* StaticStyles+UILabel.swift in Sources */,
 				8979601525386FCA00204FDA /* DismissableView.swift in Sources */,

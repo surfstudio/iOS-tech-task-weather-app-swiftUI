@@ -1,1 +1,7 @@
+// MARK: - Button
+
 "Common.Button.reload" = "Обновить";
+
+// MARK: - Error
+
+"Error.noInternetConnection" = "Нет интернета";

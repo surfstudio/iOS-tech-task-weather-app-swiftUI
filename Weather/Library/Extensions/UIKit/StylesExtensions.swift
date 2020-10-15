@@ -145,4 +145,3 @@ extension UIPageControl {
         style.apply(for: self)
     }
 }
-

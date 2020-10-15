@@ -8,12 +8,10 @@ whitelist_rules:
     - collection_alignment
     - colon
     - comma
-    - conditional_returns_on_newline
     - control_statement
     - convenience_type
     - custom_rules
     - cyclomatic_complexity
-    - discouraged_optional_boolean
     - duplicate_imports
     - empty_count
     - empty_parameters
@@ -26,10 +24,8 @@ whitelist_rules:
     - force_try
     - force_unwrapping
     - function_parameter_count
-    - implicit_getter
     - implicitly_unwrapped_optional
     - inert_defer
-    - large_tuple
     - last_where
     - leading_whitespace
     - legacy_cggeometry_functions
@@ -52,7 +48,6 @@ whitelist_rules:
     - shorthand_operator
     - statement_position
     - syntactic_sugar
-    - todo
     - toggle_bool
     - trailing_comma
     - trailing_newline
@@ -63,6 +58,7 @@ whitelist_rules:
     - unused_setter_value
     - vertical_whitespace
     - void_return
+    - fixme
 
 disabled_rules: # rule identifiers to exclude from running
 
@@ -72,6 +68,8 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
     - fastlane
     - Pods
     - .bundle
+    - buildData
+    - dc
 
 custom_rules:
     image_name_initialization: # Disable UIImage init from name
@@ -130,7 +128,14 @@ custom_rules:
         message: "Every MARK should be surrounded with 1 newline before and 1 after it"
         severity: warning
 
-line_length: 145
+    fixme:
+        included: ".*.swift"
+        name: "FIXME"
+        regex: "\\b(?:FIXME)(?::|\\b)"
+        message: "FIXMEs should be resolved."
+        severity: warning
+
+line_length: 160
 
 file_length:
     warning: 600

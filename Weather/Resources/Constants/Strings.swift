@@ -18,6 +18,11 @@ public enum L10n {
       public static let reload = L10n.tr("Localizable", "Common.Button.reload")
     }
   }
+
+  public enum Error {
+    /// No Internet Connection
+    public static let noInternetConnection = L10n.tr("Localizable", "Error.noInternetConnection")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name
