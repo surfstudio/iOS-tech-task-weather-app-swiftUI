@@ -1,11 +1,10 @@
-//
-//  Copyright © 2020 Surf. All rights reserved.
-//
-
-import FirebaseCore
 import PluggableApplicationDelegate
 
 final class LaunchingApplicationService: NSObject, ApplicationService {
+
+    // MARK: - Private Properties
+
+    private lazy var appCoordinator = ApplicationCoordinator()
 
     // MARK: - ApplicationService
 
@@ -21,21 +20,9 @@ final class LaunchingApplicationService: NSObject, ApplicationService {
 private extension LaunchingApplicationService {
     func initializeRootView() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = MockViewController()
+        self.window?.rootViewController = UIViewController()
         self.window?.makeKeyAndVisible()
-    }
-}
 
-// FIXME: Удалить моковый контроллер
-
-class MockViewController: UIViewController, StateConfigurable, MultiStatesPresentable, SnackDisplayable {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .red
-        set(state: .error(.init(Localized.Error.noInternetConnection, action: Localized.Common.Button.reload)))
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            self.showSnack(with: "Снэкабельный ошибка")
-        }
+        self.appCoordinator.start()
     }
 }

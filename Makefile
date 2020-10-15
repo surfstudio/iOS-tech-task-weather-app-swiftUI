@@ -18,6 +18,10 @@ init:
 merge:
 	-sh ./scripts/merge.sh
 
+pbxproj:
+	xcodegen generate
+	-bundle exec pod install
+
 ## Generate screen module with name given in `modName` parameter
 screen:
 	bundle exec generamba gen $(modName) surf_mvp_coordinatable_module --module_path 'Weather/Flows/$(flow)' --test_path 'UnitTests/Flows/$(flow)'
