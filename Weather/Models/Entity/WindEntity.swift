@@ -5,7 +5,7 @@
 
 import NodeKit
 
-struct CityWindEntity {
+struct WindEntity {
     /// Скорость ветра в метр/сек
     let speed: Double
     let direction: WindDirection?
@@ -13,8 +13,8 @@ struct CityWindEntity {
     let gust: Double?
 }
 
-extension CityWindEntity: DTODecodable {
-    static func from(dto: CityWindEntry) throws -> CityWindEntity {
+extension WindEntity: DTODecodable {
+    static func from(dto: CityWindEntry) throws -> WindEntity {
         .init(speed: dto.speed,
               direction: WindDirection(degrees: dto.deg),
               gust: dto.gust)

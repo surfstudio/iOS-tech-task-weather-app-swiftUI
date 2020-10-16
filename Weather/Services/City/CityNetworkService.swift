@@ -13,7 +13,9 @@ struct CityNetworkService: CityService {
         static let getGroupQueryParameter = "id"
 
         static let query: Json = [
-            "appid": ServicesConstants.Weather.apiKey
+            "appid": ServicesConstants.Weather.apiKey,
+            "units": "metric",
+            "lang": Locale.current.collatorIdentifier ?? Locale.current.identifier
         ]
     }
 
