@@ -12,8 +12,8 @@ struct CityDetailedWeatherEntry: Codable {
     let main: CityMainWeatherInfoEntry
     let wind: CityWindEntry
     let clouds: CityCloundEntry
-    let rain: RainEntry
-    let snow: SnowEntry
+    let rain: PrecipitationEntry
+    let snow: PrecipitationEntry
     let dt: Double
     let sys: CitySystemInfoEntry
     let timezone: Int

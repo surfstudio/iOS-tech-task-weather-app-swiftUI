@@ -9,7 +9,6 @@ struct WeatherConditionsEntity {
     let id: Int
     let main: String
     let description: String
-    let icon: String
     let type: WeatherType
 }
 
@@ -18,7 +17,6 @@ extension WeatherConditionsEntity: DTODecodable {
         return .init(id: dto.id,
                      main: dto.main,
                      description: dto.description,
-                     icon: dto.icon,
                      type: .init(typeId: dto.id))
     }
 }

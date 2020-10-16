@@ -11,9 +11,9 @@ struct CityDetailedWeatherEntity {
     let base: String
     let main: CityMainWeatherInfoEntity
     let wind: WindEntity?
-    let clouds: CityCloundEntity?
-    let rain: RainEntity?
-    let snow: SnowEntity?
+    let clouds: CityCloudEntity?
+    let rain: PrecipitationEntity?
+    let snow: PrecipitationEntity?
     let time: Date
     let systemInfo: CitySystemInfoEntity
     let timezone: Int

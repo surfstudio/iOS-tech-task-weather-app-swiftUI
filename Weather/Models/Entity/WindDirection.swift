@@ -29,6 +29,7 @@ enum WindDirection {
     case eastNorthEast
     case eastSouthEast
 
+    // swiftlint:disable cyclomatic_complexity
     init?(degrees: Double) {
         // Информация взята из http://snowfence.umn.edu/Components/winddirectionanddegrees.htm
         switch degrees {
@@ -67,5 +68,6 @@ enum WindDirection {
         default:
             return nil
         }
+        // swiftlint:enable cyclomatic_complexity
     }
 }

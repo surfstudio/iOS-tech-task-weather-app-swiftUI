@@ -16,9 +16,9 @@ struct DetailedDailyWeatherEntity {
     let humidity: Double
     let dewPoint: Double
     let clouds: Int
-    let rain: RainEntity
+    let rain: PrecipitationEntity
     let weather: WeatherConditionsEntity
-    let snow: SnowEntity
+    let snow: PrecipitationEntity
     let pop: Double
     let windSpeed: Double
     let visibility: Double

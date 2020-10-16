@@ -4,6 +4,7 @@
 
 import PluggableApplicationDelegate
 import UIKit
+import CSTObfuscator
 
 @UIApplicationMain
 class AppDelegate: PluggableApplicationDelegate {
@@ -11,9 +12,6 @@ class AppDelegate: PluggableApplicationDelegate {
     // MARK: - Properties
 
     override var services: [ApplicationService] {
-        DetailedWeatherNetworkService().getDetailedWeather(by: .init(lon: 100, lat: 100)).onCompleted {
-            print($0)
-        }
         return [
             LaunchingApplicationService()
         ]

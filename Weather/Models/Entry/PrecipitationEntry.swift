@@ -5,7 +5,7 @@
 
 import NodeKit
 
-struct RainEntry: Codable {
+struct PrecipitationEntry: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case h1 = "1h"
@@ -16,7 +16,6 @@ struct RainEntry: Codable {
     let h3: Double?
 }
 
-extension RainEntry: RawMappable {
+extension PrecipitationEntry: RawMappable {
     typealias Raw = Json
 }
-
