@@ -46,16 +46,16 @@
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityDetailedWeatherEntity" inverseName="coords" inverseEntity="CacheCityDetailedWeatherEntity"/>
     </entity>
     <entity name="CacheDetailedDailyWeatherEntity" representedClassName="CacheDetailedDailyWeatherEntity" syncable="YES">
-        <attribute name="clouds" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="dewPoint" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="forecastDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="humidity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="pop" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="pressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="clouds" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="dewPoint" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="forecastDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="humidity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="pop" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="pressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <attribute name="sunrise" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="sunset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="visibility" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="visibility" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <relationship name="detailedWeather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedWeatherEntity" inverseName="daily" inverseEntity="CacheDetailedWeatherEntity"/>
         <relationship name="feelsLike" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedTemperatureEntity" inverseName="dailyWeatherFeelsLike" inverseEntity="CacheDetailedTemperatureEntity"/>
         <relationship name="rain" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachePrecipitationEntity" inverseName="dailyWeatherRain" inverseEntity="CachePrecipitationEntity"/>
@@ -64,33 +64,33 @@
         <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheWeatherCondtionsEntity" inverseName="dailyWeather" inverseEntity="CacheWeatherCondtionsEntity"/>
     </entity>
     <entity name="CacheDetailedHourlyWeatherEntity" representedClassName="CacheDetailedHourlyWeatherEntity" syncable="YES">
-        <attribute name="clouds" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="dewPoint" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="feelsLike" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="clouds" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="dewPoint" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="feelsLike" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <attribute name="forecastDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="humidity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="pop" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="pressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="temperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="visibility" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="pop" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="pressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="temperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="visibility" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <relationship name="detailedWeather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedWeatherEntity" inverseName="hourly" inverseEntity="CacheDetailedWeatherEntity"/>
         <relationship name="rain" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachePrecipitationEntity" inverseName="hourlyWeatherRain" inverseEntity="CachePrecipitationEntity"/>
         <relationship name="snow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachePrecipitationEntity" inverseName="hourlyWeatherSnow" inverseEntity="CachePrecipitationEntity"/>
         <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheWeatherCondtionsEntity" inverseName="hourlyWeather" inverseEntity="CacheWeatherCondtionsEntity"/>
     </entity>
     <entity name="CacheDetailedMinutelyWeatherEntity" representedClassName="CacheDetailedMinutelyWeatherEntity" syncable="YES">
-        <attribute name="forecastDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="forecastDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="precipitation" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="detailedWeather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedWeatherEntity" inverseName="monutely" inverseEntity="CacheDetailedWeatherEntity"/>
     </entity>
     <entity name="CacheDetailedTemperatureEntity" representedClassName="CacheDetailedTemperatureEntity" syncable="YES">
-        <attribute name="day" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="evening" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="max" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="min" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="morning" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="night" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="day" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="evening" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="max" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="min" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="morning" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="night" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <relationship name="dailyWeather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedDailyWeatherEntity" inverseName="temperature" inverseEntity="CacheDetailedDailyWeatherEntity"/>
         <relationship name="dailyWeatherFeelsLike" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedDailyWeatherEntity" inverseName="feelsLike" inverseEntity="CacheDetailedDailyWeatherEntity"/>
     </entity>
@@ -100,8 +100,8 @@
         <relationship name="monutely" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedMinutelyWeatherEntity" inverseName="detailedWeather" inverseEntity="CacheDetailedMinutelyWeatherEntity"/>
     </entity>
     <entity name="CachePrecipitationEntity" representedClassName="CachePrecipitationEntity" syncable="YES">
-        <attribute name="lastOneHour" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="lastThreeHours" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="lastOneHour" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="lastThreeHours" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityDetailedWeatherEntity" inverseName="rain" inverseEntity="CacheCityDetailedWeatherEntity"/>
         <relationship name="dailyWeatherRain" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedDailyWeatherEntity" inverseName="rain" inverseEntity="CacheDetailedDailyWeatherEntity"/>
         <relationship name="dailyWeatherSnow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedDailyWeatherEntity" inverseName="snow" inverseEntity="CacheDetailedDailyWeatherEntity"/>
@@ -125,18 +125,18 @@
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityDetailedWeatherEntity" inverseName="wind" inverseEntity="CacheCityDetailedWeatherEntity"/>
     </entity>
     <elements>
-        <element name="CacheCoordsEntity" positionX="-3195.99609375" positionY="1864.3359375" width="128" height="88"/>
-        <element name="CachePrecipitationEntity" positionX="-3041.83203125" positionY="1905.23046875" width="128" height="163"/>
-        <element name="CacheWeatherCondtionsEntity" positionX="-3161.78125" positionY="2074.29296875" width="128" height="148"/>
-        <element name="CacheWindEntity" positionX="-3437.1953125" positionY="2381.0234375" width="128" height="103"/>
-        <element name="CacheCityDetailedWeatherEntity" positionX="-3642.15234375" positionY="1862.48828125" width="128" height="253"/>
         <element name="CacheCityCloudEntity" positionX="-3353.05078125" positionY="1835.31640625" width="128" height="73"/>
-        <element name="CacheDetailedWeatherEntity" positionX="-2278.609375" positionY="2053.625" width="128" height="88"/>
+        <element name="CacheCityDetailedWeatherEntity" positionX="-3642.15234375" positionY="1862.48828125" width="128" height="253"/>
         <element name="CacheCityMainWeatherEntity" positionX="-3294.4609375" positionY="1613.4296875" width="128" height="178"/>
         <element name="CacheCitySystemInfoEntity" positionX="-3386.13671875" positionY="2191.40234375" width="128" height="148"/>
+        <element name="CacheCoordsEntity" positionX="-3195.99609375" positionY="1864.3359375" width="128" height="88"/>
         <element name="CacheDetailedDailyWeatherEntity" positionX="-2855.4296875" positionY="2153.1328125" width="128" height="283"/>
         <element name="CacheDetailedHourlyWeatherEntity" positionX="-2722.3359375" positionY="1922.6328125" width="128" height="253"/>
         <element name="CacheDetailedMinutelyWeatherEntity" positionX="-2882.3984375" positionY="1760.234375" width="128" height="88"/>
         <element name="CacheDetailedTemperatureEntity" positionX="-3187.17578125" positionY="2260.65234375" width="128" height="163"/>
+        <element name="CacheDetailedWeatherEntity" positionX="-2278.609375" positionY="2053.625" width="128" height="88"/>
+        <element name="CachePrecipitationEntity" positionX="-3041.83203125" positionY="1905.23046875" width="128" height="163"/>
+        <element name="CacheWeatherCondtionsEntity" positionX="-3161.78125" positionY="2074.29296875" width="128" height="148"/>
+        <element name="CacheWindEntity" positionX="-3437.1953125" positionY="2381.0234375" width="128" height="103"/>
     </elements>
 </model>

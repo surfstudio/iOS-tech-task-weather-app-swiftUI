@@ -16,8 +16,8 @@ extension CachePrecipitationEntity {
         return NSFetchRequest<CachePrecipitationEntity>(entityName: "CachePrecipitationEntity")
     }
 
-    @NSManaged public var lastOneHour: Double
-    @NSManaged public var lastThreeHours: Double
+    @NSManaged public var lastOneHour: NSNumber?
+    @NSManaged public var lastThreeHours: NSNumber?
     @NSManaged public var city: CacheCityDetailedWeatherEntity?
     @NSManaged public var snow: CacheCityDetailedWeatherEntity?
     @NSManaged public var dailyWeatherRain: CacheDetailedDailyWeatherEntity?

@@ -7,8 +7,8 @@ import NodeKit
 
 struct WeatherConditionsEntity {
     let id: Int
-    let main: String
-    let description: String
+    let main: String?
+    let description: String?
     let type: WeatherType
 }
 

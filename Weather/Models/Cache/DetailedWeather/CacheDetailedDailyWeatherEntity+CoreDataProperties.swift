@@ -16,16 +16,16 @@ extension CacheDetailedDailyWeatherEntity {
         return NSFetchRequest<CacheDetailedDailyWeatherEntity>(entityName: "CacheDetailedDailyWeatherEntity")
     }
 
-    @NSManaged public var forecastDate: Date?
+    @NSManaged public var forecastDate: Date
     @NSManaged public var sunrise: Date?
     @NSManaged public var sunset: Date?
-    @NSManaged public var pressure: Double
-    @NSManaged public var humidity: Double
-    @NSManaged public var dewPoint: Double
-    @NSManaged public var clouds: Int32
-    @NSManaged public var pop: Double
-    @NSManaged public var windSpeed: Double
-    @NSManaged public var visibility: Double
+    @NSManaged public var pressure: NSNumber?
+    @NSManaged public var humidity: NSNumber?
+    @NSManaged public var dewPoint: NSNumber?
+    @NSManaged public var clouds: NSNumber?
+    @NSManaged public var pop: NSNumber?
+    @NSManaged public var windSpeed: NSNumber?
+    @NSManaged public var visibility: NSNumber?
     @NSManaged public var temperature: CacheDetailedTemperatureEntity?
     @NSManaged public var feelsLike: CacheDetailedTemperatureEntity?
     @NSManaged public var rain: CachePrecipitationEntity?

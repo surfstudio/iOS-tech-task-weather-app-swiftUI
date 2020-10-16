@@ -16,12 +16,12 @@ extension CacheDetailedTemperatureEntity {
         return NSFetchRequest<CacheDetailedTemperatureEntity>(entityName: "CacheDetailedTemperatureEntity")
     }
 
-    @NSManaged public var morning: Double
-    @NSManaged public var night: Double
-    @NSManaged public var evening: Double
-    @NSManaged public var day: Double
-    @NSManaged public var min: Double
-    @NSManaged public var max: Double
+    @NSManaged public var morning: NSNumber?
+    @NSManaged public var night: NSNumber?
+    @NSManaged public var evening: NSNumber?
+    @NSManaged public var day: NSNumber?
+    @NSManaged public var min: NSNumber?
+    @NSManaged public var max: NSNumber?
     @NSManaged public var dailyWeather: CacheDetailedDailyWeatherEntity?
     @NSManaged public var dailyWeatherFeelsLike: CacheDetailedDailyWeatherEntity?
 

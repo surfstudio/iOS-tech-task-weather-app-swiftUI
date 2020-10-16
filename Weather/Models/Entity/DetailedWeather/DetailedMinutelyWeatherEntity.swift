@@ -8,7 +8,7 @@ import NodeKit
 struct DetailedMinutelyWeatherEntity {
     let forecastDate: Date
     /// Осадки в миллиметрах
-    let precipitation: Double?
+    let precipitation: Double
 }
 
 extension DetailedMinutelyWeatherEntity: DTODecodable {
