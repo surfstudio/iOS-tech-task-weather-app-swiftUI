@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-
 extension CachePrecipitationEntity {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CachePrecipitationEntity> {
+    @nonobjc
+    public class func fetchRequest() -> NSFetchRequest<CachePrecipitationEntity> {
         return NSFetchRequest<CachePrecipitationEntity>(entityName: "CachePrecipitationEntity")
     }
 

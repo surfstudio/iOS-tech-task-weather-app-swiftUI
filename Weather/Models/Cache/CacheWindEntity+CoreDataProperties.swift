@@ -17,8 +17,8 @@ extension CacheWindEntity {
     }
 
     @NSManaged public var speed: Double
-    @NSManaged public var direction: Double
-    @NSManaged public var gust: Double
+    @NSManaged public var direction: NSNumber?
+    @NSManaged public var gust: NSNumber?
     @NSManaged public var city: CacheCityDetailedWeatherEntity?
 
 }

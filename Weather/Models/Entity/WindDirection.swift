@@ -5,7 +5,7 @@
 
 import Foundation
 
-enum WindDirection {
+enum WindDirection: Double {
 
     case north
     case east

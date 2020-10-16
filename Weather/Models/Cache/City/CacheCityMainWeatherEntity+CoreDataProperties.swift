@@ -16,14 +16,14 @@ extension CacheCityMainWeatherEntity {
         return NSFetchRequest<CacheCityMainWeatherEntity>(entityName: "CacheCityMainWeatherEntity")
     }
 
-    @NSManaged public var temperature: Double
-    @NSManaged public var feelsLikeTemperature: Double
-    @NSManaged public var minTemperature: Double
-    @NSManaged public var maxTemperature: Double
-    @NSManaged public var pressure: Double
-    @NSManaged public var humidity: Int32
-    @NSManaged public var seaLevelPressure: Double
-    @NSManaged public var groundLevelPresuure: Double
+    @NSManaged public var temperature: NSNumber?
+    @NSManaged public var feelsLikeTemperature: NSNumber?
+    @NSManaged public var minTemperature: NSNumber?
+    @NSManaged public var maxTemperature: NSNumber?
+    @NSManaged public var pressure: NSNumber?
+    @NSManaged public var humidity: NSNumber?
+    @NSManaged public var seaLevelPressure: NSNumber?
+    @NSManaged public var groundLevelPresuure: NSNumber?
     @NSManaged public var city: CacheCityDetailedWeatherEntity?
 
 }
