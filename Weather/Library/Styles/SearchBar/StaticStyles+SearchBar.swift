@@ -3,12 +3,13 @@
 
 import SurfUtils
 
+// swiftlint:disable all
 extension UIStyle {
-    static var card: UIStyle<UIView> {
-        return ViewStyle(backgroundColor: Asset.Color.white.color, cornerRadius: 24.0)
-    }
 
-    static var separator: UIStyle<UIView> {
-        return ViewStyle(backgroundColor: Asset.Color.black05.color, cornerRadius: .zero)
+    // MARK: - Montserrat
+
+    static var defaultSearchBar: UIStyle<UISearchBar> {
+        return SearchBarStyle()
     }
 }
+// swiftlint:enable all

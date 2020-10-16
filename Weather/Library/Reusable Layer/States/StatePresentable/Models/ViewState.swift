@@ -9,7 +9,7 @@ struct ViewStateInfo {
     let message: String
     let action: String
 
-    init(_ message: String, action: String = Localized.Common.Button.reload) {
+    init(_ message: String, action: String = Localized.Common.Button.repeat) {
         self.message = message
         self.action = action
     }

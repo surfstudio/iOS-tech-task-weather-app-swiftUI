@@ -29,7 +29,19 @@ final class CititesCoordinator: BaseCoordinator {
 
 private extension CititesCoordinator {
     func showAddCity() {
-        let (view, _) = AddCityModuleConfigurator().configure()
-        router.setRootModule(UINavigationController(rootViewController: view))
+        let (view, output) = AddCityModuleConfigurator().configure()
+
+        output.didGetCity = { [weak self] city in
+            self?.router.dismissModule(animated: true) { [weak self] in
+                // FIXME: Добавить навигацию на список
+                print(city)
+            }
+        }
+
+        output.didDismiss = { [weak self] in
+            self?.router.dismissModule()
+        }
+
+        router.present(ModalNavigationController(rootViewController: view))
     }
 }

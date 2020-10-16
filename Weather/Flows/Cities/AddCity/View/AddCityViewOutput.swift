@@ -4,6 +4,7 @@
 //
 
 protocol AddCityViewOutput {
-    /// Notify presenter that view is ready
-    func viewLoaded()
+    func didSearch(query: String)
+    func didCancelTap()
+    func didSelect(city: PlacesSuggestionEntity)
 }

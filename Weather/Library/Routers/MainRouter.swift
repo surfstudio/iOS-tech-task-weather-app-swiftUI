@@ -8,6 +8,8 @@ import UIKit
 /// Instantiate, and use the object of this class in coordinators.
 class MainRouter: Router {
 
+    private var customTransitioningDelegate: UIViewControllerTransitioningDelegate?
+
     private var window: UIWindow? {
         return (UIApplication.shared.delegate as? AppDelegate)?.window
     }
@@ -34,6 +36,20 @@ class MainRouter: Router {
     func present(_ module: Presentable?, animated: Bool, completion: (() -> Void)?) {
         if let controller = module?.toPresent() {
             self.topViewController?.present(controller, animated: animated, completion: completion)
+        }
+    }
+
+    func likeIOSThirteenPresent(_ module: Presentable?) {
+        if #available(iOS 13, *), UIScreen.main.traitCollection.horizontalSizeClass != .regular {
+            present(module, animated: true, completion: nil)
+        } else {
+            guard let controller = module?.toPresent() else { return }
+
+            customTransitioningDelegate = ThirteenTransitionDelegate()
+            module?.toPresent()?.transitioningDelegate = customTransitioningDelegate
+            module?.toPresent()?.modalPresentationStyle = .custom
+
+            self.topViewController?.present(controller, animated: true, completion: nil)
         }
     }
 

@@ -14,7 +14,8 @@ final class AddCityModuleConfigurator {
                                       bundle: Bundle.main).instantiateInitialViewController() as? AddCityViewController else {
             fatalError("Can't load AddCityViewController from storyboard, check that controller is initial view controller")
         }
-        let presenter = AddCityPresenter()
+        let presenter = AddCityPresenter(geoService: GeocodingNetworkService(),
+                                         cityService: CityNetworkService())
 
         presenter.view = view
         view.output = presenter

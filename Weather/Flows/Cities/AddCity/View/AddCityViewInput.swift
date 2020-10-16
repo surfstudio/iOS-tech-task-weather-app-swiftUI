@@ -3,7 +3,6 @@
 //  Weather
 //
 
-protocol AddCityViewInput: class {
-    /// Method for setup initial state of view
-    func setupInitialState()
+protocol AddCityViewInput: class, LoaderDisplayable, StateConfigurable, SnackDisplayable {
+    func update(citites: [PlacesSuggestionEntity])
 }
