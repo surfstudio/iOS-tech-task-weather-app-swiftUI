@@ -39,7 +39,7 @@ extension DetailedHourlyWeatherEntity {
         model.dewPoint = self.dewPoint?.nsNumber
         model.clouds = self.clouds?.nsNumber
         model.rain = self.rain?.toCache(context: context)
-        model.weather = self.weather?.toCache(context: context)
+        model.weather = self.weather?.map { $0.toCache(context: context) }.nsSet
         model.snow = self.snow?.toCache(context: context)
         model.pop = self.pop?.nsNumber
         model.windSpeed = self.windSpeed?.nsNumber

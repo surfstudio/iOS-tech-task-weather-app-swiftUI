@@ -16,9 +16,9 @@ extension CacheDetailedDailyWeatherEntity {
               humidity: self.humidity?.doubleValue,
               dewPoint: self.dewPoint?.doubleValue,
               clouds: self.clouds?.intValue,
-              rain: self.rain?.toEntity(),
+              rain: self.rain?.doubleValue,
               weather: self.weather?.toEntity(),
-              snow: self.snow?.toEntity(),
+              snow: self.snow?.doubleValue,
               pop: self.pop?.doubleValue,
               windSpeed: self.windSpeed?.doubleValue,
               visibility: self.visibility?.doubleValue)
@@ -37,9 +37,9 @@ extension DetailedDailyWeatherEntity {
         model.humidity = self.humidity?.nsNumber
         model.dewPoint = self.dewPoint?.nsNumber
         model.clouds = self.clouds?.nsNumber
-        model.rain = self.rain?.toCache(context: context)
-        model.weather = self.weather?.toCache(context: context)
-        model.snow = self.snow?.toCache(context: context)
+        model.rain = self.rain?.nsNumber
+        model.weather = self.weather?.map { $0.toCache(context: context) }.nsSet
+        model.snow = self.snow?.nsNumber
         model.pop = self.pop?.nsNumber
         model.windSpeed = self.windSpeed?.nsNumber
         model.visibility = self.visibility?.nsNumber

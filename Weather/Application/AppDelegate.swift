@@ -15,6 +15,9 @@ class AppDelegate: PluggableApplicationDelegate {
     private let coreDataInitService = CoreDataIntApplicationService()
 
     override var services: [ApplicationService] {
+        DetailedWeatherNetworkService().getDetailedWeather(by: .init(lon: 0, lat: 0)).onError {
+            print("### \($0)")
+        }
         return [
             LaunchingApplicationService(),
             self.coreDataInitService

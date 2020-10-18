@@ -20,9 +20,9 @@ extension DetailedWeatherEntity {
     func toCache(context: NSManagedObjectContext) -> CacheDetailedWeatherEntity {
         let model = CacheDetailedWeatherEntity(context: context)
 
-        model.daily = self.daily?.toCache(context: context)
-        model.hourly = self.hourly?.toCache(context: context)
-        model.monutely = self.minutely?.toCache(context: context)
+        model.daily = self.daily?.map { $0.toCache(context: context) }.nsSet
+        model.hourly = self.hourly?.map { $0.toCache(context: context) }.nsSet
+        model.monutely = self.minutely?.map { $0.toCache(context: context) }.nsSet
 
         return model
     }

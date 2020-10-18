@@ -111,3 +111,12 @@ struct CityCacheCoreDataService: CityCacheService {
         return result.dispatchOn(.main)
     }
 }
+
+// MARK: - CachedModel<CityDetailedWeatherEntity> + convertion
+
+extension CachedModel where T == CityDetailedWeatherEntity {
+    init(with model: CacheWholeCityInfo) {
+        let isExpired = model.createdAt.isExpired(ttl: CachedServiceContants.timeToLife)
+        self.init(isExpired: isExpired, value: model.city.toEntity())
+    }
+}

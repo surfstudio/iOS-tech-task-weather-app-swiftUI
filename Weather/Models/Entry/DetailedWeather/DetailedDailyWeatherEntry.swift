@@ -15,9 +15,9 @@ struct DetailedDailyWeatherEntry: Codable {
     let humidity: Double?
     let dew_point: Double?
     let clouds: Int?
-    let rain: PrecipitationEntry?
-    let weather: WeatherConditionsEntry?
-    let snow: PrecipitationEntry?
+    let rain: Double?
+    let weather: [WeatherConditionsEntry]?
+    let snow: Double?
     let pop: Double?
     let wind_speed: Double?
     let visibility: Double?

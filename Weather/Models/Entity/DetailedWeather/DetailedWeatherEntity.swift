@@ -6,9 +6,9 @@
 import NodeKit
 
 struct DetailedWeatherEntity {
-    let daily: DetailedDailyWeatherEntity?
-    let hourly: DetailedHourlyWeatherEntity?
-    let minutely: DetailedMinutelyWeatherEntity?
+    let daily: [DetailedDailyWeatherEntity]?
+    let hourly: [DetailedHourlyWeatherEntity]?
+    let minutely: [DetailedMinutelyWeatherEntity]?
 }
 
 extension DetailedWeatherEntity: DTODecodable {

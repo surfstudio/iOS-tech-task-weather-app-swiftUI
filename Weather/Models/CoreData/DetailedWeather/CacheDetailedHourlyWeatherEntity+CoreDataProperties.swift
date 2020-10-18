@@ -27,7 +27,7 @@ extension CacheDetailedHourlyWeatherEntity {
     @NSManaged public var windSpeed: NSNumber?
     @NSManaged public var visibility: NSNumber?
     @NSManaged public var rain: CachePrecipitationEntity?
-    @NSManaged public var weather: CacheWeatherCondtionsEntity?
+    @NSManaged public var weather: NSSet?
     @NSManaged public var snow: CachePrecipitationEntity?
     @NSManaged public var detailedWeather: CacheDetailedWeatherEntity?
 
