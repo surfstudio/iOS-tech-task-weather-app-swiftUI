@@ -1,9 +1,18 @@
 // MARK: - Button
 
-"Common.Button.reload" = "Reload";
+"Common.Button.repeat" = "Повторить";
 
 // MARK: - Error
 
-"Error.noInternetConnection" = "No Internet Connection";
+"Error.noInternetConnection" = "Отсутствует соединение с интернетом. Попробуйте позже";
+"Error.notDefined" = "Что-то пошло не так. Не удалось загрузить данные";
+
+// MARK: - Empty
+
+"Empty.request" = "Ничего не удалось найти. Попробуйте изменить запрос";
+"Empty.cities" = "Не выбран ни один город для просмотра прогноза";
 
 
+// MARK: - TextField
+
+"Common.TextField.search" = "Город или индекс";

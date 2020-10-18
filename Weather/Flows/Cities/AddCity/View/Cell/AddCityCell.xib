@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="133" id="KGk-i7-Jjw" customClass="AddCityCell" customModule="WeatherDebug" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fch-dC-TWw">
+                        <rect key="frame" x="24" y="16" width="272" height="78.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgp-53-7S1">
+                        <rect key="frame" x="24" y="96.5" width="272" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6V8-nF-5oN">
+                        <rect key="frame" x="24" y="132" width="272" height="1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="EIH-iQ-fhn"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="bgp-53-7S1" secondAttribute="bottom" constant="16" id="0Pr-aH-IMz"/>
+                    <constraint firstItem="fch-dC-TWw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="1zf-bc-JiK"/>
+                    <constraint firstAttribute="trailing" secondItem="6V8-nF-5oN" secondAttribute="trailing" constant="24" id="5Og-ob-O4d"/>
+                    <constraint firstAttribute="bottom" secondItem="6V8-nF-5oN" secondAttribute="bottom" id="6Sp-0H-X8N"/>
+                    <constraint firstItem="bgp-53-7S1" firstAttribute="top" secondItem="fch-dC-TWw" secondAttribute="bottom" constant="2" id="7xL-FG-W46"/>
+                    <constraint firstItem="bgp-53-7S1" firstAttribute="trailing" secondItem="fch-dC-TWw" secondAttribute="trailing" id="IX7-IR-Gtz"/>
+                    <constraint firstItem="6V8-nF-5oN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="KXt-xI-Yef"/>
+                    <constraint firstItem="bgp-53-7S1" firstAttribute="leading" secondItem="fch-dC-TWw" secondAttribute="leading" id="NnN-dH-lDi"/>
+                    <constraint firstAttribute="trailing" secondItem="fch-dC-TWw" secondAttribute="trailing" constant="24" id="Z7f-Yn-U86"/>
+                    <constraint firstItem="fch-dC-TWw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="a0W-Yu-aDs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="separatorView" destination="6V8-nF-5oN" id="3kh-Mw-IVu"/>
+                <outlet property="subtitleLabel" destination="bgp-53-7S1" id="1vs-ig-btc"/>
+                <outlet property="titleLabel" destination="fch-dC-TWw" id="fsY-0n-Iwh"/>
+            </connections>
+            <point key="canvasLocation" x="-17.39130434782609" y="108.14732142857143"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

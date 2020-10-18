@@ -1,10 +1,10 @@
-//
-//  Copyright © 2020 Surf. All rights reserved.
-//
-
 import PluggableApplicationDelegate
 
 final class LaunchingApplicationService: NSObject, ApplicationService {
+
+    // MARK: - Private Properties
+
+    private lazy var appCoordinator = ApplicationCoordinator()
 
     // MARK: - ApplicationService
 
@@ -20,8 +20,9 @@ final class LaunchingApplicationService: NSObject, ApplicationService {
 private extension LaunchingApplicationService {
     func initializeRootView() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = MockViewController()
+        self.window?.rootViewController = UIViewController()
         self.window?.makeKeyAndVisible()
+        self.appCoordinator.start()
     }
 }
 
