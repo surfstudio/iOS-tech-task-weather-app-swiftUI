@@ -5,13 +5,13 @@
 
 import NodeKit
 
-struct CityCloundEntity {
+struct CityCloudEntity {
     /// Облачность в процентах.
     let cloudiness: Int
 }
 
-extension CityCloundEntity: DTODecodable {
-    static func from(dto: CityCloundEntry) throws -> CityCloundEntity {
+extension CityCloudEntity: DTODecodable {
+    static func from(dto: CityCloundEntry) throws -> CityCloudEntity {
         .init(cloudiness: dto.all)
     }
 }

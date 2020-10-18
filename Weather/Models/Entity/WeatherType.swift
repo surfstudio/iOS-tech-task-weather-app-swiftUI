@@ -5,7 +5,7 @@
 
 import Foundation
 
-enum WeatherType {
+enum WeatherType: Int {
     case thunderstorm
     case drizzle
     case rain
