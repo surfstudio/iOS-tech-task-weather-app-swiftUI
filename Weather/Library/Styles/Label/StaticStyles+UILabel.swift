@@ -39,5 +39,31 @@ extension UIStyle {
                           kern: .zero,
                           alignment: .center)
     }
+
+    static var TM18WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.medium.font(size: 18.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TR14WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.regular.font(size: 14.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 14.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    // MARK: - SFProDisplay
+
+    static var DB100WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProDisplay.bold.font(size: 100.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 100.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
 }
 // swiftlint:enable all

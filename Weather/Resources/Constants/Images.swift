@@ -34,6 +34,7 @@ public enum Asset {
     public enum ErrorView {
       public static let emptyState = ImageAsset(name: "Image/ErrorView/empty_state")
       public static let errorState = ImageAsset(name: "Image/ErrorView/error_state")
+      public static let noInternet = ImageAsset(name: "Image/ErrorView/no_internet")
     }
     public enum NavigationItem {
       public static let back = ImageAsset(name: "Image/NavigationItem/back")
