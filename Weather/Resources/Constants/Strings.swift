@@ -28,6 +28,8 @@ public enum L10n {
     public static func maxmin(_ p1: Float, _ p2: Float) -> String {
       return L10n.tr("Localizable", "Detail.maxmin", p1, p2)
     }
+    /// Сегодня
+    public static let today = L10n.tr("Localizable", "Detail.today")
   }
 
   public enum Empty {

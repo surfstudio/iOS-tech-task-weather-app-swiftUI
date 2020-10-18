@@ -5,7 +5,7 @@ import SurfUtils
 
 extension UIStyle {
     static var card: UIStyle<UIView> {
-        return ViewStyle(backgroundColor: Asset.Color.white.color, cornerRadius: 24.0)
+        return ViewStyle(backgroundColor: Asset.Color.black50.color, cornerRadius: 24.0)
     }
 
     static var separator: UIStyle<UIView> {

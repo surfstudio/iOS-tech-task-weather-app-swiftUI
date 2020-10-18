@@ -56,6 +56,30 @@ extension UIStyle {
                           alignment: .center)
     }
 
+    static var TB18WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TB13WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 13.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 13.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TR13WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.regular.font(size: 13.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 13.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
     // MARK: - SFProDisplay
 
     static var DB100WhiteCenter: UIStyle<UILabel> {
