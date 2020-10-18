@@ -40,3 +40,8 @@ target 'WeatherRelease' do
 	use_frameworks!
 	common_pods
 end
+
+target 'UnitTests' do
+	use_frameworks!
+	common_pods
+end
