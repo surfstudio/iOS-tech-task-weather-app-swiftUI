@@ -5,13 +5,13 @@
 
 import NodeKit
 
-struct CityWeatherConditionsEntry: Codable {
+struct WeatherConditionsEntry: Codable {
     let id: Int
     let main: String
     let description: String
     let icon: String
 }
 
-extension CityWeatherConditionsEntry: RawMappable {
+extension WeatherConditionsEntry: RawMappable {
     typealias Raw = Json
 }

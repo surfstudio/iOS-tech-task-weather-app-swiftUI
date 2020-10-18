@@ -5,7 +5,7 @@
 
 import NodeKit
 
-struct CitySnowEntity {
+struct SnowEntity {
     /// Объем снега, выпавшего за последний час.
     /// В миллиметрах.
     let lastOneHour: Double?
@@ -14,8 +14,8 @@ struct CitySnowEntity {
     let lastThreeHours: Double?
 }
 
-extension CitySnowEntity: DTODecodable {
-    static func from(dto: CitySnowEntry) throws -> CitySnowEntity {
+extension SnowEntity: DTODecodable {
+    static func from(dto: SnowEntry) throws -> SnowEntity {
         .init(lastOneHour: dto.h1, lastThreeHours: dto.h3)
     }
 }

@@ -11,6 +11,9 @@ class AppDelegate: PluggableApplicationDelegate {
     // MARK: - Properties
 
     override var services: [ApplicationService] {
+        DetailedWeatherNetworkService().getDetailedWeather(by: .init(lon: 100, lat: 100)).onCompleted {
+            print($0)
+        }
         return [
             LaunchingApplicationService()
         ]

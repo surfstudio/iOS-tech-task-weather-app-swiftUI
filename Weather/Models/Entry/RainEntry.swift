@@ -1,11 +1,11 @@
 //
-//  CitySnowEntry.swift
+//  CityRainEntry.swift
 //  WeatherDebug
 //
 
 import NodeKit
 
-struct CitySnowEntry: Codable {
+struct RainEntry: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case h1 = "1h"
@@ -16,6 +16,7 @@ struct CitySnowEntry: Codable {
     let h3: Double?
 }
 
-extension CitySnowEntry: RawMappable {
+extension RainEntry: RawMappable {
     typealias Raw = Json
 }
+
