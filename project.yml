@@ -20,7 +20,7 @@ targets:
         path: UnitTests/Info.plist
         properties: []
       dependencies:
-        - target: WeatherRelease
+        - target: WeatherDebug
     # Debug таргет
     WeatherDebug:
       type: application

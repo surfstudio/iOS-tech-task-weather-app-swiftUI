@@ -24,7 +24,7 @@ extension UIImage {
     }
 
     static func roundedImage(image: UIImage, cornerRadius: CGFloat) -> UIImage? {
-        let rect = CGRect(origin:CGPoint(x: 0, y: 0), size: image.size)
+        let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: image.size)
         UIGraphicsBeginImageContextWithOptions(image.size, false, 1)
         UIBezierPath(roundedRect: rect, cornerRadius: CGFloat(cornerRadius)).addClip()
         image.draw(in: rect)

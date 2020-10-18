@@ -8,7 +8,7 @@ import NodeKit
 struct GeocodingNetworkService: GeocodingService {
 
     private enum Consts {
-        
+
         static let lookUpQueryParameter = "q"
 
         static let lookUpHeaders = [
