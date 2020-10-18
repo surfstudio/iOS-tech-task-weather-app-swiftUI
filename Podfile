@@ -5,7 +5,6 @@ inhibit_all_warnings!
 def utils
     pod 'SwiftGen', '~> 6.1.0'
     pod 'SwiftLint', '~> 0.30.1'
-    pod 'CSTObfuscator'
     pod 'SwiftMessages', '~> 7.0.1'
 end
 
