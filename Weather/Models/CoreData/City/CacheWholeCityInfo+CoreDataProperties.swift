@@ -9,10 +9,11 @@
 import Foundation
 import CoreData
 
-
 extension CacheWholeCityInfo {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CacheWholeCityInfo> {
+    @nonobjc
+    public
+    class func fetchRequest() -> NSFetchRequest<CacheWholeCityInfo> {
         return NSFetchRequest<CacheWholeCityInfo>(entityName: "CacheWholeCityInfo")
     }
 

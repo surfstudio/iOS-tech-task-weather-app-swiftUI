@@ -53,9 +53,9 @@ struct CityCacheCoreDataService: CityCacheService {
                     return
                 }
 
-                let cachedModel = CachedCity(isExpired: <#T##Bool#>, value: model.city.toEntity())
-
-                result.emit(data: )
+                let isExpired = model.createdAt.isExpired(ttl: CachedServiceContants.timeToLife)
+                let cachedModel = CachedCity(isExpired: isExpired, value: model.city.toEntity())
+                result.emit(data: cachedModel)
             } catch {
                 result.emit(error: error)
             }
@@ -75,7 +75,10 @@ struct CityCacheCoreDataService: CityCacheService {
             request.fetchLimit = limit
 
             do {
-                let models = try request.execute().map { $0.city.toEntity() }
+                let models = try request.execute().map { item -> CachedCity in
+                    let isExpired = item.createdAt.isExpired(ttl: CachedServiceContants.timeToLife)
+                    return CachedCity(isExpired: isExpired, value: item.city.toEntity())
+                }
                 result.emit(data: models)
             } catch {
                 result.emit(error: error)

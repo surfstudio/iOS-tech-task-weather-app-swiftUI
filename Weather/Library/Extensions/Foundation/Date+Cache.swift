@@ -14,7 +14,7 @@ extension Date {
     ///     - ttl: Промежуток времени, который
     func isExpired(ttl: TimeInterval) -> Bool {
         // получаем разницу между конкретным временем (self) и временем "сейчас"
-        let diff = self.timeIntervalSince1970 - Date().timeIntervalSince1970
+        let diff = Date().timeIntervalSince1970 - self.timeIntervalSince1970
         // если разница меньше чем ttl, значит,
         // что точка в которой self будет считаться "протухшим" дальше чем "сейчас"
         return diff > ttl

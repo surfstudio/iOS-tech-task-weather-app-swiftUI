@@ -24,5 +24,4 @@ protocol Router {
     func setRootModule(_ module: Presentable?)
 
     func setTab(_ index: Int)
-    
 }
