@@ -15,7 +15,7 @@ struct CityNetworkService: CityService {
         static let query: Json = [
             "appid": ServicesConstants.Weather.apiKey,
             "units": "metric",
-            "lang": Locale.current.collatorIdentifier ?? Locale.current.identifier
+            "lang": Locale.current.languageCode ?? Locale.current.identifier
         ]
     }
 
@@ -35,7 +35,7 @@ struct CityNetworkService: CityService {
     }
 
     /// Если города с таким именем не нашлось - вернет `ResponseHttpErrorProcessorNodeError.notFound`
-    func getCitiesDetailedWeather(by ids: [String]) -> Observer<[CityDetailedWeatherEntity]> {
+    func getCitiesDetailedWeather(by ids: [Int]) -> Observer<[CityDetailedWeatherEntity]> {
         var query = Consts.query
         query[Consts.getGroupQueryParameter] = ids
         return self.builder

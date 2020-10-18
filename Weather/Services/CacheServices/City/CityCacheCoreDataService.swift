@@ -17,15 +17,17 @@ struct CityCacheCoreDataService: CityCacheService {
 
     let persistenceContainerProvider: PersistenceCoordinatorProvider
 
-    func save(city: CityDetailedWeatherEntity) -> Observer<Void> {
+    func save(cites: [CityDetailedWeatherEntity]) -> Observer<Void> {
         let result = Context<Void>()
         let context = persistenceContainerProvider.get().newBackgroundContext()
         context.mergePolicy = NSMergePolicy.overwrite
         context.perform {
-            let wholeCity = CacheWholeCityInfo(context: context)
-            wholeCity.city = city.toCache(context: context)
-            wholeCity.cityId = Int32(city.cityId)
-            wholeCity.createdAt = Date()
+            cites.forEach { city in
+                let wholeCity = CacheWholeCityInfo(context: context)
+                wholeCity.city = city.toCache(context: context)
+                wholeCity.cityId = Int32(city.cityId)
+                wholeCity.createdAt = Date()
+            }
             do {
                 try context.save()
                 result.emit(data: ())
@@ -63,15 +65,12 @@ struct CityCacheCoreDataService: CityCacheService {
         return result.dispatchOn(.main)
     }
 
-    func getAll(limit: Int, offset: Int) -> Observer<[CachedCity]> {
+    func getAll() -> Observer<[CachedCity]> {
         let context = persistenceContainerProvider.get().newBackgroundContext()
         let result = Context<[CachedCity]>()
 
         context.perform {
             let request: NSFetchRequest<CacheWholeCityInfo> = CacheWholeCityInfo.fetchRequest()
-            request.fetchOffset = offset
-            request.fetchLimit = limit
-
             do {
                 let models = try request.execute().map { CachedCity(with: $0) }
                 result.emit(data: models)

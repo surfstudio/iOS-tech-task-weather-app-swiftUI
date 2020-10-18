@@ -18,8 +18,8 @@ protocol CityCacheService {
     typealias CachedCity = CachedModel<CityDetailedWeatherEntity>
 
     func get(by id: Int) -> Observer<CityCacheResponse>
-    func getAll(limit: Int, offset: Int) -> Observer<[CachedCity]>
+    func getAll() -> Observer<[CachedCity]>
     func delete(by id: Int) -> Observer<Void>
-    func save(city: CityDetailedWeatherEntity) -> Observer<Void>
+    func save(cites: [CityDetailedWeatherEntity]) -> Observer<Void>
     func save(detailedWeather: DetailedWeatherEntity, for cityId: Int) -> Observer<Void>
 }
