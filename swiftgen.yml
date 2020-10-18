@@ -8,14 +8,14 @@ xcassets:
           enumName: Asset
           publicAccess: true
 
-# fonts:
-#   inputs:
-#     - Weather/Resources/Fonts
-#   outputs:
-#     - templateName: swift4
-#       output: Weather/Resources/Constants/Fonts.swift
-#       params:
-#         publicAccess: true
+fonts:
+  inputs:
+    - Weather/Resources/Fonts
+  outputs:
+    - templateName: swift4
+      output: Weather/Resources/Constants/Fonts.swift
+      params:
+        publicAccess: true
 
 strings:
   inputs:

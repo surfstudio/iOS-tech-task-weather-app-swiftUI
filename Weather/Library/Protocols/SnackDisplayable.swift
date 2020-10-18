@@ -6,9 +6,10 @@ protocol SnackDisplayable: ErrorDisplayable {
 
 extension SnackDisplayable {
     func showSnack(with text: String) {
-        let view = MessageView.viewFromNib(layout: .cardView)
+        let view = MessageView.viewFromNib(layout: .statusLine)
+        view.bodyLabel?.text = text
         var config = SwiftMessages.Config()
-        config.presentationContext = .window(windowLevel: .statusBar)
+        config.presentationContext = .window(windowLevel: .normal)
         SwiftMessages.show(config: config, view: view)
     }
 }

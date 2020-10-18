@@ -145,3 +145,11 @@ extension UIPageControl {
         style.apply(for: self)
     }
 }
+
+// MARK: - UISearchBar
+
+extension UISearchBar {
+    func apply(style: UIStyle<UISearchBar>) {
+        style.apply(for: self)
+    }
+}

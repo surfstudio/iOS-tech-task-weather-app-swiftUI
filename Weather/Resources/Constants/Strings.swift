@@ -14,14 +14,27 @@ public enum L10n {
 
   public enum Common {
     public enum Button {
-      /// Reload
-      public static let reload = L10n.tr("Localizable", "Common.Button.reload")
+      /// Повторить
+      public static let `repeat` = L10n.tr("Localizable", "Common.Button.repeat")
+    }
+    public enum TextField {
+      /// Город или индекс
+      public static let search = L10n.tr("Localizable", "Common.TextField.search")
     }
   }
 
+  public enum Empty {
+    /// Не выбран ни один город для просмотра прогноза
+    public static let cities = L10n.tr("Localizable", "Empty.cities")
+    /// Ничего не удалось найти. Попробуйте изменить запрос
+    public static let request = L10n.tr("Localizable", "Empty.request")
+  }
+
   public enum Error {
-    /// No Internet Connection
+    /// Отсутствует соединение с интернетом. Попробуйте позже
     public static let noInternetConnection = L10n.tr("Localizable", "Error.noInternetConnection")
+    /// Что-то пошло не так. Не удалось загрузить данные
+    public static let notDefined = L10n.tr("Localizable", "Error.notDefined")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

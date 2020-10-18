@@ -21,7 +21,12 @@ public enum Asset {
   public enum Color {
 
     public static let black = ColorAsset(name: "Color/black")
+    public static let black05 = ColorAsset(name: "Color/black05")
     public static let black40 = ColorAsset(name: "Color/black40")
+    public static let darkGrey = ColorAsset(name: "Color/darkGrey")
+    public static let grey = ColorAsset(name: "Color/grey")
+    public static let lightGrey = ColorAsset(name: "Color/lightGrey")
+    public static let lightPurple = ColorAsset(name: "Color/lightPurple")
     public static let white = ColorAsset(name: "Color/white")
   }
   public enum Image {
@@ -32,6 +37,9 @@ public enum Asset {
     }
     public enum NavigationItem {
       public static let back = ImageAsset(name: "Image/NavigationItem/back")
+    }
+    public enum Search {
+      public static let iconSearch = ImageAsset(name: "Image/Search/icon-search")
     }
   }
 }
