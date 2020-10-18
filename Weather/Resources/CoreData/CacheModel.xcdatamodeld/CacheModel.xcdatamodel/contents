@@ -12,7 +12,7 @@
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="timezone" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO"/>
         <relationship name="clouds" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityCloudEntity" inverseName="city" inverseEntity="CacheCityCloudEntity"/>
-        <relationship name="coords" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CacheCoordsEntity" inverseName="city" inverseEntity="CacheCoordsEntity"/>
+        <relationship name="coords" maxCount="1" deletionRule="Cascade" destinationEntity="CacheCoordsEntity" inverseName="city" inverseEntity="CacheCoordsEntity"/>
         <relationship name="main" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityMainWeatherEntity" inverseName="city" inverseEntity="CacheCityMainWeatherEntity"/>
         <relationship name="rain" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachePrecipitationEntity" inverseName="city" inverseEntity="CachePrecipitationEntity"/>
         <relationship name="snow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachePrecipitationEntity" inverseName="snow" inverseEntity="CachePrecipitationEntity"/>

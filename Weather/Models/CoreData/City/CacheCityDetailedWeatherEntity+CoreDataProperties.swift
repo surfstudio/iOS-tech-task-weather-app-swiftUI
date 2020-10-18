@@ -22,7 +22,7 @@ extension CacheCityDetailedWeatherEntity {
     @NSManaged public var cityId: Int32
     @NSManaged public var cityName: String?
     @NSManaged public var cod: String?
-    @NSManaged public var coords: CacheCoordsEntity?
+    @NSManaged public var coords: CacheCoordsEntity
     @NSManaged public var weather: NSSet?
     @NSManaged public var main: CacheCityMainWeatherEntity?
     @NSManaged public var wind: CacheWindEntity?

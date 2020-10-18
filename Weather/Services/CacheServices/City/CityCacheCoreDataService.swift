@@ -17,7 +17,7 @@ struct CityCacheCoreDataService: CityCacheService {
 
     let persistenceContainerProvider: PersistenceCoordinatorProvider
 
-    func save(cites: [CityDetailedWeatherEntity]) -> Observer<Void> {
+    func save(cites: [CityDetailedEntity]) -> Observer<Void> {
         let result = Context<Void>()
         let context = persistenceContainerProvider.get().newBackgroundContext()
         context.mergePolicy = NSMergePolicy.overwrite
@@ -27,6 +27,7 @@ struct CityCacheCoreDataService: CityCacheService {
                 wholeCity.city = city.toCache(context: context)
                 wholeCity.cityId = Int32(city.cityId)
                 wholeCity.createdAt = Date()
+                wholeCity.detailedWeather = city.detailedWeather?.toCache(context: context)
             }
             do {
                 try context.save()
@@ -105,31 +106,20 @@ struct CityCacheCoreDataService: CityCacheService {
         return result.dispatchOn(.main)
     }
 
-    func save(detailedWeather: DetailedWeatherEntity, for cityId: Int) -> Observer<Void> {
+    func save(detailedWeather: DetailedWeatherEntity, for city: CityDetailedEntity) -> Observer<Void> {
         let context = persistenceContainerProvider.get().newBackgroundContext()
         let result = Context<Void>()
+        context.mergePolicy = NSMergePolicy.overwrite
 
         context.perform {
-            let request: NSFetchRequest<CacheWholeCityInfo> = CacheWholeCityInfo.fetchRequest()
-
-            request.predicate = NSPredicate(format: "city.cityId == %d", cityId)
-            request.fetchLimit = 1
+            let model = CacheWholeCityInfo(context: context)
+            model.city = city.toCache(context: context)
+            model.cityId = Int32(city.cityId)
+            model.detailedWeather = detailedWeather.toCache(context: context)
 
             do {
-                let models = try request.execute()
-
-                guard let city = models.first else {
-                    result.emit(error: CityCacheCoreDataServiceError.notFound)
-                    return
-                }
-
-                if let weather = city.detailedWeather {
-                    context.delete(weather)
-                }
-
-                city.detailedWeather = detailedWeather.toCache(context: context)
-
                 try context.save()
+                result.emit(data: ())
             } catch {
                 result.emit(error: error)
             }
@@ -142,7 +132,7 @@ struct CityCacheCoreDataService: CityCacheService {
 
 // MARK: - CachedModel<CityDetailedWeatherEntity> + Convertion
 
-extension CachedModel where T == CityDetailedWeatherEntity {
+extension CachedModel where T == CityDetailedEntity {
     init(with model: CacheWholeCityInfo) {
         let isExpired = model.createdAt.isExpired(ttl: CachedServiceContants.timeToLife)
         self.init(isExpired: isExpired, value: model.city.toEntity())

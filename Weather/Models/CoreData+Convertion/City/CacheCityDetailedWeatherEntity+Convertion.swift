@@ -10,8 +10,8 @@ import CoreData
 
 extension CacheCityDetailedWeatherEntity {
 
-    func toEntity() -> CityDetailedWeatherEntity {
-        .init(coords: self.coords?.toEntity(),
+    func toEntity() -> CityDetailedEntity {
+        .init(coords: self.coords.toEntity(),
               weather: self.weather?.compactMap { $0 as? WeatherConditionsEntity } ?? [],
               base: self.base,
               main: self.main?.toEntity(),
@@ -28,10 +28,10 @@ extension CacheCityDetailedWeatherEntity {
     }
 }
 
-extension CityDetailedWeatherEntity {
+extension CityDetailedEntity {
     func toCache(context: NSManagedObjectContext) -> CacheCityDetailedWeatherEntity {
         let model = CacheCityDetailedWeatherEntity(context: context)
-        model.coords = self.coords?.toCache(context: context)
+        model.coords = self.coords.toCache(context: context)
         model.weather = NSSet(array: self.weather ?? [])
         model.base = self.base
         model.main = self.main?.toCache(context: context)

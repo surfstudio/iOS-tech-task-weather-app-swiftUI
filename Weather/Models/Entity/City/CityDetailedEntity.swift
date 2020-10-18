@@ -6,7 +6,7 @@
 import NodeKit
 
 struct CityDetailedEntity {
-    let coords: CoordEntity?
+    let coords: CoordEntity
     let weather: [WeatherConditionsEntity]?
     let base: String?
     let main: CityMainWeatherInfoEntity?

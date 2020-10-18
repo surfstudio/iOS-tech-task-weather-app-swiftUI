@@ -6,7 +6,7 @@
 import NodeKit
 
 struct CityDetailedWeatherEntry: Codable {
-    let coord: CoordEntry?
+    let coord: CoordEntry
     let weather: [WeatherConditionsEntry]?
     let base: String?
     let main: CityMainWeatherInfoEntry?
