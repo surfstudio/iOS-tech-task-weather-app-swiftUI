@@ -1,6 +1,6 @@
 import UIKit
 
-final class MainCoordinator: BaseCoordinator {
+final class DetailCoordinator: BaseCoordinator {
 
     // MARK: - Public Properties
 
@@ -26,9 +26,9 @@ final class MainCoordinator: BaseCoordinator {
 
 // MARK: - Private Methods
 
-private extension MainCoordinator {
+private extension DetailCoordinator {
     func showMain() {
-        let (view, output) = MainModuleConfigurator().configure()
+        let (view, output) = DetailModuleConfigurator().configure()
         router.setRootModule(UINavigationController(rootViewController: view))
     }
 }

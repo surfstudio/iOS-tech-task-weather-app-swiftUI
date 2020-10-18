@@ -1,9 +1,9 @@
 //
-//  MainViewOutput.swift
+//  DetailViewOutput.swift
 //  Weather
 //
 
-protocol MainViewOutput {
+protocol DetailViewOutput {
     func viewLoaded()
     func didReload()
 }

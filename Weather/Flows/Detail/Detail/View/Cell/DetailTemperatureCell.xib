@@ -9,33 +9,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="KGk-i7-Jjw" customClass="MainTemperatureCell" customModule="WeatherDebug" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="437" id="KGk-i7-Jjw" customClass="DetailTemperatureCell" customModule="WeatherDebug" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="437"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="437"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Aa-SV-7Yj">
-                        <rect key="frame" x="139.5" y="64" width="41.5" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="21°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Aa-SV-7Yj">
+                        <rect key="frame" x="102.5" y="64" width="139" height="212"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7D-bx-pjJ">
+                        <rect key="frame" x="139.5" y="276" width="41.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7D-bx-pjJ">
-                        <rect key="frame" x="139.5" y="109" width="41.5" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4h-Og-h9d">
-                        <rect key="frame" x="139" y="146" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4h-Og-h9d">
+                        <rect key="frame" x="127" y="304.5" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ccc-MF-b8O">
-                        <rect key="frame" x="107.5" y="107.5" width="24" height="24"/>
+                        <rect key="frame" x="107.5" y="274.5" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="Ldn-54-aIc"/>
                             <constraint firstAttribute="height" constant="24" id="uqV-1y-UaU"/>
@@ -43,13 +43,13 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="1Aa-SV-7Yj" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="9Vp-yE-ztT"/>
+                    <constraint firstItem="1Aa-SV-7Yj" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="12" id="9Vp-yE-ztT"/>
                     <constraint firstItem="f7D-bx-pjJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="A53-bw-jQ4"/>
                     <constraint firstItem="1Aa-SV-7Yj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="64" id="Fpc-g6-Cxp"/>
                     <constraint firstAttribute="bottom" secondItem="O4h-Og-h9d" secondAttribute="bottom" constant="112" id="L0m-A3-UnP"/>
-                    <constraint firstItem="f7D-bx-pjJ" firstAttribute="top" secondItem="1Aa-SV-7Yj" secondAttribute="bottom" constant="24" id="VY2-o3-EQY"/>
-                    <constraint firstItem="O4h-Og-h9d" firstAttribute="top" secondItem="f7D-bx-pjJ" secondAttribute="bottom" constant="16" id="gZj-UP-H6h"/>
-                    <constraint firstItem="O4h-Og-h9d" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="t87-cH-EgS"/>
+                    <constraint firstItem="f7D-bx-pjJ" firstAttribute="top" secondItem="1Aa-SV-7Yj" secondAttribute="bottom" id="VY2-o3-EQY"/>
+                    <constraint firstItem="O4h-Og-h9d" firstAttribute="top" secondItem="f7D-bx-pjJ" secondAttribute="bottom" constant="8" id="gZj-UP-H6h"/>
+                    <constraint firstItem="O4h-Og-h9d" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-12" id="t87-cH-EgS"/>
                     <constraint firstItem="f7D-bx-pjJ" firstAttribute="leading" secondItem="ccc-MF-b8O" secondAttribute="trailing" constant="8" id="tdR-n4-Met"/>
                     <constraint firstItem="ccc-MF-b8O" firstAttribute="centerY" secondItem="f7D-bx-pjJ" secondAttribute="centerY" id="z2b-Yu-l2w"/>
                 </constraints>
@@ -60,7 +60,7 @@
                 <outlet property="temperatureMinMaxLabel" destination="O4h-Og-h9d" id="3Mb-d9-oMA"/>
                 <outlet property="temperatureTypeLabel" destination="f7D-bx-pjJ" id="qJg-c9-dbz"/>
             </connections>
-            <point key="canvasLocation" x="-23.188405797101453" y="115.84821428571428"/>
+            <point key="canvasLocation" x="-23.188405797101453" y="195.20089285714286"/>
         </tableViewCell>
     </objects>
 </document>

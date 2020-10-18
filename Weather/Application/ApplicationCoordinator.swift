@@ -19,7 +19,7 @@ final class ApplicationCoordinator: BaseCoordinator {
 
 private extension ApplicationCoordinator {
     func runMainFlow(with deepLinkOption: DeepLinkOption?) {
-        let coordinator = MainCoordinator(router: router)
+        let coordinator = DetailCoordinator(router: router)
 
         coordinator.finishFlow = { [weak self, weak coordinator] in
             self?.removeDependency(coordinator)

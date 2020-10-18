@@ -9,37 +9,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="PlN-iW-H7B">
             <objects>
-                <viewController id="h3k-bK-TNO" customClass="MainViewController" customModule="WeatherDebug" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="h3k-bK-TNO" customClass="DetailViewController" customModule="WeatherDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cA6-JB-jfU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vW1-l6-Yzw">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c0e-HK-xEV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KtA-oY-iC2">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YWU-9O-L7t"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YWU-9O-L7t" firstAttribute="trailing" secondItem="vW1-l6-Yzw" secondAttribute="trailing" id="4MJ-l3-HVB"/>
-                            <constraint firstItem="vW1-l6-Yzw" firstAttribute="leading" secondItem="YWU-9O-L7t" secondAttribute="leading" id="NwY-AV-gJz"/>
-                            <constraint firstItem="YWU-9O-L7t" firstAttribute="bottom" secondItem="vW1-l6-Yzw" secondAttribute="bottom" id="pSB-2z-tjb"/>
-                            <constraint firstItem="vW1-l6-Yzw" firstAttribute="top" secondItem="cA6-JB-jfU" secondAttribute="top" id="zAy-PU-jl4"/>
+                            <constraint firstItem="c0e-HK-xEV" firstAttribute="top" secondItem="YWU-9O-L7t" secondAttribute="top" id="0lv-4G-JwB"/>
+                            <constraint firstItem="YWU-9O-L7t" firstAttribute="bottom" secondItem="c0e-HK-xEV" secondAttribute="bottom" id="c50-7t-fTy"/>
+                            <constraint firstItem="YWU-9O-L7t" firstAttribute="trailing" secondItem="c0e-HK-xEV" secondAttribute="trailing" id="en3-zL-qFn"/>
+                            <constraint firstItem="c0e-HK-xEV" firstAttribute="leading" secondItem="YWU-9O-L7t" secondAttribute="leading" id="ieW-WZ-fF2"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="vW1-l6-Yzw" id="tlw-tp-DlN"/>
+                        <outlet property="tableView" destination="c0e-HK-xEV" id="A5V-UA-lRG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psv-Wb-mBc" userLabel="First Responder" sceneMemberID="firstResponder"/>

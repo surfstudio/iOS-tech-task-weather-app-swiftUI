@@ -42,6 +42,17 @@ public enum Asset {
     public enum Search {
       public static let iconSearch = ImageAsset(name: "Image/Search/icon-search")
     }
+    public enum Weather {
+      public static let cloud = ImageAsset(name: "Image/Weather/cloud")
+      public static let clouds = ImageAsset(name: "Image/Weather/clouds")
+      public static let moon = ImageAsset(name: "Image/Weather/moon")
+      public static let night = ImageAsset(name: "Image/Weather/night")
+      public static let rain = ImageAsset(name: "Image/Weather/rain")
+      public static let snow = ImageAsset(name: "Image/Weather/snow")
+      public static let sun = ImageAsset(name: "Image/Weather/sun")
+      public static let sunCloud = ImageAsset(name: "Image/Weather/sun_cloud")
+      public static let wind = ImageAsset(name: "Image/Weather/wind")
+    }
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
