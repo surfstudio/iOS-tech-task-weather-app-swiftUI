@@ -18,6 +18,7 @@
         <relationship name="snow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachePrecipitationEntity" inverseName="snow" inverseEntity="CachePrecipitationEntity"/>
         <relationship name="systemInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCitySystemInfoEntity" inverseName="city" inverseEntity="CacheCitySystemInfoEntity"/>
         <relationship name="weather" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CacheWeatherCondtionsEntity" inverseName="city" inverseEntity="CacheWeatherCondtionsEntity"/>
+        <relationship name="wholeCity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheWholeCityInfo" inverseName="city" inverseEntity="CacheWholeCityInfo"/>
         <relationship name="wind" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheWindEntity" inverseName="city" inverseEntity="CacheWindEntity"/>
     </entity>
     <entity name="CacheCityMainWeatherEntity" representedClassName="CacheCityMainWeatherEntity" syncable="YES">
@@ -118,15 +119,19 @@
         <relationship name="dailyWeather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedDailyWeatherEntity" inverseName="weather" inverseEntity="CacheDetailedDailyWeatherEntity"/>
         <relationship name="hourlyWeather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheDetailedHourlyWeatherEntity" inverseName="weather" inverseEntity="CacheDetailedHourlyWeatherEntity"/>
     </entity>
+    <entity name="CacheWholeCityInfo" representedClassName="CacheWholeCityInfo" syncable="YES">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CacheCityDetailedWeatherEntity" inverseName="wholeCity" inverseEntity="CacheCityDetailedWeatherEntity"/>
+    </entity>
     <entity name="CacheWindEntity" representedClassName="CacheWindEntity" syncable="YES">
         <attribute name="direction" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <attribute name="gust" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <attribute name="speed" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityDetailedWeatherEntity" inverseName="wind" inverseEntity="CacheCityDetailedWeatherEntity"/>
+        <relationship name="city" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityDetailedWeatherEntity" inverseName="wind" inverseEntity="CacheCityDetailedWeatherEntity"/>
     </entity>
     <elements>
         <element name="CacheCityCloudEntity" positionX="-3353.05078125" positionY="1835.31640625" width="128" height="73"/>
-        <element name="CacheCityDetailedWeatherEntity" positionX="-3642.15234375" positionY="1862.48828125" width="128" height="253"/>
+        <element name="CacheCityDetailedWeatherEntity" positionX="-3642.15234375" positionY="1862.48828125" width="128" height="268"/>
         <element name="CacheCityMainWeatherEntity" positionX="-3294.4609375" positionY="1613.4296875" width="128" height="178"/>
         <element name="CacheCitySystemInfoEntity" positionX="-3386.13671875" positionY="2191.40234375" width="128" height="148"/>
         <element name="CacheCoordsEntity" positionX="-3195.99609375" positionY="1864.3359375" width="128" height="88"/>
@@ -137,6 +142,7 @@
         <element name="CacheDetailedWeatherEntity" positionX="-2278.609375" positionY="2053.625" width="128" height="88"/>
         <element name="CachePrecipitationEntity" positionX="-3041.83203125" positionY="1905.23046875" width="128" height="163"/>
         <element name="CacheWeatherCondtionsEntity" positionX="-3161.78125" positionY="2074.29296875" width="128" height="148"/>
+        <element name="CacheWholeCityInfo" positionX="-3447" positionY="1755" width="128" height="73"/>
         <element name="CacheWindEntity" positionX="-3437.1953125" positionY="2381.0234375" width="128" height="103"/>
     </elements>
 </model>
