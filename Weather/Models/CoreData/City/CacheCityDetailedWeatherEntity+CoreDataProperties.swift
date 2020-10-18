@@ -19,7 +19,7 @@ extension CacheCityDetailedWeatherEntity {
     @NSManaged public var base: String?
     @NSManaged public var time: Date?
     @NSManaged public var timezone: NSNumber?
-    @NSManaged public var cityId: NSNumber?
+    @NSManaged public var cityId: Int32
     @NSManaged public var cityName: String?
     @NSManaged public var cod: String?
     @NSManaged public var coords: CacheCoordsEntity?

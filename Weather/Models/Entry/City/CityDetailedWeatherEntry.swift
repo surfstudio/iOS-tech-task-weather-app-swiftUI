@@ -17,7 +17,7 @@ struct CityDetailedWeatherEntry: Codable {
     let dt: Double?
     let sys: CitySystemInfoEntry?
     let timezone: Int?
-    let id: Int?
+    let id: Int
     let name: String?
     let cod: String?
 }

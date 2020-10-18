@@ -19,6 +19,7 @@ extension CacheDetailedWeatherEntity {
     @NSManaged public var daily: NSSet?
     @NSManaged public var hourly: NSSet?
     @NSManaged public var monutely: NSSet?
+    @NSManaged public var wholeCity: CacheWholeCityInfo?
 
 }
 

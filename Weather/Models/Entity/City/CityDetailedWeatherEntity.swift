@@ -17,7 +17,7 @@ struct CityDetailedWeatherEntity {
     let time: Date?
     let systemInfo: CitySystemInfoEntity?
     let timezone: Int?
-    let cityId: Int?
+    let cityId: Int
     let cityName: String?
     let cod: String?
 }

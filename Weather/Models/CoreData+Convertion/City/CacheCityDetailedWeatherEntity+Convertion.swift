@@ -22,7 +22,7 @@ extension CacheCityDetailedWeatherEntity {
               time: self.time,
               systemInfo: self.systemInfo?.toEntity(),
               timezone: self.timezone?.intValue,
-              cityId: self.cityId?.intValue,
+              cityId: Int(self.cityId),
               cityName: self.cityName,
               cod: self.cod)
     }
@@ -42,7 +42,7 @@ extension CityDetailedWeatherEntity {
         model.time = self.time
         model.systemInfo = self.systemInfo?.toCache(context: context)
         model.timezone = self.timezone?.nsNumber
-        model.cityId = self.cityId?.nsNumber
+        model.cityId = Int32(self.cityId)
         model.cityName = self.cityName
         model.cod = self.cod
         return model
