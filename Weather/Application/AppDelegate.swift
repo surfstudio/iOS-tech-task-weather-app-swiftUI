@@ -15,7 +15,7 @@ class AppDelegate: PluggableApplicationDelegate {
     private let coreDataInitService = CoreDataIntApplicationService()
 
     override var services: [ApplicationService] {
-        let rep = CityCacheFirstRepository(cache: CityCacheCoreDataService(persistenceContainerProvider: self), cityNetwork: CityNetworkService(), weatherNetwork: DetailedWeatherNetworkService())
+        let rep = CityCacheRepository(cache: CityCacheCoreDataService(persistenceContainerProvider: self), cityNetwork: CityNetworkService(), weatherNetwork: DetailedWeatherNetworkService())
         rep.getAllSaved().onCompleted {
             print("RES getAllSaved: \($0)")
         }.onError { err in

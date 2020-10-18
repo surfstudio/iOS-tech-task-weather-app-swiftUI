@@ -8,7 +8,20 @@
 import Foundation
 import NodeKit
 
-struct CityCacheFirstRepository {
+/// Эта сущность позволяет работать с данными из кеша
+/// Общая логика работы такая:
+/// 1. Взять из кеша
+///     1. Если не удалось прочесть или там пусто - пойти в сеть
+///     2. Если прочесть удалось - вернуть результат
+/// 2. Проверить кеш на валидность
+///     1. Если кеш неавлиден (протух) - пойти в сеть, вернуть свежие данные, обновить кеш
+///     2. Если кеш валиден - ничего не делать
+///
+/// Важно то, что в случае, когда работа происходит
+/// с нескольими независимыми с технической точки зрения моделями (например город, и детальная погода)
+/// то кеш будет обновлять по необходимости. То есть, если кеш погоды протух,
+/// а кеш города нет, то запрошена из сети будет только погода
+struct CityCacheRepository {
 
     private let cache: CityCacheService
     private let cityNetwork: CityService
@@ -23,7 +36,7 @@ struct CityCacheFirstRepository {
 
 // MARK: - CityRepository
 
-extension CityCacheFirstRepository: CityRepository {
+extension CityCacheRepository: CityRepository {
 
     /// Возвращает все города, которые пользователь сохранил себе для просмотра
     /// Сначала читает данные из кеша
@@ -92,6 +105,19 @@ extension CityCacheFirstRepository: CityRepository {
         return self.cache.save(cites: [city])
     }
 
+    /// Получает детальную информацию о городе:
+    /// Сам город + детальная погода
+    ///
+    /// Принцип работы:
+    /// 1. Прочесть из кеша город
+    ///     1. Если города нет - загрузить из сети город и погоду, вернуть выше и сохранить в кеш
+    /// 2. Если в кеше нет погоды - запросить погоду из сети
+    ///     1. Вернуть выше новую погоду + кеш города
+    ///     2. Если город протух - обновить город
+    /// 3. Если погода есть - вернуть выше кеш
+    /// 4. Проверить кеш на валидность
+    ///     1. Если протухли и погода и город - обновить оба и пробросить результат выше
+    ///     2. Если протхло что-то одно - обновить это и пробросить результат выше
     func getCityDetails(by id: Int, coords: CoordEntity) -> CacheContext<CityDetailedEntity> {
 
         let result = CacheContext<CityDetailedEntity>()
@@ -136,7 +162,7 @@ extension CityCacheFirstRepository: CityRepository {
 
 // MARK: - Helpers
 
-private extension CityCacheFirstRepository {
+private extension CityCacheRepository {
 
     /// Перезагружает детальную информацию о погоде из сети
     /// Эмитит закешированный город с погодой выше
