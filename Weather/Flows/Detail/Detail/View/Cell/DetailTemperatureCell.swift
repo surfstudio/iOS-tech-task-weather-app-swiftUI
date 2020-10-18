@@ -24,22 +24,18 @@ final class DetailTemperatureCell: UITableViewCell {
 
 extension DetailTemperatureCell: Configurable {
     func configure(with model: DetailedWeatherEntity) {
-        var isDay = false
         let currentHourTemperature = model.hourly?.first { entity in
             guard let date = entity.forecastDate else { return false }
             let hour = Calendar.current.dateComponents([.hour], from: date)
             let currentHour = Calendar.current.dateComponents([.hour], from: Date())
 
-            if let hour = currentHour.hour {
-                isDay = hour > 6 && hour < 22
-            }
             return hour == currentHour
         }
 
         temperatureLabel.text = currentHourTemperature?.temperature?.degrees
         temperatureLabel.apply(style: .DB100WhiteCenter)
 
-        if isDay {
+        if Date().isDay {
             temperatureIconImageView.image = currentHourTemperature?.weather?.first?.type.dayAsset.image
         } else {
             temperatureIconImageView.image = currentHourTemperature?.weather?.first?.type.nightAsset.image
