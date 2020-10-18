@@ -24,17 +24,43 @@ final class DetailTemperatureCell: UITableViewCell {
 
 extension DetailTemperatureCell: Configurable {
     func configure(with model: DetailedWeatherEntity) {
-        // FIXME - Удалить моки
-        temperatureLabel.text = "21°"
+        var isDay = false
+        let currentHourTemperature = model.hourly?.first { entity in
+            guard let date = entity.forecastDate else { return false }
+            let hour = Calendar.current.dateComponents([.hour], from: date)
+            let currentHour = Calendar.current.dateComponents([.hour], from: Date())
+
+            if let hour = currentHour.hour {
+                isDay = hour > 6 && hour < 22
+            }
+            return hour == currentHour
+        }
+
+        temperatureLabel.text = currentHourTemperature?.temperature?.degrees
         temperatureLabel.apply(style: .DB100WhiteCenter)
 
-        temperatureIconImageView.image = Asset.Image.Weather.cloud.image
+        if isDay {
+            temperatureIconImageView.image = currentHourTemperature?.weather?.first?.type.dayAsset.image
+        } else {
+            temperatureIconImageView.image = currentHourTemperature?.weather?.first?.type.nightAsset.image
+        }
 
-        temperatureTypeLabel.text = "Малооблачно"
+        temperatureTypeLabel.text = currentHourTemperature?.weather?.first?.description
         temperatureTypeLabel.apply(style: .TM18WhiteCenter)
 
-        temperatureMinMaxLabel.text = "Макс. 21°, мин.  11°"
-        temperatureMinMaxLabel.apply(style: .TR14WhiteCenter)
+        let currentDayTemperature = model.daily?.first { entity in
+            let day = Calendar.current.dateComponents([.day], from: entity.forecastDate)
+            let currentDay = Calendar.current.dateComponents([.day], from: Date())
+
+            return day == currentDay
+        }
+
+        if let min = currentDayTemperature?.temperature?.min,
+           let max = currentDayTemperature?.temperature?.max {
+
+            temperatureMinMaxLabel.text = Localized.Detail.maxmin(Float(max), Float(min))
+            temperatureMinMaxLabel.apply(style: .TR14WhiteCenter)
+        }
     }
 }
 

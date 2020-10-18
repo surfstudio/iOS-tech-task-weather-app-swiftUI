@@ -45,13 +45,13 @@ public enum Asset {
     public enum Weather {
       public static let cloud = ImageAsset(name: "Image/Weather/cloud")
       public static let clouds = ImageAsset(name: "Image/Weather/clouds")
+      public static let fog = ImageAsset(name: "Image/Weather/fog")
       public static let moon = ImageAsset(name: "Image/Weather/moon")
-      public static let night = ImageAsset(name: "Image/Weather/night")
+      public static let moonCloud = ImageAsset(name: "Image/Weather/moon_cloud")
       public static let rain = ImageAsset(name: "Image/Weather/rain")
       public static let snow = ImageAsset(name: "Image/Weather/snow")
       public static let sun = ImageAsset(name: "Image/Weather/sun")
       public static let sunCloud = ImageAsset(name: "Image/Weather/sun_cloud")
-      public static let wind = ImageAsset(name: "Image/Weather/wind")
     }
   }
 }

@@ -23,6 +23,13 @@ public enum L10n {
     }
   }
 
+  public enum Detail {
+    /// Макс. %.0f°, мин.  %.0f°
+    public static func maxmin(_ p1: Float, _ p2: Float) -> String {
+      return L10n.tr("Localizable", "Detail.maxmin", p1, p2)
+    }
+  }
+
   public enum Empty {
     /// Не выбран ни один город для просмотра прогноза
     public static let cities = L10n.tr("Localizable", "Empty.cities")

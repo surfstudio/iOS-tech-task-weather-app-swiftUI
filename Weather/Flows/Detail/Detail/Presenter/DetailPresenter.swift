@@ -39,6 +39,22 @@ final class DetailPresenter: DetailViewOutput, DetailModuleInput, DetailModuleOu
 
 private extension DetailPresenter {
     func loadWeather() {
-        view?.setupInitialState(weather: .init(daily: nil, hourly: nil, minutely: nil))
+        view?.startLoader()
+
+        // FIXME: - Добавить запрос координат
+        service.getDetailedWeather(by: .init(lon: 49.6600700, lat: 58.5966500))
+            .onCompleted { [weak self] weather in
+                self?.view?.setupInitialState(weather: weather)
+            }.onError { [weak self] error in
+                if error.isNetwork {
+                    self?.view?.set(state: .error(.init(Localized.Error.noInternetConnection,
+                                                       action: Localized.Common.Button.repeat)))
+                } else {
+                    self?.view?.set(state: .error(.init(Localized.Error.notDefined,
+                                                       action: Localized.Common.Button.repeat)))
+                }
+            }.defer { [weak self] in
+                self?.view?.stopLoader()
+            }
     }
 }

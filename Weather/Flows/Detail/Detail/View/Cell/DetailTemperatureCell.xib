@@ -23,7 +23,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7D-bx-pjJ">
-                        <rect key="frame" x="139.5" y="276" width="41.5" height="20.5"/>
+                        <rect key="frame" x="139.5" y="276" width="41" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -43,11 +43,14 @@
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="1Aa-SV-7Yj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="1aA-ae-Gsc"/>
                     <constraint firstItem="1Aa-SV-7Yj" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="12" id="9Vp-yE-ztT"/>
                     <constraint firstItem="f7D-bx-pjJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="A53-bw-jQ4"/>
                     <constraint firstItem="1Aa-SV-7Yj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="64" id="Fpc-g6-Cxp"/>
                     <constraint firstAttribute="bottom" secondItem="O4h-Og-h9d" secondAttribute="bottom" constant="112" id="L0m-A3-UnP"/>
+                    <constraint firstItem="ccc-MF-b8O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="QwE-Yl-mHx"/>
                     <constraint firstItem="f7D-bx-pjJ" firstAttribute="top" secondItem="1Aa-SV-7Yj" secondAttribute="bottom" id="VY2-o3-EQY"/>
+                    <constraint firstItem="O4h-Og-h9d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="bO0-Lg-pY7"/>
                     <constraint firstItem="O4h-Og-h9d" firstAttribute="top" secondItem="f7D-bx-pjJ" secondAttribute="bottom" constant="8" id="gZj-UP-H6h"/>
                     <constraint firstItem="O4h-Og-h9d" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-12" id="t87-cH-EgS"/>
                     <constraint firstItem="f7D-bx-pjJ" firstAttribute="leading" secondItem="ccc-MF-b8O" secondAttribute="trailing" constant="8" id="tdR-n4-Met"/>

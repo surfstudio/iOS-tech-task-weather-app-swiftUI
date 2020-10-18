@@ -16,3 +16,7 @@
 // MARK: - TextField
 
 "Common.TextField.search" = "Город или индекс";
+
+// MARK: - Detail
+
+"Detail.maxmin" = "Макс. %.0f°, мин.  %.0f°";
