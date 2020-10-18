@@ -12,7 +12,7 @@ import PluggableApplicationDelegate
 class CoreDataIntApplicationService: NSObject, ApplicationService {
 
     lazy var persistenceContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "JTrackModel")
+        let container = NSPersistentContainer(name: "CacheModel")
 
         container.loadPersistentStores { (descr, error) in
             print(descr)

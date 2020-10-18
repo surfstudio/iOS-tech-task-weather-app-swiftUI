@@ -19,7 +19,6 @@ struct CityDetailedEntity {
     let timezone: Int?
     let cityId: Int
     let cityName: String?
-    let cod: String?
     /// Бизнес-свойство (добавляется к этой моделе в другом месте)
     /// Содержит детальное описание погоды по разным срезам
     var detailedWeather: DetailedWeatherEntity?
@@ -40,7 +39,6 @@ extension CityDetailedEntity: DTODecodable {
                                   systemInfo: try .from(dto: dto.sys),
                                   timezone: dto.timezone,
                                   cityId: dto.id,
-                                  cityName: dto.name,
-                                  cod: dto.cod)
+                                  cityName: dto.name)
     }
 }

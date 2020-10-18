@@ -19,7 +19,6 @@ struct CityDetailedWeatherEntry: Codable {
     let timezone: Int?
     let id: Int
     let name: String?
-    let cod: String?
 }
 
 extension CityDetailedWeatherEntry: RawMappable {

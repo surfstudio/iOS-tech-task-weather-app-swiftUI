@@ -6,7 +6,7 @@
 import NodeKit
 
 struct CitySystemInfoEntry: Codable {
-    let type: String?
+    let type: Int?
     let id: Int?
     let message: String?
     let country: String?

@@ -11,7 +11,7 @@ import CoreData
 extension CacheCitySystemInfoEntity {
 
     func toEntity() -> CitySystemInfoEntity {
-        .init(type: self.type,
+        .init(type: self.type?.intValue,
               id: self.id?.intValue,
               message: self.message,
               country: self.country,
@@ -23,7 +23,7 @@ extension CacheCitySystemInfoEntity {
 extension CitySystemInfoEntity {
     func toCache(context: NSManagedObjectContext) -> CacheCitySystemInfoEntity {
         let model = CacheCitySystemInfoEntity(context: context)
-        model.type = self.type
+        model.type = self.type?.nsNumber
         model.id = self.id?.nsNumber
         model.message = self.message
         model.country = self.country

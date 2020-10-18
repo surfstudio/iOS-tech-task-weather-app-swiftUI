@@ -38,7 +38,7 @@
         <attribute name="message" optional="YES" attributeType="String"/>
         <attribute name="sunrise" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="sunset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityDetailedWeatherEntity" inverseName="systemInfo" inverseEntity="CacheCityDetailedWeatherEntity"/>
     </entity>
     <entity name="CacheCoordsEntity" representedClassName="CacheCoordsEntity" syncable="YES">
@@ -133,7 +133,7 @@
         <attribute name="direction" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <attribute name="gust" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <attribute name="speed" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="city" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityDetailedWeatherEntity" inverseName="wind" inverseEntity="CacheCityDetailedWeatherEntity"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CacheCityDetailedWeatherEntity" inverseName="wind" inverseEntity="CacheCityDetailedWeatherEntity"/>
     </entity>
     <elements>
         <element name="CacheCityCloudEntity" positionX="-3353.05078125" positionY="1835.31640625" width="128" height="73"/>

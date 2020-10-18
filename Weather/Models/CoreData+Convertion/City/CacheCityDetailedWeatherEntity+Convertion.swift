@@ -23,8 +23,7 @@ extension CacheCityDetailedWeatherEntity {
               systemInfo: self.systemInfo?.toEntity(),
               timezone: self.timezone?.intValue,
               cityId: Int(self.cityId),
-              cityName: self.cityName,
-              cod: self.cod)
+              cityName: self.cityName)
     }
 }
 
@@ -32,7 +31,8 @@ extension CityDetailedEntity {
     func toCache(context: NSManagedObjectContext) -> CacheCityDetailedWeatherEntity {
         let model = CacheCityDetailedWeatherEntity(context: context)
         model.coords = self.coords.toCache(context: context)
-        model.weather = NSSet(array: self.weather ?? [])
+        let weathers = self.weather?.map { $0.toCache(context: context) }
+        model.weather = NSSet(array: weathers ?? [])
         model.base = self.base
         model.main = self.main?.toCache(context: context)
         model.wind = self.wind?.toCache(context: context)
@@ -44,7 +44,6 @@ extension CityDetailedEntity {
         model.timezone = self.timezone?.nsNumber
         model.cityId = Int32(self.cityId)
         model.cityName = self.cityName
-        model.cod = self.cod
         return model
     }
 }
