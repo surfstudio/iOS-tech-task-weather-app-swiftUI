@@ -5,6 +5,7 @@
 
 import Foundation
 
+/// Тип данных о погоде
 enum WeatherDataType: String {
     case current
     case minutely
