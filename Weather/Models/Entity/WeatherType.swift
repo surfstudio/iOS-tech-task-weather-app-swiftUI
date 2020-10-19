@@ -36,3 +36,41 @@ enum WeatherType: Int {
         }
     }
 }
+
+extension WeatherType {
+    var dayAsset: ImageAsset {
+        switch self {
+        // FIXME: Добавить иконки для типов дождя
+        case .thunderstorm, .drizzle, .rain:
+            return Asset.Image.Weather.rain
+        case .snow:
+            return Asset.Image.Weather.snow
+        case .fog:
+            return Asset.Image.Weather.fog
+        case .unknown:
+            return Asset.Image.Weather.clouds
+        case .clouds:
+            return Asset.Image.Weather.sunCloud
+        case .clear:
+            return Asset.Image.Weather.sun
+        }
+    }
+
+    var nightAsset: ImageAsset {
+        switch self {
+        // FIXME: Добавить иконки для типов дождя
+        case .thunderstorm, .drizzle, .rain:
+            return Asset.Image.Weather.rain
+        case .snow:
+            return Asset.Image.Weather.snow
+        case .fog:
+            return Asset.Image.Weather.fog
+        case .unknown:
+            return Asset.Image.Weather.clouds
+        case .clouds:
+            return Asset.Image.Weather.moonCloud
+        case .clear:
+            return Asset.Image.Weather.moon
+        }
+    }
+}

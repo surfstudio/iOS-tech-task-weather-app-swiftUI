@@ -39,5 +39,111 @@ extension UIStyle {
                           kern: .zero,
                           alignment: .center)
     }
+
+    static var TM18WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.medium.font(size: 18.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TR14WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.regular.font(size: 14.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 14.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TB18WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TB18WhiteLeft: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .left)
+    }
+
+    static var TB18White40Center: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white40.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TB18WhiteRight: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .right)
+    }
+
+    static var TB18White40Right: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white40.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .right)
+    }
+
+    static var TB13WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 13.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 13.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TR13WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.regular.font(size: 13.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 13.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TM16WhiteLeft: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.medium.font(size: 16.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 16.0,
+                          kern: .zero,
+                          alignment: .left)
+    }
+
+    static var TB18CyanCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.cyan.color,
+                          lineHeight: 21.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TR13White40Left: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.regular.font(size: 13.0),
+                          textColor: Asset.Color.white40.color,
+                          lineHeight: 13.0,
+                          kern: .zero,
+                          alignment: .left)
+    }
+
+    // MARK: - SFProDisplay
+
+    static var DB100WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProDisplay.bold.font(size: 100.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 100.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
 }
 // swiftlint:enable all

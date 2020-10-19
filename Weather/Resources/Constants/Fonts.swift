@@ -16,6 +16,10 @@
 
 // swiftlint:disable identifier_name line_length type_body_length
 public enum FontFamily {
+  public enum SFProDisplay {
+    public static let bold = FontConvertible(name: "SFProDisplay-Bold", family: "SF Pro Display", path: "SFProDisplay-Bold.ttf")
+    public static let all: [FontConvertible] = [bold]
+  }
   public enum SFProText {
     public static let bold = FontConvertible(name: "SFProText-Bold", family: "SF Pro Text", path: "SF-Pro-Text-Bold.otf")
     public static let light = FontConvertible(name: "SFProText-Light", family: "SF Pro Text", path: "SF-Pro-Text-Light.otf")
@@ -24,7 +28,7 @@ public enum FontFamily {
     public static let semibold = FontConvertible(name: "SFProText-Semibold", family: "SF Pro Text", path: "SF-Pro-Text-Semibold.otf")
     public static let all: [FontConvertible] = [bold, light, medium, regular, semibold]
   }
-  public static let allCustomFonts: [FontConvertible] = [SFProText.all].flatMap { $0 }
+  public static let allCustomFonts: [FontConvertible] = [SFProDisplay.all, SFProText.all].flatMap { $0 }
   public static func registerAllCustomFonts() {
     allCustomFonts.forEach { $0.register() }
   }
