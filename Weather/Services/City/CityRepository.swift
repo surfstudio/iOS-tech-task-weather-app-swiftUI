@@ -15,5 +15,5 @@ protocol CityRepository {
     func getCityBy(name: String) -> Observer<CityDetailedEntity>
     func save(city: CityDetailedEntity) -> Observer<Void>
     func getCityDetails(by id: Int, coords: CoordEntity) -> CacheContext<CityDetailedEntity>
-    func getCityBy(coords: CoordEntity) -> Observer<CityDetailedEntity>
+    func getCityBy(coords: CoordEntity) -> CacheContext<CityDetailedEntity>
 }

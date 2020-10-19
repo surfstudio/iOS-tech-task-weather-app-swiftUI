@@ -113,16 +113,26 @@ extension CityCacheRepository: CityRepository {
         return self.cache.save(cites: [city])
     }
 
-    func getCityBy(coords: CoordEntity) -> Observer<CityDetailedEntity> {
-        self.cityNetwork
-            .getCityBy(coords: coords)
-            .combine(self.weatherNetwork.getDetailedWeather(by: coords))
-            .map { (city, weather) in
-                var mutable = city
-                mutable.detailedWeather = weather
-                _ = self.cache.save(detailedWeather: weather, for: city)
-                return .emit(data: mutable)
+    /// Работает с кешом
+    /// Принцип работы аналогичен `getCityDetails`
+    func getCityBy(coords: CoordEntity) -> CacheContext<CityDetailedEntity> {
+        let result = CacheContext<CityDetailedEntity>()
+        self.cache.getCityBy(coords: coords)
+            .onCompleted { value in
+                self.handleDetailCityCacheResponse(item: value, coords: coords, context: result)
+            }.onError { _ in
+                _ = self.cityNetwork
+                    .getCityBy(coords: coords)
+                    .combine(self.weatherNetwork.getDetailedWeather(by: coords))
+                    .map { (city, weather) in
+                        var mutable = city
+                        mutable.detailedWeather = weather
+                        _ = self.cache.save(detailedWeather: weather, for: city)
+                        result.emit(data: mutable)
+                    }
             }
+
+        return result.dispatch(on: .main)
     }
 
     /// Получает детальную информацию о городе:
@@ -160,33 +170,7 @@ extension CityCacheRepository: CityRepository {
 
         // читаем из кеша информацию о городе
         self.cache.get(by: id).onCompleted { item in
-            // если прочли из кеша сначала проверяем - есть ли там информация о погоде
-            guard let weather = item.weather else {
-                // если погоды нет, то ее надо запросить, а потом сохранить
-                result.emitCache(item.city.value, isExpired: item.city.isExpired)
-                self.reloadDetailedWeather(item: item, context: result)
-                return
-            }
-
-            // если информация о погоде есть, то пробрасываем модель выше
-            var city = item.city.value
-            city.detailedWeather = weather.value
-
-            // протух кеш или нет зависит от:
-            //  - протух ли кеш города
-            //  - протух ли кеш погоды
-            let isExpired = item.city.isExpired || weather.isExpired
-            result.emitCache(city, isExpired: isExpired)
-
-            guard isExpired else {
-                return
-            }
-
-            // если кеш все таки протух, тогда надо его обновить
-            self.detailedCacheIsLoadedButExpired(context: result,
-                                                 cityCache: item.city,
-                                                 weatherCache: weather,
-                                                 coords: coords)
+            self.handleDetailCityCacheResponse(item: item, coords: coords, context: result)
         }.onError { err in
             print("ERR; While reading cache in \(#function) : \(err)")
             // если не получилось прочесть из кеша, то идем в сеть
@@ -200,6 +184,38 @@ extension CityCacheRepository: CityRepository {
 // MARK: - Helpers
 
 private extension CityCacheRepository {
+
+    func handleDetailCityCacheResponse(item: CityCacheResponse,
+                                       coords: CoordEntity,
+                                       context: CacheContext<CityDetailedEntity>) {
+        // если прочли из кеша сначала проверяем - есть ли там информация о погоде
+        guard let weather = item.weather else {
+            // если погоды нет, то ее надо запросить, а потом сохранить
+            context.emitCache(item.city.value, isExpired: item.city.isExpired)
+            self.reloadDetailedWeather(item: item, context: context)
+            return
+        }
+
+        // если информация о погоде есть, то пробрасываем модель выше
+        var city = item.city.value
+        city.detailedWeather = weather.value
+
+        // протух кеш или нет зависит от:
+        //  - протух ли кеш города
+        //  - протух ли кеш погоды
+        let isExpired = item.city.isExpired || weather.isExpired
+        context.emitCache(city, isExpired: isExpired)
+
+        guard isExpired else {
+            return
+        }
+
+        // если кеш все таки протух, тогда надо его обновить
+        self.detailedCacheIsLoadedButExpired(context: context,
+                                             cityCache: item.city,
+                                             weatherCache: weather,
+                                             coords: coords)
+    }
 
     /// Перезагружает детальную информацию о погоде из сети
     /// Эмитит закешированный город с погодой выше

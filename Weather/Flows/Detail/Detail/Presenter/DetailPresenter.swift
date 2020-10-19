@@ -91,11 +91,11 @@ private extension DetailPresenter {
                 let coords = CoordEntity(lon: loc.coordinate.longitude,
                                          lat: loc.coordinate.latitude)
                 self?.repository.getCityBy(coords: coords)
-                    .onCompleted { [weak self] weather in
-                        self?.view?.setupInitialState(weather: weather)
-                        self?.view?.set(state: .normal)
-                        self?.isViewInNormalState = true
-                        self?.view?.set(navigationBarStyle: .whiteTitleNavigationBar)
+                    .onCompleted { [weak self] city in
+                        _ = self?.repository.save(city: city)
+                        self?.handleSuccessCityLoading(city: city)
+                    }.onCacheSuccess { [weak self] city, _ in
+                        self?.handleSuccessCityLoading(city: city)
                     }.onError { [weak self] error in
                         if error.isNetwork {
                             self?.view?.set(state: .error(.init(Localized.Error.noInternetConnection,
@@ -106,8 +106,6 @@ private extension DetailPresenter {
                         }
                         self?.isViewInNormalState = false
                         self?.view?.set(navigationBarStyle: .blackTitleNavigationBar)
-                    }.defer { [weak self] in
-                        self?.view?.stopLoader()
                     }
             case .denied, .error:
                 self?.isEmpty = true
@@ -126,12 +124,8 @@ private extension DetailPresenter {
         view?.startLoader()
 
         repository.getCityDetails(by: city.cityId, coords: city.coords)
-            .onCompleted { [weak self] weather in
-                self?.view?.setupInitialState(weather: weather)
-                self?.view?.set(state: .normal)
-                self?.view?.set(navigationBarStyle: .whiteTitleNavigationBar)
-                self?.isViewInNormalState = true
-                self?.view?.stopLoader()
+            .onCompleted { [weak self] city in
+                self?.handleSuccessCityLoading(city: city)
             }.onError { [weak self] error in
                 if error.isNetwork {
                     self?.view?.set(state: .error(.init(Localized.Error.noInternetConnection,
@@ -143,12 +137,16 @@ private extension DetailPresenter {
                 self?.view?.set(navigationBarStyle: .blackTitleNavigationBar)
                 self?.isViewInNormalState = false
                 self?.view?.stopLoader()
-            }.onCacheSuccess { [weak self] weather, isExpired in
-                self?.view?.setupInitialState(weather: weather)
-                self?.view?.set(state: .normal)
-                self?.view?.set(navigationBarStyle: .whiteTitleNavigationBar)
-                self?.isViewInNormalState = true
-                self?.view?.stopLoader()
+            }.onCacheSuccess { [weak self] city, _ in
+                self?.handleSuccessCityLoading(city: city)
             }
+    }
+
+    func handleSuccessCityLoading(city: CityDetailedEntity) {
+        self.view?.setupInitialState(weather: city)
+        self.view?.set(state: .normal)
+        self.view?.set(navigationBarStyle: .whiteTitleNavigationBar)
+        self.isViewInNormalState = true
+        self.view?.stopLoader()
     }
 }

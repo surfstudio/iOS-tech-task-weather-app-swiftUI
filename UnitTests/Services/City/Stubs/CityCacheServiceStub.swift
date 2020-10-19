@@ -48,4 +48,8 @@ final class CityCacheServiceStub: CityCacheService {
         self.saveCity = city
         return self.saveWeatherResult ?? Context<Void>()
     }
+
+    func getCityBy(coords: CoordEntity) -> Observer<CityCacheResponse> {
+        return Context<CityCacheResponse>()
+    }
 }
