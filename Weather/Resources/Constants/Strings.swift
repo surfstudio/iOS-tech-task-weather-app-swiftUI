@@ -16,6 +16,12 @@ public enum L10n {
     public enum Button {
       /// Добавить город
       public static let addCity = L10n.tr("Localizable", "Common.Button.addCity")
+      /// Отмена
+      public static let cancel = L10n.tr("Localizable", "Common.Button.cancel")
+      /// Готово
+      public static let done = L10n.tr("Localizable", "Common.Button.done")
+      /// Изменить
+      public static let edit = L10n.tr("Localizable", "Common.Button.edit")
       /// Повторить
       public static let `repeat` = L10n.tr("Localizable", "Common.Button.repeat")
     }
@@ -52,7 +58,7 @@ public enum L10n {
   }
 
   public enum Error {
-    /// Данные могут быть не актуальны. Мы уже их обновляем
+    /// Данные не актуальны. Обновляем
     public static let dataIsExpired = L10n.tr("Localizable", "Error.dataIsExpired")
     /// Отсутствует соединение с интернетом. Попробуйте позже
     public static let noInternetConnection = L10n.tr("Localizable", "Error.noInternetConnection")
@@ -61,6 +67,8 @@ public enum L10n {
   }
 
   public enum List {
+    /// Города
+    public static let title = L10n.tr("Localizable", "List.title")
     public enum Cells {
       public enum AddCity {
         /// Добавить город

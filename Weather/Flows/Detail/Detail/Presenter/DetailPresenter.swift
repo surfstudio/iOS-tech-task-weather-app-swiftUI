@@ -57,7 +57,6 @@ final class DetailPresenter: DetailViewOutput, DetailModuleInput, DetailModuleOu
 
     func didReload() {
         if isEmpty {
-            isEmpty = false
             didShowCities?()
         } else if city != nil {
             loadCityWithWeather()
@@ -143,6 +142,7 @@ private extension DetailPresenter {
     }
 
     func handleSuccessCityLoading(city: CityDetailedEntity) {
+        self.isEmpty = false
         self.view?.setupInitialState(weather: city)
         self.view?.set(state: .normal)
         self.view?.set(navigationBarStyle: .whiteTitleNavigationBar)

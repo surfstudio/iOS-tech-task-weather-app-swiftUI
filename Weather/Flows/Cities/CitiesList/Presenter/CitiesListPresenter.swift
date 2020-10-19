@@ -19,18 +19,16 @@ final class CitiesListPresenter: CitiesListModuleInput, CitiesListModuleOutput {
     init(citiesRepo: CityRepository) {
         self.citiesRepo = citiesRepo
     }
-
-    // MARK: - CitiesListViewOutput
-
-    func viewLoaded() {
-        view?.setupInitialState()
-        self.loadCities()
-    }
 }
 
 // MARK: - CitiesListViewOutput
 
 extension CitiesListPresenter: CitiesListViewOutput {
+    func viewLoaded() {
+        view?.setupInitialState()
+        self.loadCities()
+    }
+
     func didSelect(city: CityDetailedEntity) {
         self.didSelectCity?(city)
     }
@@ -38,26 +36,48 @@ extension CitiesListPresenter: CitiesListViewOutput {
     func didAddCitySelected() {
         self.didAddCity?()
     }
+
+    func didRemove(city: CityDetailedEntity) {
+        _ = citiesRepo.delete(by: city.cityId)
+    }
+
+    func didReload() {
+        loadCities()
+    }
 }
 
 // MARK: - Private Methods
 
 private extension CitiesListPresenter {
     func loadCities() {
+        view?.startLoader()
+
         self.citiesRepo
             .getAllSaved()
-            .onCacheSuccess { (data, isExpired) in
-                self.view?.show(cities: data)
+            .onCacheSuccess { [weak self] (data, isExpired) in
+                self?.view?.stopLoader()
+                self?.view?.show(cities: data)
+                self?.view?.set(state: .normal)
+
                 if isExpired {
-                    self.view?.showSnack(with: L10n.Error.dataIsExpired)
+                    self?.view?.showSnack(with: Localized.Error.dataIsExpired)
                 }
-            }.onLoadingStarted {
-                self.view?.showLoaderView()
-            }.onCompleted { data in
-                self.view?.show(cities: data)
-            }.onError { err in
-                print(err)
-                self.view?.show(error: err)
+            }.onLoadingStarted { [weak self] in
+                self?.view?.startLoader()
+            }.onCompleted { [weak self] data in
+                self?.view?.stopLoader()
+                self?.view?.show(cities: data)
+                self?.view?.set(state: .normal)
+            }.onError { [weak self] err in
+                self?.view?.stopLoader()
+
+                if err.isNetwork {
+                    self?.view?.set(state: .error(.init(Localized.Error.noInternetConnection,
+                                                       action: Localized.Common.Button.repeat)))
+                } else {
+                    self?.view?.set(state: .error(.init(Localized.Error.notDefined,
+                                                       action: Localized.Common.Button.repeat)))
+                }
             }
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import ReactiveDataDisplayManager
 
-final class CityListCityCell: UICollectionViewCell, SelectableItem {
+final class CityListCityCell: UICollectionViewCell {
 
     // MARK: - IBOutlets
 
@@ -17,17 +17,19 @@ final class CityListCityCell: UICollectionViewCell, SelectableItem {
     @IBOutlet private weak var weatherImage: UIImageView!
     @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var countryLabel: UILabel!
+    @IBOutlet private weak var removeButton: UIButton!
 
-    // MARK: - Events
+    // MARK: - IBActions
 
-    var didSelectEvent = BaseEvent<Void>()
+    @IBAction private func removeButtonAction(_ sender: Any) {
+        didRemove?()
+    }
+
+    // MARK: - Public Properties
+
+    var didRemove: EmptyClosure?
 
     // MARK: - UICollectionViewCell
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.configureAppearence()
-    }
 
     override var isHighlighted: Bool {
         get {
@@ -39,16 +41,19 @@ final class CityListCityCell: UICollectionViewCell, SelectableItem {
         }
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.configureAppearence()
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         self.backgroundImage.addParalax(with: 10)
     }
-}
 
-// MARK: - Configurable
+    // MARK: - Public Methods
 
-extension CityListCityCell: Configurable {
-    func configure(with model: CityDetailedEntity) {
+    func fill(with model: CityDetailedEntity) {
         if let temperature = model.main?.temperature {
             self.temperatureLabel.isHidden = false
             self.temperatureLabel.text = L10n.List.Cells.City.temperature(Float(temperature))
@@ -84,7 +89,13 @@ extension CityListCityCell: Configurable {
             self.cityLabel.isHidden = true
         }
 
+        self.removeButton.isHidden = true
+
         self.setNeedsLayout()
+    }
+
+    func set(editing: Bool) {
+        self.removeButton.isHidden = !editing
     }
 }
 
@@ -95,5 +106,7 @@ private extension CityListCityCell {
         self.backgroundColor = Asset.Color.white.color
         self.layer.cornerRadius = 18
         self.backgroundImage.layer.cornerRadius = 18
+        self.removeButton.setImage(Asset.Image.Utils.remove.image, for: .normal)
+        self.removeButton.isHidden = true
     }
 }

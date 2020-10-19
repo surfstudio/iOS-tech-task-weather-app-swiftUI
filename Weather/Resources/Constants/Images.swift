@@ -58,6 +58,7 @@ public enum Asset {
     }
     public enum Utils {
       public static let plus = ImageAsset(name: "Image/Utils/plus")
+      public static let remove = ImageAsset(name: "Image/Utils/remove")
     }
     public enum Weather {
       public static let cloud = ImageAsset(name: "Image/Weather/cloud")
