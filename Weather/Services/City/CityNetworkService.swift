@@ -46,6 +46,9 @@ struct CityNetworkService: CityService {
             .set(arrayEncodingStrategy: .noBrackets)
             .build()
             .process()
+            .map { (result: CityDetailedListEntity) in
+                return .emit(data: result.list)
+            }
     }
 
     func getCitiesDetailedWeather(by id: Int) -> Observer<CityDetailedEntity> {
