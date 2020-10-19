@@ -34,6 +34,15 @@ public enum Asset {
   }
   public enum Image {
 
+    public enum Background {
+      public static let clear = ImageAsset(name: "Image/Background/clear")
+      public static let clouds = ImageAsset(name: "Image/Background/clouds")
+      public static let fog = ImageAsset(name: "Image/Background/fog")
+      public static let rain = ImageAsset(name: "Image/Background/rain")
+      public static let snow = ImageAsset(name: "Image/Background/snow")
+      public static let sun = ImageAsset(name: "Image/Background/sun")
+      public static let thunderstorm = ImageAsset(name: "Image/Background/thunderstorm")
+    }
     public enum ErrorView {
       public static let emptyState = ImageAsset(name: "Image/ErrorView/empty_state")
       public static let errorState = ImageAsset(name: "Image/ErrorView/error_state")

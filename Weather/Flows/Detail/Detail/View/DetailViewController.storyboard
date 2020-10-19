@@ -17,6 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FXW-WY-ECU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c0e-HK-xEV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -26,12 +29,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="c0e-HK-xEV" firstAttribute="top" secondItem="YWU-9O-L7t" secondAttribute="top" id="0lv-4G-JwB"/>
+                            <constraint firstItem="FXW-WY-ECU" firstAttribute="top" secondItem="cA6-JB-jfU" secondAttribute="top" id="TBD-Qv-aWH"/>
                             <constraint firstItem="YWU-9O-L7t" firstAttribute="bottom" secondItem="c0e-HK-xEV" secondAttribute="bottom" id="c50-7t-fTy"/>
                             <constraint firstItem="YWU-9O-L7t" firstAttribute="trailing" secondItem="c0e-HK-xEV" secondAttribute="trailing" id="en3-zL-qFn"/>
+                            <constraint firstAttribute="trailing" secondItem="FXW-WY-ECU" secondAttribute="trailing" id="fh8-nv-zd0"/>
                             <constraint firstItem="c0e-HK-xEV" firstAttribute="leading" secondItem="YWU-9O-L7t" secondAttribute="leading" id="ieW-WZ-fF2"/>
+                            <constraint firstItem="FXW-WY-ECU" firstAttribute="leading" secondItem="cA6-JB-jfU" secondAttribute="leading" id="wbB-ud-VyC"/>
+                            <constraint firstAttribute="bottom" secondItem="FXW-WY-ECU" secondAttribute="bottom" id="wqm-pj-Kvo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="FXW-WY-ECU" id="vWN-kH-omR"/>
                         <outlet property="tableView" destination="c0e-HK-xEV" id="A5V-UA-lRG"/>
                     </connections>
                 </viewController>
