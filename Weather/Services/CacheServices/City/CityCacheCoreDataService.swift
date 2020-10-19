@@ -97,6 +97,7 @@ struct CityCacheCoreDataService: CityCacheService {
                 let models = try request.execute()
                 models.forEach { context.delete($0) }
                 result.emit(data: ())
+                try context.save()
             } catch {
                 result.emit(error: error)
             }
