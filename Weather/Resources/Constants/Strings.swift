@@ -24,12 +24,22 @@ public enum L10n {
   }
 
   public enum Detail {
+    /// Облачность
+    public static let clouds = L10n.tr("Localizable", "Detail.clouds")
+    /// Влажность
+    public static let humidity = L10n.tr("Localizable", "Detail.humidity")
     /// Макс. %.0f°, мин.  %.0f°
     public static func maxmin(_ p1: Float, _ p2: Float) -> String {
       return L10n.tr("Localizable", "Detail.maxmin", p1, p2)
     }
+    /// Осадки, мм
+    public static let precipitation = L10n.tr("Localizable", "Detail.precipitation")
+    /// Давление, мм
+    public static let pressure = L10n.tr("Localizable", "Detail.pressure")
     /// Сегодня
     public static let today = L10n.tr("Localizable", "Detail.today")
+    /// Ветер, мс
+    public static let windSpeed = L10n.tr("Localizable", "Detail.windSpeed")
   }
 
   public enum Empty {

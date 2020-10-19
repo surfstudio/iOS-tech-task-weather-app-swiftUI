@@ -64,6 +64,14 @@ extension UIStyle {
                           alignment: .center)
     }
 
+    static var TB18WhiteLeft: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .left)
+    }
+
     static var TB18White40Center: UIStyle<UILabel> {
         return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
                           textColor: Asset.Color.white40.color,
@@ -108,6 +116,22 @@ extension UIStyle {
         return LabelStyle(font: FontFamily.SFProText.medium.font(size: 16.0),
                           textColor: Asset.Color.white.color,
                           lineHeight: 16.0,
+                          kern: .zero,
+                          alignment: .left)
+    }
+
+    static var TB18CyanCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.cyan.color,
+                          lineHeight: 21.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TR13White40Left: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.regular.font(size: 13.0),
+                          textColor: Asset.Color.white40.color,
+                          lineHeight: 13.0,
                           kern: .zero,
                           alignment: .left)
     }

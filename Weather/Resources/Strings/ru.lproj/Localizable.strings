@@ -21,3 +21,8 @@
 
 "Detail.maxmin" = "Макс. %.0f°, мин.  %.0f°";
 "Detail.today" = "Сегодня";
+"Detail.precipitation" = "Осадки, мм";
+"Detail.humidity" = "Влажность";
+"Detail.clouds" = "Облачность";
+"Detail.pressure" = "Давление, мм";
+"Detail.windSpeed" = "Ветер, мс";
