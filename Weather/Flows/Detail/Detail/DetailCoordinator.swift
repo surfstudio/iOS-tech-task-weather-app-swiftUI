@@ -31,19 +31,20 @@ private extension DetailCoordinator {
         let (view, input, output) = DetailModuleConfigurator().configure()
 
         output.didShowCities = { [weak self, weak input] in
-            // FIXME - Добавить переход к городам
+            self?.showCitiesList(input: input)
         }
 
         router.setRootModule(UINavigationController(rootViewController: view))
     }
 
-    func showCitiesList() {
+    func showCitiesList(input: DetailModuleInput?) {
         let coordinator = CititesCoordinator(router: self.router)
 
         self.addDependency(coordinator)
 
-        coordinator.finishFlow = { [weak self] in
+        coordinator.finishFlow = { [weak self, weak input] city in
             self?.removeDependency(coordinator)
+            input?.set(city: city)
         }
 
         coordinator.start()
