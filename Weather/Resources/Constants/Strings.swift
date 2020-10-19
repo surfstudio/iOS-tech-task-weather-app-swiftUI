@@ -31,6 +31,8 @@ public enum L10n {
   }
 
   public enum Error {
+    /// Данные могут быть не актуальны. Мы уже их обновляем
+    public static let dataIsExpired = L10n.tr("Localizable", "Error.dataIsExpired")
     /// Отсутствует соединение с интернетом. Попробуйте позже
     public static let noInternetConnection = L10n.tr("Localizable", "Error.noInternetConnection")
     /// Что-то пошло не так. Не удалось загрузить данные

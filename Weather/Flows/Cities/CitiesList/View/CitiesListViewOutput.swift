@@ -4,6 +4,7 @@
 //
 
 protocol CitiesListViewOutput {
-    /// Notify presenter that view is ready
     func viewLoaded()
+    func didSelect(city: CityDetailedEntity)
+    func didAddCitySelected()
 }

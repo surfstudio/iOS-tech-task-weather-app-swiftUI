@@ -3,7 +3,7 @@
 //  Weather
 //
 
-final class CitiesListPresenter: CitiesListViewOutput, CitiesListModuleInput, CitiesListModuleOutput {
+final class CitiesListPresenter: CitiesListModuleInput, CitiesListModuleOutput {
 
     // MARK: - CitiesListModuleOutput
 
@@ -25,22 +25,37 @@ final class CitiesListPresenter: CitiesListViewOutput, CitiesListModuleInput, Ci
     func viewLoaded() {
         view?.setupInitialState()
     }
-
-    // MARK: - CitiesListModuleInput
 }
+
+// MARK: - CitiesListViewOutput
+
+extension CitiesListPresenter: CitiesListViewOutput {
+    func didSelect(city: CityDetailedEntity) {
+        self.didSelectCity?(city)
+    }
+
+    func didAddCitySelected() {
+        self.didAddCity?()
+    }
+}
+
+// MARK: - Private Methods
 
 private extension CitiesListPresenter {
     func loadCities() {
         self.citiesRepo
             .getAllSaved()
             .onCacheSuccess { (data, isExpired) in
-
+                self.view?.show(cities: data)
+                if isExpired {
+                    self.view?.showSnack(with: L10n.Error.dataIsExpired)
+                }
             }.onLoadingStarted {
-
+                self.view?.showLoaderView()
             }.onCompleted { data in
-
-            }.onError { err
-
+                self.view?.show(cities: data)
+            }.onError { err in
+                self.view?.show(error: err)
             }
     }
 }

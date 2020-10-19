@@ -24,4 +24,8 @@ final class CitiesListViewController: UIViewController, CitiesListViewInput {
 
     }
 
+    func show(cities: [CityDetailedEntity]) {
+        
+    }
+
 }
