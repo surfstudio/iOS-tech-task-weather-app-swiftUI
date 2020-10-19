@@ -28,6 +28,16 @@ final class CityListCityCell: UICollectionViewCell, SelectableItem {
         super.awakeFromNib()
         self.configureAppearence()
     }
+
+    override var isHighlighted: Bool {
+        get {
+            return super.isHighlighted
+        }
+        set {
+            super.isHighlighted = newValue
+            self.contentView.alpha = newValue ? 0.5 : 1
+        }
+    }
 }
 
 // MARK: - Configurable

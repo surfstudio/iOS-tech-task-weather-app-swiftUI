@@ -56,6 +56,7 @@ private extension CitiesListPresenter {
             }.onCompleted { data in
                 self.view?.show(cities: data)
             }.onError { err in
+                print(err)
                 self.view?.show(error: err)
             }
     }
