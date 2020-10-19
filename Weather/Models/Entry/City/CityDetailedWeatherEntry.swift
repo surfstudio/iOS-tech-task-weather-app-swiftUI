@@ -6,7 +6,7 @@
 import NodeKit
 
 struct CityDetailedWeatherEntry: Codable {
-    let coord: CoordEntry?
+    let coord: CoordEntry
     let weather: [WeatherConditionsEntry]?
     let base: String?
     let main: CityMainWeatherInfoEntry?
@@ -17,9 +17,8 @@ struct CityDetailedWeatherEntry: Codable {
     let dt: Double?
     let sys: CitySystemInfoEntry?
     let timezone: Int?
-    let id: Int?
+    let id: Int
     let name: String?
-    let cod: String?
 }
 
 extension CityDetailedWeatherEntry: RawMappable {

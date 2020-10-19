@@ -5,8 +5,8 @@
 
 import NodeKit
 
-struct CityDetailedWeatherEntity {
-    let coords: CoordEntity?
+struct CityDetailedEntity {
+    let coords: CoordEntity
     let weather: [WeatherConditionsEntity]?
     let base: String?
     let main: CityMainWeatherInfoEntity?
@@ -17,15 +17,17 @@ struct CityDetailedWeatherEntity {
     let time: Date?
     let systemInfo: CitySystemInfoEntity?
     let timezone: Int?
-    let cityId: Int?
+    let cityId: Int
     let cityName: String?
-    let cod: String?
+    /// Бизнес-свойство (добавляется к этой моделе в другом месте)
+    /// Содержит детальное описание погоды по разным срезам
+    var detailedWeather: DetailedWeatherEntity?
 }
 
-extension CityDetailedWeatherEntity: DTODecodable {
+extension CityDetailedEntity: DTODecodable {
 
-    static func from(dto: CityDetailedWeatherEntry) throws -> CityDetailedWeatherEntity {
-        CityDetailedWeatherEntity(coords: try .from(dto: dto.coord),
+    static func from(dto: CityDetailedWeatherEntry) throws -> CityDetailedEntity {
+        CityDetailedEntity(coords: try .from(dto: dto.coord),
                                   weather: try .from(dto: dto.weather),
                                   base: dto.base,
                                   main: try .from(dto: dto.main),
@@ -37,7 +39,6 @@ extension CityDetailedWeatherEntity: DTODecodable {
                                   systemInfo: try .from(dto: dto.sys),
                                   timezone: dto.timezone,
                                   cityId: dto.id,
-                                  cityName: dto.name,
-                                  cod: dto.cod)
+                                  cityName: dto.name)
     }
 }

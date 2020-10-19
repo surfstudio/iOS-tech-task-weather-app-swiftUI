@@ -16,7 +16,7 @@ extension CacheCitySystemInfoEntity {
         return NSFetchRequest<CacheCitySystemInfoEntity>(entityName: "CacheCitySystemInfoEntity")
     }
 
-    @NSManaged public var type: String?
+    @NSManaged public var type: NSNumber?
     @NSManaged public var id: NSNumber?
     @NSManaged public var message: String?
     @NSManaged public var sunrise: Date?

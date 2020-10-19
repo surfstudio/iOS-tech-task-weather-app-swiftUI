@@ -19,7 +19,7 @@ struct GeocodingNetworkService: GeocodingService {
         static let lookUpParams = [
             "format": "json",
             "polygon_threshold": "0",
-            "accept-language": Locale.current.collatorIdentifier ?? Locale.current.identifier
+            "accept-language": Locale.current.languageCode ?? Locale.current.identifier
         ]
     }
 

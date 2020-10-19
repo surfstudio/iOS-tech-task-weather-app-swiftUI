@@ -17,14 +17,18 @@ struct CityCacheCoreDataService: CityCacheService {
 
     let persistenceContainerProvider: PersistenceCoordinatorProvider
 
-    func save(city: CityDetailedWeatherEntity) -> Observer<Void> {
+    func save(cites: [CityDetailedEntity]) -> Observer<Void> {
         let result = Context<Void>()
         let context = persistenceContainerProvider.get().newBackgroundContext()
         context.mergePolicy = NSMergePolicy.overwrite
         context.perform {
-            let wholeCity = CacheWholeCityInfo(context: context)
-            wholeCity.city = city.toCache(context: context)
-            wholeCity.createdAt = Date()
+            cites.forEach { city in
+                let wholeCity = CacheWholeCityInfo(context: context)
+                wholeCity.city = city.toCache(context: context)
+                wholeCity.cityId = Int32(city.cityId)
+                wholeCity.createdAt = Date()
+                wholeCity.detailedWeather = city.detailedWeather?.toCache(context: context)
+            }
             do {
                 try context.save()
                 result.emit(data: ())
@@ -36,14 +40,14 @@ struct CityCacheCoreDataService: CityCacheService {
         return result.dispatchOn(.main)
     }
 
-    func get(by id: Int) -> Observer<CachedCity> {
+    func get(by id: Int) -> Observer<CityCacheResponse> {
         let context = persistenceContainerProvider.get().newBackgroundContext()
-        let result = Context<CachedCity>()
+        let result = Context<CityCacheResponse>()
 
         context.perform {
             let request: NSFetchRequest<CacheWholeCityInfo> = CacheWholeCityInfo.fetchRequest()
 
-            request.predicate = NSPredicate(format: "city.cityId == %d", id)
+            request.predicate = NSPredicate(format: "cityId == %d", id)
             request.fetchLimit = 1
 
             do {
@@ -52,10 +56,7 @@ struct CityCacheCoreDataService: CityCacheService {
                     result.emit(error: CityCacheCoreDataServiceError.notFound)
                     return
                 }
-
-                let isExpired = model.createdAt.isExpired(ttl: CachedServiceContants.timeToLife)
-                let cachedModel = CachedCity(isExpired: isExpired, value: model.city.toEntity())
-                result.emit(data: cachedModel)
+                result.emit(data: .init(with: model))
             } catch {
                 result.emit(error: error)
             }
@@ -65,20 +66,14 @@ struct CityCacheCoreDataService: CityCacheService {
         return result.dispatchOn(.main)
     }
 
-    func getAll(limit: Int, offset: Int) -> Observer<[CachedCity]> {
+    func getAll() -> Observer<[CachedCity]> {
         let context = persistenceContainerProvider.get().newBackgroundContext()
         let result = Context<[CachedCity]>()
 
         context.perform {
             let request: NSFetchRequest<CacheWholeCityInfo> = CacheWholeCityInfo.fetchRequest()
-            request.fetchOffset = offset
-            request.fetchLimit = limit
-
             do {
-                let models = try request.execute().map { item -> CachedCity in
-                    let isExpired = item.createdAt.isExpired(ttl: CachedServiceContants.timeToLife)
-                    return CachedCity(isExpired: isExpired, value: item.city.toEntity())
-                }
+                let models = try request.execute().map { CachedCity(with: $0) }
                 result.emit(data: models)
             } catch {
                 result.emit(error: error)
@@ -110,13 +105,59 @@ struct CityCacheCoreDataService: CityCacheService {
 
         return result.dispatchOn(.main)
     }
+
+    func save(detailedWeather: DetailedWeatherEntity, for city: CityDetailedEntity) -> Observer<Void> {
+        let context = persistenceContainerProvider.get().newBackgroundContext()
+        let result = Context<Void>()
+        context.mergePolicy = NSMergePolicy.overwrite
+
+        context.perform {
+            let model = CacheWholeCityInfo(context: context)
+            model.city = city.toCache(context: context)
+            model.cityId = Int32(city.cityId)
+            model.detailedWeather = detailedWeather.toCache(context: context)
+
+            do {
+                try context.save()
+                result.emit(data: ())
+            } catch {
+                result.emit(error: error)
+            }
+
+        }
+
+        return result.dispatchOn(.main)
+    }
 }
 
-// MARK: - CachedModel<CityDetailedWeatherEntity> + convertion
+// MARK: - CachedModel<CityDetailedWeatherEntity> + Convertion
 
-extension CachedModel where T == CityDetailedWeatherEntity {
+extension CachedModel where T == CityDetailedEntity {
     init(with model: CacheWholeCityInfo) {
         let isExpired = model.createdAt.isExpired(ttl: CachedServiceContants.timeToLife)
         self.init(isExpired: isExpired, value: model.city.toEntity())
+    }
+}
+
+// MARK: - CachedModel<DetailedWeatherEntity> + Convertion
+
+extension CachedModel where T == DetailedWeatherEntity {
+    init?(with model: CacheWholeCityInfo) {
+
+        guard let weather = model.detailedWeather?.toEntity() else {
+            return nil
+        }
+
+        let isExpired = model.createdAt.isExpired(ttl: CachedServiceContants.timeToLife)
+        self.init(isExpired: isExpired, value: weather)
+    }
+}
+
+// MARK: - CityCacheResponse + Convertion
+
+extension CityCacheResponse {
+    init(with model: CacheWholeCityInfo) {
+        self.init(city: .init(with: model),
+                  weather: CachedModel(with: model))
     }
 }

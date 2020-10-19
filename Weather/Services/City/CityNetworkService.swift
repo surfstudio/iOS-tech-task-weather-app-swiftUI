@@ -15,7 +15,7 @@ struct CityNetworkService: CityService {
         static let query: Json = [
             "appid": ServicesConstants.Weather.apiKey,
             "units": "metric",
-            "lang": Locale.current.collatorIdentifier ?? Locale.current.identifier
+            "lang": Locale.current.languageCode ?? Locale.current.identifier
         ]
     }
 
@@ -24,7 +24,7 @@ struct CityNetworkService: CityService {
     }
 
     /// Если города с таким именем не нашлось - вернет `ResponseHttpErrorProcessorNodeError.notFound`
-    func getCityDetailedWeather(by name: String) -> Observer<CityDetailedWeatherEntity> {
+    func getCityDetailedWeather(by name: String) -> Observer<CityDetailedEntity> {
         var query = Consts.query
         query[Consts.getCityNameQueryParameter] = name
         return self.builder
@@ -35,7 +35,7 @@ struct CityNetworkService: CityService {
     }
 
     /// Если города с таким именем не нашлось - вернет `ResponseHttpErrorProcessorNodeError.notFound`
-    func getCitiesDetailedWeather(by ids: [String]) -> Observer<[CityDetailedWeatherEntity]> {
+    func getCitiesDetailedWeather(by ids: [Int]) -> Observer<[CityDetailedEntity]> {
         var query = Consts.query
         query[Consts.getGroupQueryParameter] = ids
         return self.builder
@@ -45,4 +45,14 @@ struct CityNetworkService: CityService {
             .build()
             .process()
     }
+
+    func getCitiesDetailedWeather(by id: Int) -> Observer<CityDetailedEntity> {
+        return self.getCitiesDetailedWeather(by: [id]).map { result in
+            guard let item = result.first else {
+                return .emit(error: ResponseHttpErrorProcessorNodeError.notFound)
+            }
+            return .emit(data: item)
+        }
+    }
+
 }
