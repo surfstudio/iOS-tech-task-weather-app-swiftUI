@@ -4,7 +4,7 @@ final class CititesCoordinator: BaseCoordinator {
 
     // MARK: - Public Properties
 
-    var finishFlow: EmptyClosure?
+    var finishFlow: Closure<CityDetailedEntity>?
 
     // MARK: - Private Properties
 
@@ -20,7 +20,6 @@ final class CititesCoordinator: BaseCoordinator {
 
     override func start() {
         super.start()
-        // FIXME: Поменять на нужный экран
         showCitiesList()
     }
 }
@@ -33,8 +32,10 @@ private extension CititesCoordinator {
 
         output.didGetCity = { [weak self] city in
             self?.router.dismissModule(animated: true) { [weak self] in
-                // FIXME: Добавить навигацию на список
-                print(city)
+                self?.router.dismissModule(animated: true) { [weak self] in
+                    self?.router.popModule()
+                    self?.finishFlow?(city)
+                }
             }
         }
 
@@ -53,10 +54,10 @@ private extension CititesCoordinator {
         }
 
         output.didSelectCity = { [weak self] city in
-            print(city)
-            // TODO: show cpecific city
+            self?.router.popModule()
+            self?.finishFlow?(city)
         }
 
-        router.setRootModule(view)
+        router.push(view)
     }
 }

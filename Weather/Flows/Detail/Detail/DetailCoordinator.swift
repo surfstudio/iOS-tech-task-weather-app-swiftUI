@@ -20,30 +20,33 @@ final class DetailCoordinator: BaseCoordinator {
 
     override func start() {
         super.start()
-//        showMain()
-        // TODO: Show Right Screen
-        showCitiesList()
+        showDetail()
     }
 }
 
 // MARK: - Private Methods
 
 private extension DetailCoordinator {
-    func showMain() {
-        let (view, output) = DetailModuleConfigurator().configure()
-        router.setRootModule(UINavigationController(rootViewController: view))
+    func showDetail() {
+        let (view, input, output) = DetailModuleConfigurator().configure()
+
+        output.didShowCities = { [weak self, weak input] in
+            self?.showCitiesList(input: input)
+        }
+
+        router.setRootModule(ModalNavigationController(rootViewController: view))
     }
 
-    func showCitiesList() {
+    func showCitiesList(input: DetailModuleInput?) {
         let coordinator = CititesCoordinator(router: self.router)
 
         self.addDependency(coordinator)
 
-        coordinator.finishFlow = { [weak self] in
+        coordinator.finishFlow = { [weak self, weak input] city in
             self?.removeDependency(coordinator)
+            input?.set(city: city)
         }
 
         coordinator.start()
     }
-
 }

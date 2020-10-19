@@ -1,6 +1,7 @@
 // MARK: - Button
 
 "Common.Button.repeat" = "Повторить";
+"Common.Button.addCity" = "Добавить город";
 
 // MARK: - Error
 

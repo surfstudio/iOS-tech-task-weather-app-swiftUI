@@ -14,6 +14,8 @@ public enum L10n {
 
   public enum Common {
     public enum Button {
+      /// Добавить город
+      public static let addCity = L10n.tr("Localizable", "Common.Button.addCity")
       /// Повторить
       public static let `repeat` = L10n.tr("Localizable", "Common.Button.repeat")
     }

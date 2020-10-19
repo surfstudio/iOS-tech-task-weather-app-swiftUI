@@ -4,6 +4,7 @@
 //
 
 import ReactiveDataDisplayManager
+import SurfUtils
 
 final class DetailViewController: UIViewController, DetailViewInput {
 
@@ -28,29 +29,42 @@ final class DetailViewController: UIViewController, DetailViewInput {
         output?.viewLoaded()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        output?.viewWillAppear()
+    }
+
     // MARK: - DetailViewInput
 
-    func setupInitialState(weather: DetailedWeatherEntity) {
-        setBackground(weather: weather)
+    func setupInitialState(weather: CityDetailedEntity) {
+        navigationItem.title = weather.cityName
+
+        guard let detailedWeather = weather.detailedWeather else { return }
+
+        setBackground(weather: detailedWeather)
 
         ddm.clearCellGenerators()
 
-        let currentGenerator = BaseCellGenerator<DetailTemperatureCell>(with: weather)
+        let currentGenerator = BaseCellGenerator<DetailTemperatureCell>(with: (weather: detailedWeather, time: weather.time))
         ddm.addCellGenerator(currentGenerator)
 
-        let hourlyGenerator = BaseCellGenerator<DetailHourlyTemperatureCell>(with: weather)
+        let hourlyGenerator = BaseCellGenerator<DetailHourlyTemperatureCell>(with: (weather: detailedWeather, time: weather.time))
         ddm.addCellGenerator(hourlyGenerator)
 
-        let dailyGenerator = BaseCellGenerator<DetailDailyTemperatureCell>(with: weather)
+        let dailyGenerator = BaseCellGenerator<DetailDailyTemperatureCell>(with: detailedWeather)
         ddm.addCellGenerator(dailyGenerator)
 
-        let infoGenerator = BaseCellGenerator<DetailInfoTemperatureCell>(with: weather)
+        let infoGenerator = BaseCellGenerator<DetailInfoTemperatureCell>(with: detailedWeather)
         ddm.addCellGenerator(infoGenerator)
 
-        let minutelyGenerator = BaseCellGenerator<DetailMinutelyTemperatureCell>(with: weather)
+        let minutelyGenerator = BaseCellGenerator<DetailMinutelyTemperatureCell>(with: detailedWeather)
         ddm.addCellGenerator(minutelyGenerator)
 
         ddm.forceRefill()
+    }
+
+    func set(navigationBarStyle: UIStyle<UINavigationBar>) {
+        navigationController?.navigationBar.apply(style: navigationBarStyle)
     }
 }
 
@@ -70,12 +84,15 @@ extension DetailViewController: MultiStatesPresentable {
 
 private extension DetailViewController {
     func configureAppearance() {
-        navigationController?.navigationBar.apply(style: .clearNavigationBar)
+        navigationItem.leftBarButtonItem = .init(image: Asset.Image.NavigationItem.list.image,
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(tapOnList))
+
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
 
-        backgroundImageView.image = Asset.Image.Background.fog.image
         backgroundImageView.contentMode = .scaleAspectFill
     }
 
@@ -89,5 +106,10 @@ private extension DetailViewController {
         }
 
         backgroundImageView.image = currentHourTemperature?.weather?.first?.type.backgroundAsset.image
+    }
+
+    @objc
+    func tapOnList() {
+        output?.didTapOnList()
     }
 }

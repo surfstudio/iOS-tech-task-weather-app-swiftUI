@@ -23,8 +23,8 @@ final class DetailTemperatureCell: UITableViewCell {
 // MARK: - Configurable
 
 extension DetailTemperatureCell: Configurable {
-    func configure(with model: DetailedWeatherEntity) {
-        let currentHourTemperature = model.hourly?.first { entity in
+    func configure(with model: (weather: DetailedWeatherEntity, time: Date?)) {
+        let currentHourTemperature = model.weather.hourly?.first { entity in
             guard let date = entity.forecastDate else { return false }
             let hour = Calendar.current.dateComponents([.hour], from: date)
             let currentHour = Calendar.current.dateComponents([.hour], from: Date())
@@ -35,16 +35,12 @@ extension DetailTemperatureCell: Configurable {
         temperatureLabel.text = currentHourTemperature?.temperature?.degrees
         temperatureLabel.apply(style: .DB100WhiteCenter)
 
-        if Date().isDay {
-            temperatureIconImageView.image = currentHourTemperature?.weather?.first?.type.dayAsset.image
-        } else {
-            temperatureIconImageView.image = currentHourTemperature?.weather?.first?.type.nightAsset.image
-        }
+        temperatureIconImageView.image = currentHourTemperature?.weather?.first?.type.weatherAsset(for: model.time).image
 
         temperatureTypeLabel.text = currentHourTemperature?.weather?.first?.description
         temperatureTypeLabel.apply(style: .TM18WhiteCenter)
 
-        let currentDayTemperature = model.daily?.first { entity in
+        let currentDayTemperature = model.weather.daily?.first { entity in
             let day = Calendar.current.dateComponents([.day], from: entity.forecastDate)
             let currentDay = Calendar.current.dateComponents([.day], from: Date())
 
