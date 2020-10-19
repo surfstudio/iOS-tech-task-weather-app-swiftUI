@@ -192,7 +192,7 @@ extension CityCacheRepository: CityRepository {
             // если не получилось прочесть из кеша, то идем в сеть
             self.loadDetailedInfo(cityId: id, coords: coords, context: result)
         }
-        return result
+        return result.dispatch(on: .main)
     }
 
 }
