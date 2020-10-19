@@ -21,6 +21,7 @@ final class DetailPresenter: DetailViewOutput, DetailModuleInput, DetailModuleOu
     private let geoService: GeolocationService
     private var city: CityDetailedEntity?
     private var isEmpty = false
+    private var isViewInNormalState = false
 
     // MARK: - Lifecycle
 
@@ -43,6 +44,14 @@ final class DetailPresenter: DetailViewOutput, DetailModuleInput, DetailModuleOu
                     break
                 }
             }
+        }
+    }
+
+    func viewWillAppear() {
+        if isViewInNormalState {
+            view?.set(navigationBarStyle: .whiteTitleNavigationBar)
+        } else {
+            view?.set(navigationBarStyle: .blackTitleNavigationBar)
         }
     }
 
@@ -83,6 +92,9 @@ private extension DetailPresenter {
                 self?.repository.getCityBy(coords: coords)
                     .onCompleted { [weak self] weather in
                         self?.view?.setupInitialState(weather: weather)
+                        self?.view?.set(state: .normal)
+                        self?.isViewInNormalState = true
+                        self?.view?.set(navigationBarStyle: .whiteTitleNavigationBar)
                     }.onError { [weak self] error in
                         if error.isNetwork {
                             self?.view?.set(state: .error(.init(Localized.Error.noInternetConnection,
@@ -91,6 +103,8 @@ private extension DetailPresenter {
                             self?.view?.set(state: .error(.init(Localized.Error.notDefined,
                                                                action: Localized.Common.Button.repeat)))
                         }
+                        self?.isViewInNormalState = false
+                        self?.view?.set(navigationBarStyle: .blackTitleNavigationBar)
                     }.defer { [weak self] in
                         self?.view?.stopLoader()
                     }
@@ -99,6 +113,8 @@ private extension DetailPresenter {
                 self?.view?.stopLoader()
                 self?.view?.set(state: .empty(.init(Localized.Empty.cities,
                                                     action: Localized.Common.Button.addCity)))
+                self?.isViewInNormalState = false
+                self?.view?.set(navigationBarStyle: .blackTitleNavigationBar)
             }
         }
     }
@@ -111,6 +127,10 @@ private extension DetailPresenter {
         repository.getCityDetails(by: city.cityId, coords: city.coords)
             .onCompleted { [weak self] weather in
                 self?.view?.setupInitialState(weather: weather)
+                self?.view?.set(state: .normal)
+                self?.view?.set(navigationBarStyle: .whiteTitleNavigationBar)
+                self?.isViewInNormalState = true
+                self?.view?.stopLoader()
             }.onError { [weak self] error in
                 if error.isNetwork {
                     self?.view?.set(state: .error(.init(Localized.Error.noInternetConnection,
@@ -119,7 +139,14 @@ private extension DetailPresenter {
                     self?.view?.set(state: .error(.init(Localized.Error.notDefined,
                                                        action: Localized.Common.Button.repeat)))
                 }
-            }.defer { [weak self] in
+                self?.view?.set(navigationBarStyle: .blackTitleNavigationBar)
+                self?.isViewInNormalState = false
+                self?.view?.stopLoader()
+            }.onCacheSuccess { [weak self] weather, isExpired in
+                self?.view?.setupInitialState(weather: weather)
+                self?.view?.set(state: .normal)
+                self?.view?.set(navigationBarStyle: .whiteTitleNavigationBar)
+                self?.isViewInNormalState = true
                 self?.view?.stopLoader()
             }
     }

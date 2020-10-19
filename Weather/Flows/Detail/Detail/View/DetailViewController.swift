@@ -4,6 +4,7 @@
 //
 
 import ReactiveDataDisplayManager
+import SurfUtils
 
 final class DetailViewController: UIViewController, DetailViewInput {
 
@@ -26,6 +27,11 @@ final class DetailViewController: UIViewController, DetailViewInput {
         super.viewDidLoad()
         configureAppearance()
         output?.viewLoaded()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        output?.viewWillAppear()
     }
 
     // MARK: - DetailViewInput
@@ -56,6 +62,10 @@ final class DetailViewController: UIViewController, DetailViewInput {
 
         ddm.forceRefill()
     }
+
+    func set(navigationBarStyle: UIStyle<UINavigationBar>) {
+        navigationController?.navigationBar.apply(style: navigationBarStyle)
+    }
 }
 
 // MARK: - MultiStatesPresentable
@@ -78,7 +88,6 @@ private extension DetailViewController {
                                                  style: .plain,
                                                  target: self,
                                                  action: #selector(tapOnList))
-        navigationController?.navigationBar.apply(style: .whiteTitleNavigationBar)
 
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear

@@ -34,7 +34,7 @@ private extension DetailCoordinator {
             self?.showCitiesList(input: input)
         }
 
-        router.setRootModule(UINavigationController(rootViewController: view))
+        router.setRootModule(ModalNavigationController(rootViewController: view))
     }
 
     func showCitiesList(input: DetailModuleInput?) {

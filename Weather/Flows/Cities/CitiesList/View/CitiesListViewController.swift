@@ -26,6 +26,11 @@ final class CitiesListViewController: UIViewController, CitiesListViewInput {
         self.configureAppearence()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.apply(style: .blackTitleNavigationBar)
+    }
+
     // MARK: - CitiesListViewInput
 
     func setupInitialState() {

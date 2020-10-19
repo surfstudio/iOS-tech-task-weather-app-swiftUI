@@ -36,6 +36,7 @@ targets:
         properties:
           CFBundleName: WeatherDebug
           UILaunchStoryboardName: LaunchScreen
+          UIUserInterfaceStyle: Light
           NSLocationWhenInUseUsageDescription: "Необходимо для отображения погоды по геопозиции"
       settings:
         base:
@@ -75,6 +76,7 @@ targets:
         properties:
           CFBundleName: WeatherRelease
           UILaunchStoryboardName: LaunchScreen
+          UIUserInterfaceStyle: Light
           NSLocationWhenInUseUsageDescription: "Необходимо для отображения погоды по геопозиции"
       settings:
         base:
