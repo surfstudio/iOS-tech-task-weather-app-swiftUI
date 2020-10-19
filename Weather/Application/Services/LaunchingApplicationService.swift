@@ -32,7 +32,7 @@ class MockViewController: UIViewController, StateConfigurable, MultiStatesPresen
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        set(state: .error(.init(Localized.Error.noInternetConnection, action: Localized.Common.Button.reload)))
+//        set(state: .error(.init(Localized.Error.noInternetConnection, action: Localized.Common.Button.reload)))
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.showSnack(with: "Снэкабельный ошибка")

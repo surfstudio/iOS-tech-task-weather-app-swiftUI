@@ -5,5 +5,5 @@
 
 protocol AddCityModuleOutput: class {
     var didDismiss: EmptyClosure? { get set }
-    var didGetCity: Closure<CityDetailedWeatherEntity>? { get set }
+    var didGetCity: Closure<CityDetailedEntity>? { get set }
 }

@@ -15,7 +15,7 @@ struct DetailedHourlyWeatherEntity {
     let dewPoint: Double?
     let clouds: Int?
     let rain: PrecipitationEntity?
-    let weather: WeatherConditionsEntity?
+    let weather: [WeatherConditionsEntity]?
     let snow: PrecipitationEntity?
     let pop: Double?
     let windSpeed: Double?

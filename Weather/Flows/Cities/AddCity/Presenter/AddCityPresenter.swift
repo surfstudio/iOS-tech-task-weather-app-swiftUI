@@ -10,7 +10,7 @@ final class AddCityPresenter: AddCityViewOutput, AddCityModuleInput, AddCityModu
     // MARK: - AddCityModuleOutput
 
     var didDismiss: EmptyClosure?
-    var didGetCity: Closure<CityDetailedWeatherEntity>?
+    var didGetCity: Closure<CityDetailedEntity>?
 
     // MARK: - Properties
 

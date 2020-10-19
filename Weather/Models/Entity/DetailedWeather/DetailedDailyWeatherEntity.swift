@@ -16,9 +16,9 @@ struct DetailedDailyWeatherEntity {
     let humidity: Double?
     let dewPoint: Double?
     let clouds: Int?
-    let rain: PrecipitationEntity?
-    let weather: WeatherConditionsEntity?
-    let snow: PrecipitationEntity?
+    let rain: Double?
+    let weather: [WeatherConditionsEntity]?
+    let snow: Double?
     let pop: Double?
     let windSpeed: Double?
     let visibility: Double?
@@ -35,9 +35,9 @@ extension DetailedDailyWeatherEntity: DTODecodable {
               humidity: dto.humidity,
               dewPoint: dto.dew_point,
               clouds: dto.clouds,
-              rain: try .from(dto: dto.rain),
+              rain: dto.rain,
               weather: try .from(dto: dto.weather),
-              snow: try .from(dto: dto.snow),
+              snow: dto.snow,
               pop: dto.pop,
               windSpeed: dto.wind_speed,
               visibility: dto.visibility)

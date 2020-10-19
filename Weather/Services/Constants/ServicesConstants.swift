@@ -13,7 +13,7 @@ enum ServicesConstants {
     }
 
     enum Weather {
-        static let baseUrl = URL(string: "https://r2.mocker.surfstudio.ru")
+        static let baseUrl = URL(string: "https://api.openweathermap.org/data/2.5")
         static let apiKey = "670f5fe7a475aa3594407d6d17e334f2"
     }
 }
