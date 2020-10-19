@@ -13,7 +13,7 @@ import NodeKit
 final class DetailedWeatherServiceStub: DetailedWeatherService {
 
     var coords: CoordEntity?
-    var result: Observer<DetailedWeatherEntity>?
+    var result: AsyncContext<DetailedWeatherEntity>?
 
     func getDetailedWeather(by coords: CoordEntity) -> Observer<DetailedWeatherEntity> {
         self.coords = coords

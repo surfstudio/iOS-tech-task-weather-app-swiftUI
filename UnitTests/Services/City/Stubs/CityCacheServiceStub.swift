@@ -18,11 +18,11 @@ final class CityCacheServiceStub: CityCacheService {
     var saveDetailedWeather: DetailedWeatherEntity?
     var saveCity: CityDetailedEntity?
 
-    var getAllResponse: Observer<[CachedCity]>?
-    var getResult: Observer<CityCacheResponse>?
-    var deleteResult: Observer<Void>?
-    var saveResult: Observer<Void>?
-    var saveWeatherResult: Observer<Void>?
+    var getAllResponse: AsyncContext<[CachedCity]>?
+    var getResult: AsyncContext<CityCacheResponse>?
+    var deleteResult: AsyncContext<Void>?
+    var saveResult: AsyncContext<Void>?
+    var saveWeatherResult: AsyncContext<Void>?
 
     func get(by id: Int) -> Observer<CityCacheResponse> {
         self.getId = id

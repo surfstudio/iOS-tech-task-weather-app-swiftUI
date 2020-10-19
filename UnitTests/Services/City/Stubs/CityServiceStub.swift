@@ -16,9 +16,9 @@ final class CityServiceStub: CityService {
     var getCitiesDetailedWeatherIds: [Int]?
     var getCitiesDetailedWeather: Int?
 
-    var getCityDetailedWeatherByNameResult: Observer<CityDetailedEntity>?
-    var getCityDetailedWeatherByIdsResult: Observer<[CityDetailedEntity]>?
-    var getCityDetailedWeatherByIdResult: Observer<CityDetailedEntity>?
+    var getCityDetailedWeatherByNameResult: AsyncContext<CityDetailedEntity>?
+    var getCityDetailedWeatherByIdsResult: AsyncContext<[CityDetailedEntity]>?
+    var getCityDetailedWeatherByIdResult: AsyncContext<CityDetailedEntity>?
 
     func getCityDetailedWeather(by name: String) -> Observer<CityDetailedEntity> {
         self.getCityDetailedWeatherName = name

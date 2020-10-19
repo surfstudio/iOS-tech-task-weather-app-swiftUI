@@ -10,10 +10,10 @@ import Foundation
 @testable import WeatherDebug
 
 extension CityDetailedEntity {
-    init(id: Int) {
+    init(id: Int, base: String? = nil) {
         self.init(coords: .init(lon: 0, lat: 0),
                   weather: nil,
-                  base: nil,
+                  base: base,
                   main: nil,
                   wind: nil,
                   clouds: nil,
