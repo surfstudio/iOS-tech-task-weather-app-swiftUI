@@ -13,6 +13,9 @@
 "Empty.request" = "Ничего не удалось найти. Попробуйте изменить запрос";
 "Empty.cities" = "Не выбран ни один город для просмотра прогноза";
 
+// MARK: - List
+
+"List.Cells.AddCity.title" = "Добавить город";
 
 // MARK: - TextField
 

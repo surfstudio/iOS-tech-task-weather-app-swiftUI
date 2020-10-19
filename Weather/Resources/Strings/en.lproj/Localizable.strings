@@ -18,6 +18,10 @@
 
 "Common.TextField.search" = "Город или индекс";
 
+// MARK: - List
+
+"List.Cells.AddCity.title" = "Добавить город";
+
 // MARK: - Detail
 
 "Detail.maxmin" = "Макс. %.0f°, мин.  %.0f°";

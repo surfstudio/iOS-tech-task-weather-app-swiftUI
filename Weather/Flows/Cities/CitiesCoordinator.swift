@@ -21,7 +21,7 @@ final class CititesCoordinator: BaseCoordinator {
     override func start() {
         super.start()
         // FIXME: Поменять на нужный экран
-        showAddCity()
+        showCitiesList()
     }
 }
 

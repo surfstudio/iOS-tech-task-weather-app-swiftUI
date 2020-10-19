@@ -33,7 +33,7 @@ extension UIStyle {
     }
 
     static var TR16BlackCenter: UIStyle<UILabel> {
-        return LabelStyle(font: FontFamily.SFProText.regular.font(size: 15.0),
+        return LabelStyle(font: FontFamily.SFProText.regular.font(size: 16.0),
                           textColor: Asset.Color.black.color,
                           lineHeight: 15.0,
                           kern: .zero,
@@ -106,6 +106,14 @@ extension UIStyle {
 
     static var TR13WhiteCenter: UIStyle<UILabel> {
         return LabelStyle(font: FontFamily.SFProText.regular.font(size: 13.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 13.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TR16WhiteCenter: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.regular.font(size: 16.0),
                           textColor: Asset.Color.white.color,
                           lineHeight: 13.0,
                           kern: .zero,

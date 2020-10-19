@@ -57,6 +57,15 @@ public enum L10n {
     /// Что-то пошло не так. Не удалось загрузить данные
     public static let notDefined = L10n.tr("Localizable", "Error.notDefined")
   }
+
+  public enum List {
+    public enum Cells {
+      public enum AddCity {
+        /// Добавить город
+        public static let title = L10n.tr("Localizable", "List.Cells.AddCity.title")
+      }
+    }
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name
