@@ -27,7 +27,8 @@ final class CacheContext<T>: Context<T> {
     // MARK: - Cache
 
     /// Вызывается в том случае, если удалось прочесть что-то из кеша
-    @discardableResult func onCacheSuccess(_ listener: @escaping CacheListener) -> Self {
+    @discardableResult
+    func onCacheSuccess(_ listener: @escaping CacheListener) -> Self {
         if let data = self.cacheData {
             listener(data)
             self.cacheData = nil
@@ -38,7 +39,8 @@ final class CacheContext<T>: Context<T> {
     }
 
     /// Вызывается в том случае, когда началась загрузка данных из сети
-    @discardableResult func onLoadingStarted(_ listener: @escaping EmptyClosure) -> Self {
+    @discardableResult
+    func onLoadingStarted(_ listener: @escaping EmptyClosure) -> Self {
         if self.didLoadindStarted == true {
             listener()
         }

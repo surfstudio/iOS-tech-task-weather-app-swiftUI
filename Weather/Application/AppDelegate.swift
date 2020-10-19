@@ -12,7 +12,7 @@ class AppDelegate: PluggableApplicationDelegate {
 
     // MARK: - Properties
 
-    fileprivate static var coreDataInitService = CoreDataIntApplicationService()
+    fileprivate static var coreDataInitService = CoreDataIntApplicationService(repo: CityCacheRepositoryFactory().produce())
 
     override var services: [ApplicationService] {
 //        let re = CityCacheRepositoryFactory().produce()
