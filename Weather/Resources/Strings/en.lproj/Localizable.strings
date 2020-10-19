@@ -7,6 +7,7 @@
 
 "Error.noInternetConnection" = "Отсутствует соединение с интернетом. Попробуйте позже";
 "Error.notDefined" = "Что-то пошло не так. Не удалось загрузить данные";
+"Error.dataIsExpired" = "Данные могут быть не актуальны. Мы уже их обновляем";
 
 // MARK: - Empty
 
@@ -17,6 +18,11 @@
 // MARK: - TextField
 
 "Common.TextField.search" = "Город или индекс";
+
+// MARK: - List
+
+"List.Cells.AddCity.title" = "Добавить город";
+"List.Cells.City.temperature" = "%.0f°";
 
 // MARK: - Detail
 

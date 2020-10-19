@@ -36,4 +36,16 @@ private extension DetailCoordinator {
 
         router.setRootModule(UINavigationController(rootViewController: view))
     }
+
+    func showCitiesList() {
+        let coordinator = CititesCoordinator(router: self.router)
+
+        self.addDependency(coordinator)
+
+        coordinator.finishFlow = { [weak self] in
+            self?.removeDependency(coordinator)
+        }
+
+        coordinator.start()
+    }
 }

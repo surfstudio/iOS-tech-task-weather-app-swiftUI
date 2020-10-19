@@ -56,6 +56,9 @@ public enum Asset {
     public enum Search {
       public static let iconSearch = ImageAsset(name: "Image/Search/icon-search")
     }
+    public enum Utils {
+      public static let plus = ImageAsset(name: "Image/Utils/plus")
+    }
     public enum Weather {
       public static let cloud = ImageAsset(name: "Image/Weather/cloud")
       public static let clouds = ImageAsset(name: "Image/Weather/clouds")

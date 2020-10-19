@@ -52,10 +52,27 @@ public enum L10n {
   }
 
   public enum Error {
+    /// Данные могут быть не актуальны. Мы уже их обновляем
+    public static let dataIsExpired = L10n.tr("Localizable", "Error.dataIsExpired")
     /// Отсутствует соединение с интернетом. Попробуйте позже
     public static let noInternetConnection = L10n.tr("Localizable", "Error.noInternetConnection")
     /// Что-то пошло не так. Не удалось загрузить данные
     public static let notDefined = L10n.tr("Localizable", "Error.notDefined")
+  }
+
+  public enum List {
+    public enum Cells {
+      public enum AddCity {
+        /// Добавить город
+        public static let title = L10n.tr("Localizable", "List.Cells.AddCity.title")
+      }
+      public enum City {
+        /// %.0f°
+        public static func temperature(_ p1: Float) -> String {
+          return L10n.tr("Localizable", "List.Cells.City.temperature", p1)
+        }
+      }
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
