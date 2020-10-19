@@ -30,10 +30,6 @@ import NodeKit
 ///     - Вызывается записьв  кеш
 final class CityCacheRepositoryGetAllSavedTests: XCTestCase {
 
-    enum StubError: Error {
-        case testWhenCacheEmitError
-    }
-
     /// Проверяет, что если кеш вернет ошибку - то ошибка будет проброшена выше
     func testWhenCacheEmitErrorThenErrorWillBeThrown() {
         // Arrange

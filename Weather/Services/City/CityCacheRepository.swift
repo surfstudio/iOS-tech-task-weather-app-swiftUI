@@ -47,6 +47,14 @@ extension CityCacheRepository: CityRepository {
     /// После этого обновляет кеш
     /// Затем мерджит обновленные данные и данные прочитанные ранее из кеша
     /// И пробрасывает новую пачку данных выше
+    ///
+    /// Приницп обработки ответа:
+    /// - Если удалось прочесть из кеша, то данные будут переданы в `onCacheSuccess`
+    /// - Если при этом кэш протух, то данные будут перезапрошены из сети и будет вызыван `onStartLoading`
+    /// - После того как данные обновятся будет вызыван `onCompleted`
+    /// Если в кеше ничего нет, то:
+    /// - Вызовется `onStartLoading`
+    /// - И далее либо `onError`, либо `onCompleted` в зависимости от результата
     func getAllSaved() -> CacheContext<[CityDetailedEntity]> {
         let result = CacheContext<[CityDetailedEntity]>()
 
@@ -118,6 +126,22 @@ extension CityCacheRepository: CityRepository {
     /// 4. Проверить кеш на валидность
     ///     1. Если протухли и погода и город - обновить оба и пробросить результат выше
     ///     2. Если протхло что-то одно - обновить это и пробросить результат выше
+    ///
+    /// Если из кеша прочесть не удалось, то:
+    /// - Вызовется `onStartLoading`
+    /// - Выполнится запрос на сервер за городом и погодой
+    /// - Вызовется `onCompleted`
+    /// Если из кеша прочесть удалось, но в кеше нет погоды, то:
+    /// - Вызовется `onCacheSuccess` без `detailedWeather`
+    /// - Вызовется `onStartLoading`
+    /// - Уйдет запрос на погоду
+    /// - Вызовется `onCompleted` с городом из кеша и `detailedWeather`
+    /// - Если кеш города протух, то вызовется `onStartLoading`
+    /// - Пойдет запрос на город
+    /// - Вызовется `onCompleted` с городом и детальной погодой
+    /// Если все прочлось из кеша, но кеш протух, то:
+    /// - Вызовется `onCacheSuccess`
+    /// - Далее сработает флоу обновления либо чего-то одного, либо всего сразу
     func getCityDetails(by id: Int, coords: CoordEntity) -> CacheContext<CityDetailedEntity> {
 
         let result = CacheContext<CityDetailedEntity>()
@@ -127,6 +151,7 @@ extension CityCacheRepository: CityRepository {
             // если прочли из кеша сначала проверяем - есть ли там информация о погоде
             guard let weather = item.weather else {
                 // если погоды нет, то ее надо запросить, а потом сохранить
+                result.emitCache(item.city.value, isExpired: item.city.isExpired)
                 self.reloadDetailedWeather(item: item, context: result)
                 return
             }
@@ -138,7 +163,7 @@ extension CityCacheRepository: CityRepository {
             // протух кеш или нет зависит от:
             //  - протух ли кеш города
             //  - протух ли кеш погоды
-            let isExpired = item.city.isExpired && weather.isExpired
+            let isExpired = item.city.isExpired || weather.isExpired
             result.emitCache(city, isExpired: isExpired)
 
             guard isExpired else {
@@ -169,15 +194,18 @@ private extension CityCacheRepository {
     /// Если город протух - обновляет город и эмитит обновленный результат
     /// Затем обновляет кеш
     func reloadDetailedWeather(item: CityCacheResponse, context: CacheContext<CityDetailedEntity>) {
+        context.emitStartLoading()
         self.weatherNetwork
             .getDetailedWeather(by: item.city.value.coords)
             .onCompleted { value in
                 var city = item.city.value
                 city.detailedWeather = value
-                context.emitCache(city, isExpired: item.city.isExpired)
+                context.emit(data: city)
 
                 // если кеш города не протух, то больше делать нам нечего - выходим
                 guard item.city.isExpired else { return }
+
+                context.emitStartLoading()
 
                 // если протух - перезапрашиваем город
                 self.cityNetwork
@@ -239,6 +267,7 @@ private extension CityCacheRepository {
             self.reloadDetailedWeather(item: cache, context: context)
         case (true, false):
             // протух только город
+            context.emitStartLoading()
             self.cityNetwork
                 .getCitiesDetailedWeather(by: cityCache.value.cityId)
                 .onCompleted { newCity in
@@ -256,6 +285,7 @@ private extension CityCacheRepository {
                 }
         case (false, true):
             // протухла только погода
+            context.emitStartLoading()
             self.weatherNetwork
                 .getDetailedWeather(by: coords)
                 .onCompleted { newWeather in
