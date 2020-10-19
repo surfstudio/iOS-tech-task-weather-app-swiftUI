@@ -62,9 +62,8 @@ struct CityNetworkService: CityService {
         query[Consts.getCoordsLatQueryParameter] = coords.lat
         query[Consts.getCoordsLonQueryParameter] = coords.lon
         return self.builder
-            .route(.get, .getSeverCitiesWeather)
+            .route(.get, .getCityWeather)
             .set(query: query)
-            .set(arrayEncodingStrategy: .noBrackets)
             .build()
             .process()
     }
