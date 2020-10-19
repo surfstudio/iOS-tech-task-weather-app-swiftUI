@@ -8,6 +8,6 @@
 import Foundation
 import ReactiveDataDisplayManager
 
-final class CityCell: UICollectionViewCell {
+final class CityListCityCell: UICollectionViewCell {
     
 }
