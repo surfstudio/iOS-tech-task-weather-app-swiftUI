@@ -25,8 +25,8 @@ final class DetailHourlyTemperatureCell: UITableViewCell {
 // MARK: - Configurable
 
 extension DetailHourlyTemperatureCell: Configurable {
-    func configure(with model: DetailedWeatherEntity) {
-        let hoursAfterNow = model.hourly?.filter { entity in
+    func configure(with model: (weather: DetailedWeatherEntity, time: Date?)) {
+        let hoursAfterNow = model.weather.hourly?.filter { entity in
             guard
                 let date = entity.forecastDate,
                 let hour = Calendar.current.dateComponents([.hour], from: date).hour,
@@ -39,7 +39,7 @@ extension DetailHourlyTemperatureCell: Configurable {
         }
 
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        let views = createViews(from: hoursAfterNow ?? [])
+        let views = createViews(from: hoursAfterNow ?? [], time: model.time)
         views.forEach { self.stackView.addArrangedSubview($0) }
     }
 }
@@ -58,7 +58,7 @@ private extension DetailHourlyTemperatureCell {
         stackView.distribution = .fill
     }
 
-    func createViews(from temperatures: [DetailedHourlyWeatherEntity]) -> [UIView] {
+    func createViews(from temperatures: [DetailedHourlyWeatherEntity], time: Date?) -> [UIView] {
         return temperatures.enumerated().compactMap { index, entity -> UIView? in
             let view = UIView()
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +68,7 @@ private extension DetailHourlyTemperatureCell {
                                                        style: .TB18WhiteCenter)
 
             let imageView = self.createWeaterIconImageView(type: entity.weather?.first?.type,
-                                                           day: entity.forecastDate?.isDay ?? true)
+                                                           time: time)
 
             let hourLabel: UILabel
             if index == 0 {
@@ -116,17 +116,11 @@ private extension DetailHourlyTemperatureCell {
         return degreesLabel
     }
 
-    func createWeaterIconImageView(type: WeatherType?, day: Bool) -> UIImageView {
+    func createWeaterIconImageView(type: WeatherType?, time: Date?) -> UIImageView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-
-        if day {
-            imageView.image = type?.dayAsset.image
-        } else {
-            imageView.image = type?.nightAsset.image
-        }
-
+        imageView.image = type?.weatherAsset(for: time).image
         return imageView
     }
 }

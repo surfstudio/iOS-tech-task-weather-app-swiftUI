@@ -22,11 +22,6 @@ final class DetailCoordinator: BaseCoordinator {
         super.start()
         showDetail()
     }
-
-    override func start(with deepLinkOption: DeepLinkOption?) {
-        super.start(with: deepLinkOption)
-        showDetail()
-    }
 }
 
 // MARK: - Private Methods

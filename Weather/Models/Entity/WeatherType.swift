@@ -90,4 +90,12 @@ extension WeatherType {
             return Asset.Image.Background.clear
         }
     }
+
+    func weatherAsset(for time: Date?) -> ImageAsset {
+        if time?.isDay ?? false {
+            return self.dayAsset
+        }
+
+        return self.nightAsset
+    }
 }

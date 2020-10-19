@@ -39,10 +39,10 @@ final class DetailViewController: UIViewController, DetailViewInput {
 
         ddm.clearCellGenerators()
 
-        let currentGenerator = BaseCellGenerator<DetailTemperatureCell>(with: detailedWeather)
+        let currentGenerator = BaseCellGenerator<DetailTemperatureCell>(with: (weather: detailedWeather, time: weather.time))
         ddm.addCellGenerator(currentGenerator)
 
-        let hourlyGenerator = BaseCellGenerator<DetailHourlyTemperatureCell>(with: detailedWeather)
+        let hourlyGenerator = BaseCellGenerator<DetailHourlyTemperatureCell>(with: (weather: detailedWeather, time: weather.time))
         ddm.addCellGenerator(hourlyGenerator)
 
         let dailyGenerator = BaseCellGenerator<DetailDailyTemperatureCell>(with: detailedWeather)
