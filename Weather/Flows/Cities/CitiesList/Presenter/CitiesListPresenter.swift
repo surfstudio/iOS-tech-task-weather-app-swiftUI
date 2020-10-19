@@ -38,12 +38,7 @@ extension CitiesListPresenter: CitiesListViewOutput {
     }
 
     func didRemove(city: CityDetailedEntity) {
-        // FIXME - Убрать OnCompleted и OnError
-        citiesRepo.delete(by: city.cityId).onCompleted {
-            print("compl")
-        }.onError { error in
-            print(error)
-        }
+        _ = citiesRepo.delete(by: city.cityId)
     }
 
     func didReload() {
