@@ -9,6 +9,7 @@ final class DetailViewController: UIViewController, DetailViewInput {
 
     // MARK: - IBOutlets
 
+    @IBOutlet private weak var backgroundImageView: UIImageView!
     @IBOutlet private weak var tableView: UITableView!
 
     // MARK: - Public Properties
@@ -21,6 +22,10 @@ final class DetailViewController: UIViewController, DetailViewInput {
 
     // MARK: - UIViewController
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAppearance()
@@ -30,6 +35,8 @@ final class DetailViewController: UIViewController, DetailViewInput {
     // MARK: - DetailViewInput
 
     func setupInitialState(weather: DetailedWeatherEntity) {
+        setBackground(weather: weather)
+
         ddm.clearCellGenerators()
 
         let currentGenerator = BaseCellGenerator<DetailTemperatureCell>(with: weather)
@@ -69,9 +76,22 @@ private extension DetailViewController {
     func configureAppearance() {
         navigationController?.navigationBar.apply(style: .clearNavigationBar)
         tableView.separatorStyle = .none
-        // FIXME - Добавить фон
-        view.backgroundColor = .red
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
+
+        backgroundImageView.image = Asset.Image.Background.fog.image
+        backgroundImageView.contentMode = .scaleAspectFill
+    }
+
+    func setBackground(weather: DetailedWeatherEntity) {
+        let currentHourTemperature = weather.hourly?.first { entity in
+            guard let date = entity.forecastDate else { return false }
+            let hour = Calendar.current.dateComponents([.hour], from: date)
+            let currentHour = Calendar.current.dateComponents([.hour], from: Date())
+
+            return hour == currentHour
+        }
+
+        backgroundImageView.image = currentHourTemperature?.weather?.first?.type.backgroundAsset.image
     }
 }

@@ -73,4 +73,21 @@ extension WeatherType {
             return Asset.Image.Weather.moon
         }
     }
+
+    var backgroundAsset: ImageAsset {
+        switch self {
+        case .thunderstorm:
+            return Asset.Image.Background.thunderstorm
+        case .drizzle, .rain:
+            return Asset.Image.Background.rain
+        case .snow:
+            return Asset.Image.Background.snow
+        case .fog, .unknown:
+            return Asset.Image.Background.fog
+        case .clouds:
+            return Asset.Image.Background.clouds
+        case .clear:
+            return Asset.Image.Background.clear
+        }
+    }
 }
