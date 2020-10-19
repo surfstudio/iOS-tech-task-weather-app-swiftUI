@@ -25,15 +25,8 @@ final class DetailDailyTemperatureCell: UITableViewCell {
 
 extension DetailDailyTemperatureCell: Configurable {
     func configure(with model: DetailedWeatherEntity) {
-        let daysAfterNow = model.daily?.filter { entity in
-            guard
-                let day = Calendar.current.dateComponents([.day], from: entity.forecastDate).day,
-                let currentDay = Calendar.current.dateComponents([.day], from: Date()).day
-            else {
-                return false
-            }
-
-            return day > currentDay
+        let daysAfterNow = model.sortedDaily?.filter { entity in
+            return entity.forecastDate.compare(Date()) != .orderedAscending
         }
 
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }

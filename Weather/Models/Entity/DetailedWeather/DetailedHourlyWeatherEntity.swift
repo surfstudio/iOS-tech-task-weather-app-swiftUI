@@ -40,3 +40,4 @@ extension DetailedHourlyWeatherEntity: DTODecodable {
               visibility: dto.visibility)
     }
 }
+
