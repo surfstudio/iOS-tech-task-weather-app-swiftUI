@@ -26,16 +26,9 @@ final class DetailHourlyTemperatureCell: UITableViewCell {
 
 extension DetailHourlyTemperatureCell: Configurable {
     func configure(with model: (weather: DetailedWeatherEntity, time: Date?)) {
-        let hoursAfterNow = model.weather.hourly?.filter { entity in
-            guard
-                let date = entity.forecastDate,
-                let hour = Calendar.current.dateComponents([.hour], from: date).hour,
-                let currentHour = Calendar.current.dateComponents([.hour], from: Date()).hour
-            else {
-                return false
-            }
-
-            return hour >= currentHour
+        let hoursAfterNow = model.weather.sortedHourly?.filter { entity in
+            guard let date = entity.forecastDate else { return false }
+            return date.compare(Date()) != .orderedAscending
         }
 
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }

@@ -4,6 +4,7 @@
 //
 
 import SurfUtils
+import CoreLocation
 
 final class DetailModuleConfigurator {
 
@@ -15,7 +16,8 @@ final class DetailModuleConfigurator {
             fatalError("Can't load MainViewController from storyboard, check that controller is initial view controller")
         }
         let presenter = DetailPresenter(repository: CityCacheRepositoryFactory().produce(),
-                                        geoService: GeolocationService())
+                                        geoService: GeolocationService(manager: CLLocationManager(),
+                                                                       accuracy: .threeKilometers))
 
         presenter.view = view
         view.output = presenter

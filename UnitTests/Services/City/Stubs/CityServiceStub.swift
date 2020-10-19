@@ -34,4 +34,8 @@ final class CityServiceStub: CityService {
         self.getCitiesDetailedWeather = id
         return self.getCityDetailedWeatherByIdResult ?? Context<CityDetailedEntity>()
     }
+
+    func getCityBy(coords: CoordEntity) -> Observer<CityDetailedEntity> {
+        return Context<CityDetailedEntity>()
+    }
 }

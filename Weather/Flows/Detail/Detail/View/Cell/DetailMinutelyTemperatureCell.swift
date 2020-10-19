@@ -30,8 +30,15 @@ extension DetailMinutelyTemperatureCell: Configurable {
         titleLabel.text = Localized.Detail.precipitation
         titleLabel.apply(style: .TR13White40Left)
 
+        guard let minutely = model.sortedMinutely, !minutely.isEmpty else {
+            self.stackView.isHidden = true
+            return
+        }
+
+        self.stackView.isHidden = false
+
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        let views = createViews(from: model.minutely ?? [])
+        let views = createViews(from: minutely)
         views.forEach { self.stackView.addArrangedSubview($0) }
     }
 }

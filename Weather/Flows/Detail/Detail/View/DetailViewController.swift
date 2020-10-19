@@ -57,8 +57,10 @@ final class DetailViewController: UIViewController, DetailViewInput {
         let infoGenerator = BaseCellGenerator<DetailInfoTemperatureCell>(with: detailedWeather)
         ddm.addCellGenerator(infoGenerator)
 
-        let minutelyGenerator = BaseCellGenerator<DetailMinutelyTemperatureCell>(with: detailedWeather)
-        ddm.addCellGenerator(minutelyGenerator)
+        if detailedWeather.minutely?.isEmpty == false {
+            let minutelyGenerator = BaseCellGenerator<DetailMinutelyTemperatureCell>(with: detailedWeather)
+            ddm.addCellGenerator(minutelyGenerator)
+        }
 
         ddm.forceRefill()
     }
@@ -105,7 +107,7 @@ private extension DetailViewController {
             return hour == currentHour
         }
 
-        backgroundImageView.image = currentHourTemperature?.weather?.first?.type.backgroundAsset.image
+        self.backgroundImageView.image = currentHourTemperature?.weather?.first?.type.backgroundAsset.image
     }
 
     @objc
