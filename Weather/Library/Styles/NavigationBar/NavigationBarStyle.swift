@@ -5,6 +5,7 @@ final class NavigationBarStyle: UIStyle<UINavigationBar> {
     // MARK: - Private Properties
 
     private let barTintColor: UIColor
+    private let tintColor: UIColor
     private let isTranslucent: Bool
     private let titleAttributes: [StringAttribute]
     private let largeTitleAttributes: [StringAttribute]
@@ -12,10 +13,12 @@ final class NavigationBarStyle: UIStyle<UINavigationBar> {
     // MARK: - Lifecycle
 
     init(barTintColor: UIColor,
+         tintColor: UIColor = Asset.Color.black.color,
          isTranslucent: Bool,
          titleAttributes: [StringAttribute] = [],
          largeTitleAttributes: [StringAttribute] = []) {
         self.barTintColor = barTintColor
+        self.tintColor = tintColor
         self.isTranslucent = isTranslucent
         self.titleAttributes = titleAttributes
         self.largeTitleAttributes = largeTitleAttributes
@@ -25,7 +28,7 @@ final class NavigationBarStyle: UIStyle<UINavigationBar> {
 
     override func apply(for navigationBar: UINavigationBar) {
         navigationBar.barTintColor = barTintColor
-        navigationBar.tintColor = Asset.Color.black.color
+        navigationBar.tintColor = tintColor
         navigationBar.shadowImage = UIImage()
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.barStyle = .default

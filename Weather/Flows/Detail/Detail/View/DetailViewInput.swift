@@ -4,5 +4,5 @@
 //
 
 protocol DetailViewInput: class, LoaderDisplayable, SnackDisplayable, StateConfigurable {
-    func setupInitialState(weather: DetailedWeatherEntity)
+    func setupInitialState(weather: CityDetailedEntity)
 }

@@ -10,6 +10,7 @@ PODS:
   - PluggableApplicationDelegate (0.3.0)
   - ReactiveDataDisplayManager (5.0.1)
   - SurfUtils/CommonButton (10.0.5)
+  - SurfUtils/GeolocationService (10.0.5)
   - SurfUtils/KeyboardPresentable (10.0.5)
   - SurfUtils/SkeletonView (10.0.5)
   - SurfUtils/StringAttributes (10.0.5)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - PluggableApplicationDelegate (from `https://github.com/surfstudio/PluggableApplicationDelegate.git`, commit `b24aabe3f34d51072cee5cac3b576dbb1f4ca9ec`)
   - ReactiveDataDisplayManager (from `https://github.com/surfstudio/ReactiveDataDisplayManager`, tag `5.0.1`)
   - SurfUtils/CommonButton (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
+  - SurfUtils/GeolocationService (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
   - SurfUtils/KeyboardPresentable (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
   - SurfUtils/SkeletonView (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
   - SurfUtils/StringAttributes (from `https://github.com/surfstudio/iOS-Utils.git`, tag `10.0.5`)
@@ -85,6 +87,6 @@ SPEC CHECKSUMS:
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
 
-PODFILE CHECKSUM: 04fe01389d5ddc26ce4f64951b91c8056d4cf409
+PODFILE CHECKSUM: cf7830144b8b8dbffb9d5617376729a23d3e62bc
 
 COCOAPODS: 1.7.3

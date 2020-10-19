@@ -5,4 +5,5 @@
 import Foundation
 
 enum DeepLinkOption {
+    case detailWithCity(CityDetailedEntity)
 }

@@ -27,6 +27,7 @@ def surf_utils
     pod 'SurfUtils/XibView', :git => $SurfUtils, :tag => $Tag
     pod 'SurfUtils/SkeletonView', :git => $SurfUtils, :tag => $Tag
     pod 'SurfUtils/CommonButton', :git => $SurfUtils, :tag => $Tag
+    pod 'SurfUtils/GeolocationService', :git => $SurfUtils, :tag => $Tag
   end
 
 

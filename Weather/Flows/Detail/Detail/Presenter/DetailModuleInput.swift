@@ -4,4 +4,5 @@
 //
 
 protocol DetailModuleInput: class {
+    func set(city: CityDetailedEntity)
 }

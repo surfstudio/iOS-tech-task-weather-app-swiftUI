@@ -47,9 +47,11 @@ public enum Asset {
       public static let emptyState = ImageAsset(name: "Image/ErrorView/empty_state")
       public static let errorState = ImageAsset(name: "Image/ErrorView/error_state")
       public static let noInternet = ImageAsset(name: "Image/ErrorView/no_internet")
+      public static let noLocation = ImageAsset(name: "Image/ErrorView/no_location")
     }
     public enum NavigationItem {
       public static let back = ImageAsset(name: "Image/NavigationItem/back")
+      public static let list = ImageAsset(name: "Image/NavigationItem/list")
     }
     public enum Search {
       public static let iconSearch = ImageAsset(name: "Image/Search/icon-search")

@@ -121,7 +121,7 @@ extension CityCacheRepository: CityRepository {
                 var mutable = city
                 mutable.detailedWeather = weather
                 _ = self.cache.save(detailedWeather: weather, for: city)
-                return .emit(data: city)
+                return .emit(data: mutable)
             }
     }
 

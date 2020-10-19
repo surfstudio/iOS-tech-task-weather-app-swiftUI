@@ -6,4 +6,5 @@
 protocol DetailViewOutput {
     func viewLoaded()
     func didReload()
+    func didTapOnList()
 }

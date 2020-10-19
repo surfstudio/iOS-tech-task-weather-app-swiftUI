@@ -20,15 +20,25 @@ final class DetailCoordinator: BaseCoordinator {
 
     override func start() {
         super.start()
-        showMain()
+        showDetail()
+    }
+
+    override func start(with deepLinkOption: DeepLinkOption?) {
+        super.start(with: deepLinkOption)
+        showDetail()
     }
 }
 
 // MARK: - Private Methods
 
 private extension DetailCoordinator {
-    func showMain() {
-        let (view, output) = DetailModuleConfigurator().configure()
+    func showDetail() {
+        let (view, input, output) = DetailModuleConfigurator().configure()
+
+        output.didShowCities = { [weak self, weak input] in
+            // FIXME - Добавить переход к городам
+        }
+
         router.setRootModule(UINavigationController(rootViewController: view))
     }
 }
