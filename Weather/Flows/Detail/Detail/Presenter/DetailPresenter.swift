@@ -74,6 +74,7 @@ final class DetailPresenter: DetailViewOutput, DetailModuleInput, DetailModuleOu
 
     func set(city: CityDetailedEntity) {
         self.city = city
+        self.view?.setupInitialState(weather: city)
         loadWeather()
     }
 }

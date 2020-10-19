@@ -105,7 +105,7 @@ private extension DetailViewController {
             return hour == currentHour
         }
 
-        backgroundImageView.image = currentHourTemperature?.weather?.first?.type.backgroundAsset.image
+        self.backgroundImageView.image = currentHourTemperature?.weather?.first?.type.backgroundAsset.image
     }
 
     @objc

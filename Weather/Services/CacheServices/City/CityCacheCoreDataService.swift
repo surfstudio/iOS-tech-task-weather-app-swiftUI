@@ -116,7 +116,7 @@ struct CityCacheCoreDataService: CityCacheService {
             model.city = city.toCache(context: context)
             model.cityId = Int32(city.cityId)
             model.detailedWeather = detailedWeather.toCache(context: context)
-
+            model.createdAt = Date()
             do {
                 try context.save()
                 result.emit(data: ())
