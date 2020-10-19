@@ -7,13 +7,8 @@
 
 import Foundation
 
-extension NSSet {
-    func toEntity<T>() -> [T] {
-        return self.compactMap { $0 as? T }
-    }
-}
-
 extension Array {
+
     var nsSet: NSSet {
         NSSet(array: self)
     }

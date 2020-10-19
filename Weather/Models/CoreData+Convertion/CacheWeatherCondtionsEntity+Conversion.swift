@@ -12,7 +12,7 @@ extension CacheWeatherCondtionsEntity {
         .init(id: Int(self.id),
               main: self.main,
               description: self.descriptionInfo,
-              type: .init(typeId: Int(self.type)))
+              type: WeatherType(rawValue: Int(self.type)) ?? .unknown)
     }
 }
 
@@ -23,6 +23,7 @@ extension WeatherConditionsEntity {
         model.id = Int32(self.id)
         model.main = self.main
         model.descriptionInfo = self.description
+        model.type = Int32(self.type.rawValue)
 
         return model
     }

@@ -21,7 +21,7 @@ final class CititesCoordinator: BaseCoordinator {
     override func start() {
         super.start()
         // FIXME: Поменять на нужный экран
-        showAddCity()
+        showCitiesList()
     }
 }
 
@@ -43,5 +43,20 @@ private extension CititesCoordinator {
         }
 
         router.present(ModalNavigationController(rootViewController: view))
+    }
+
+    func showCitiesList() {
+        let (view, output) = CitiesListModuleConfigurator().configure()
+
+        output.didAddCity = { [weak self] in
+            self?.showAddCity()
+        }
+
+        output.didSelectCity = { [weak self] city in
+            print(city)
+            // TODO: show cpecific city
+        }
+
+        router.setRootModule(view)
     }
 }

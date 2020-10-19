@@ -6,6 +6,7 @@
 
 "Error.noInternetConnection" = "Отсутствует соединение с интернетом. Попробуйте позже";
 "Error.notDefined" = "Что-то пошло не так. Не удалось загрузить данные";
+"Error.dataIsExpired" = "Данные могут быть не актуальны. Мы уже их обновляем";
 
 // MARK: - Empty
 
@@ -16,3 +17,19 @@
 // MARK: - TextField
 
 "Common.TextField.search" = "Город или индекс";
+
+// MARK: - List
+
+"List.Cells.AddCity.title" = "Добавить город";
+"List.Cells.City.temperature" = "%.0f°";
+
+// MARK: - Detail
+
+"Detail.maxmin" = "Макс. %.0f°, мин.  %.0f°";
+"Detail.today" = "Сегодня";
+"Detail.precipitation" = "Осадки, мм";
+"Detail.humidity" = "Влажность";
+"Detail.clouds" = "Облачность";
+"Detail.pressure" = "Давление, мм";
+"Detail.windSpeed" = "Ветер, мс";
+

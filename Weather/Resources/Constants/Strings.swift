@@ -23,6 +23,25 @@ public enum L10n {
     }
   }
 
+  public enum Detail {
+    /// Облачность
+    public static let clouds = L10n.tr("Localizable", "Detail.clouds")
+    /// Влажность
+    public static let humidity = L10n.tr("Localizable", "Detail.humidity")
+    /// Макс. %.0f°, мин.  %.0f°
+    public static func maxmin(_ p1: Float, _ p2: Float) -> String {
+      return L10n.tr("Localizable", "Detail.maxmin", p1, p2)
+    }
+    /// Осадки, мм
+    public static let precipitation = L10n.tr("Localizable", "Detail.precipitation")
+    /// Давление, мм
+    public static let pressure = L10n.tr("Localizable", "Detail.pressure")
+    /// Сегодня
+    public static let today = L10n.tr("Localizable", "Detail.today")
+    /// Ветер, мс
+    public static let windSpeed = L10n.tr("Localizable", "Detail.windSpeed")
+  }
+
   public enum Empty {
     /// Не выбран ни один город для просмотра прогноза
     public static let cities = L10n.tr("Localizable", "Empty.cities")
@@ -31,10 +50,27 @@ public enum L10n {
   }
 
   public enum Error {
+    /// Данные могут быть не актуальны. Мы уже их обновляем
+    public static let dataIsExpired = L10n.tr("Localizable", "Error.dataIsExpired")
     /// Отсутствует соединение с интернетом. Попробуйте позже
     public static let noInternetConnection = L10n.tr("Localizable", "Error.noInternetConnection")
     /// Что-то пошло не так. Не удалось загрузить данные
     public static let notDefined = L10n.tr("Localizable", "Error.notDefined")
+  }
+
+  public enum List {
+    public enum Cells {
+      public enum AddCity {
+        /// Добавить город
+        public static let title = L10n.tr("Localizable", "List.Cells.AddCity.title")
+      }
+      public enum City {
+        /// %.0f°
+        public static func temperature(_ p1: Float) -> String {
+          return L10n.tr("Localizable", "List.Cells.City.temperature", p1)
+        }
+      }
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

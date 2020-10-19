@@ -36,3 +36,66 @@ enum WeatherType: Int {
         }
     }
 }
+
+extension WeatherType {
+    var dayAsset: ImageAsset {
+        switch self {
+        // FIXME: Добавить иконки для типов дождя
+        case .thunderstorm, .drizzle, .rain:
+            return Asset.Image.Weather.rain
+        case .snow:
+            return Asset.Image.Weather.snow
+        case .fog:
+            return Asset.Image.Weather.fog
+        case .unknown:
+            return Asset.Image.Weather.clouds
+        case .clouds:
+            return Asset.Image.Weather.sunCloud
+        case .clear:
+            return Asset.Image.Weather.sun
+        }
+    }
+
+    var nightAsset: ImageAsset {
+        switch self {
+        // FIXME: Добавить иконки для типов дождя
+        case .thunderstorm, .drizzle, .rain:
+            return Asset.Image.Weather.rain
+        case .snow:
+            return Asset.Image.Weather.snow
+        case .fog:
+            return Asset.Image.Weather.fog
+        case .unknown:
+            return Asset.Image.Weather.clouds
+        case .clouds:
+            return Asset.Image.Weather.moonCloud
+        case .clear:
+            return Asset.Image.Weather.moon
+        }
+    }
+
+    var backgroundAsset: ImageAsset {
+        switch self {
+        case .thunderstorm:
+            return Asset.Image.Background.thunderstorm
+        case .drizzle, .rain:
+            return Asset.Image.Background.rain
+        case .snow:
+            return Asset.Image.Background.snow
+        case .fog, .unknown:
+            return Asset.Image.Background.fog
+        case .clouds:
+            return Asset.Image.Background.clouds
+        case .clear:
+            return Asset.Image.Background.clear
+        }
+    }
+
+    func weatherAsset(for time: Date?) -> ImageAsset {
+        if time?.isDay ?? false {
+            return self.dayAsset
+        }
+
+        return self.nightAsset
+    }
+}

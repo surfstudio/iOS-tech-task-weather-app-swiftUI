@@ -35,7 +35,7 @@ extension CityDetailedEntity: DTODecodable {
                                   clouds: try? .from(dto: dto.clouds),
                                   rain: try? .from(dto: dto.rain),
                                   snow: try? .from(dto: dto.snow),
-                                  time: Date(unixTimestamp: dto.dt),
+                                  time: Date(unixTimestamp: dto.dt + Double((dto.timezone ?? 0))),
                                   systemInfo: try .from(dto: dto.sys),
                                   timezone: dto.timezone,
                                   cityId: dto.id,

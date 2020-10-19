@@ -9,7 +9,7 @@ import Foundation
 
 struct CityCacheRepositoryFactory {
 
-    let pcProvider: PersistenceCoordinatorProvider
+    private let pcProvider: PersistenceCoordinatorProvider
 
     init(pcProvider: PersistenceCoordinatorProvider = DefaultPCProvider()) {
         self.pcProvider = pcProvider
