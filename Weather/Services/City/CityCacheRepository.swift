@@ -113,6 +113,18 @@ extension CityCacheRepository: CityRepository {
         return self.cache.save(cites: [city])
     }
 
+    func getCityBy(coords: CoordEntity) -> Observer<CityDetailedEntity> {
+        self.cityNetwork
+            .getCityBy(coords: coords)
+            .combine(self.weatherNetwork.getDetailedWeather(by: coords))
+            .map { (city, weather) in
+                var mutable = city
+                mutable.detailedWeather = weather
+                _ = self.cache.save(detailedWeather: weather, for: city)
+                return .emit(data: city)
+            }
+    }
+
     /// Получает детальную информацию о городе:
     /// Сам город + детальная погода
     ///

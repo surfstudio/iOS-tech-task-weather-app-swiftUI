@@ -11,4 +11,5 @@ protocol CityService {
     /// Получает информацию о детальной погоде в городах по их ID
     func getCitiesDetailedWeather(by ids: [Int]) -> Observer<[CityDetailedEntity]>
     func getCitiesDetailedWeather(by id: Int) -> Observer<CityDetailedEntity>
+    func getCityBy(coords: CoordEntity) -> Observer<CityDetailedEntity>
 }

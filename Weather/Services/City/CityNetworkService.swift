@@ -11,6 +11,8 @@ struct CityNetworkService: CityService {
 
         static let getCityNameQueryParameter = "q"
         static let getGroupQueryParameter = "id"
+        static let getCoordsLatQueryParameter = "lat"
+        static let getCoordsLonQueryParameter = "lon"
 
         static let query: Json = [
             "appid": ServicesConstants.Weather.apiKey,
@@ -53,6 +55,18 @@ struct CityNetworkService: CityService {
             }
             return .emit(data: item)
         }
+    }
+
+    func getCityBy(coords: CoordEntity) -> Observer<CityDetailedEntity> {
+        var query = Consts.query
+        query[Consts.getCoordsLatQueryParameter] = coords.lat
+        query[Consts.getCoordsLonQueryParameter] = coords.lon
+        return self.builder
+            .route(.get, .getSeverCitiesWeather)
+            .set(query: query)
+            .set(arrayEncodingStrategy: .noBrackets)
+            .build()
+            .process()
     }
 
 }
