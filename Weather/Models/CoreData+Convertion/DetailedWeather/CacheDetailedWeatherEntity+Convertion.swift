@@ -10,9 +10,15 @@ import CoreData
 extension CacheDetailedWeatherEntity {
 
     func toEntity() -> DetailedWeatherEntity {
-        .init(daily: self.daily?.toEntity(),
-              hourly: self.hourly?.toEntity(),
-              minutely: self.monutely?.toEntity())
+        .init(daily: self.daily?
+                .compactMap { $0 as? CacheDetailedDailyWeatherEntity }
+                .map { $0.toEntity() },
+              hourly: self.hourly?
+                .compactMap { $0 as? CacheDetailedHourlyWeatherEntity }
+                .map { $0.toEntity() },
+              minutely: self.monutely?
+                .compactMap { $0 as? CacheDetailedMinutelyWeatherEntity }
+                .map { $0.toEntity() })
     }
 }
 

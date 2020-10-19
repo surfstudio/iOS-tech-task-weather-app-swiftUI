@@ -19,7 +19,9 @@ extension CacheDetailedHourlyWeatherEntity {
               dewPoint: self.dewPoint?.doubleValue,
               clouds: self.clouds?.intValue,
               rain: self.rain?.toEntity(),
-              weather: self.weather?.toEntity(),
+              weather: self.weather?
+                .compactMap { $0 as? CacheWeatherCondtionsEntity }
+                .map { $0.toEntity() },
               snow: self.snow?.toEntity(),
               pop: self.pop?.doubleValue,
               windSpeed: self.windSpeed?.doubleValue,

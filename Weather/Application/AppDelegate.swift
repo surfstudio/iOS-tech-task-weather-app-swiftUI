@@ -22,6 +22,15 @@ class AppDelegate: PluggableApplicationDelegate {
         re.getCityBy(name: "Минск").onCompleted {
             re.save(city: $0)
         }
+        re.getCityBy(name: "Курс").onCompleted {
+            re.save(city: $0)
+        }
+        re.getCityBy(name: "Киров").onCompleted {
+            re.save(city: $0)
+        }
+        re.getCityBy(name: "Вашингтон").onCompleted {
+            re.save(city: $0)
+        }
         return [
             LaunchingApplicationService(),
             AppDelegate.coreDataInitService
