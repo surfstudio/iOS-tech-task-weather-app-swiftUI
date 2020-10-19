@@ -16,7 +16,7 @@ struct DetailedWeatherNetworkService: DetailedWeatherService {
         static let query: Json = [
             "appid": ServicesConstants.Weather.apiKey,
             "units": "metric",
-            "lang": Locale.current.collatorIdentifier ?? Locale.current.identifier
+            "lang": Locale.current.languageCode ?? Locale.current.identifier
         ]
     }
 
