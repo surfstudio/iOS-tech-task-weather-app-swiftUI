@@ -17,10 +17,6 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image/Background/clear" translatesAutoresizingMaskIntoConstraints="NO" id="9Hy-JB-aOY">
                     <rect key="frame" x="0.0" y="0.0" width="156" height="147"/>
-                    <constraints>
-                        <constraint firstAttribute="width" priority="999" constant="157" id="SZU-UN-Dny"/>
-                        <constraint firstAttribute="height" constant="147" id="fmy-o1-YGf"/>
-                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACb-W2-BxQ">
                     <rect key="frame" x="16" y="20" width="84" height="21"/>

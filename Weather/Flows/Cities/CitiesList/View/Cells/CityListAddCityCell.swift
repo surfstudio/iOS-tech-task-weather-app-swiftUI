@@ -76,7 +76,7 @@ private extension CityListAddCityCell {
             self.plusImage.widthAnchor.constraint(equalToConstant: 24),
             self.plusImage.heightAnchor.constraint(equalToConstant: 24),
             self.plusImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.plusImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 46),
+            self.plusImage.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -16.0),
 
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 14),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -14),

@@ -35,9 +35,11 @@ final class CitiesListViewController: UIViewController, CitiesListViewInput {
 
     func setupInitialState() {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = .init(width: 156, height: 147)
-        layout.itemSize = .init(width: 156, height: 147)
-        layout.minimumLineSpacing = 15
+        let dimension: CGFloat = UIScreen.main.bounds.width / 2.0 - 32.0
+        layout.itemSize = .init(width: dimension, height: dimension)
+        layout.minimumLineSpacing = 16.0
+        layout.minimumInteritemSpacing = 16.0
+        layout.sectionInset = .init(top: 24.0, left: 24.0, bottom: 24.0, right: 24.0)
         self.collectionView.collectionViewLayout = layout
     }
 
@@ -68,5 +70,6 @@ private extension CitiesListViewController {
     func configureAppearence() {
         self.view.backgroundColor = Asset.Color.white.color
         self.collectionView.backgroundColor = Asset.Color.white.color
+        self.collectionView.showsVerticalScrollIndicator = false
     }
 }
