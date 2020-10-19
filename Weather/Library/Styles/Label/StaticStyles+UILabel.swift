@@ -64,6 +64,30 @@ extension UIStyle {
                           alignment: .center)
     }
 
+    static var TB18White40Center: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white40.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .center)
+    }
+
+    static var TB18WhiteRight: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .right)
+    }
+
+    static var TB18White40Right: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.bold.font(size: 18.0),
+                          textColor: Asset.Color.white40.color,
+                          lineHeight: 18.0,
+                          kern: .zero,
+                          alignment: .right)
+    }
+
     static var TB13WhiteCenter: UIStyle<UILabel> {
         return LabelStyle(font: FontFamily.SFProText.bold.font(size: 13.0),
                           textColor: Asset.Color.white.color,
@@ -78,6 +102,14 @@ extension UIStyle {
                           lineHeight: 13.0,
                           kern: .zero,
                           alignment: .center)
+    }
+
+    static var TM16WhiteLeft: UIStyle<UILabel> {
+        return LabelStyle(font: FontFamily.SFProText.medium.font(size: 16.0),
+                          textColor: Asset.Color.white.color,
+                          lineHeight: 16.0,
+                          kern: .zero,
+                          alignment: .left)
     }
 
     // MARK: - SFProDisplay

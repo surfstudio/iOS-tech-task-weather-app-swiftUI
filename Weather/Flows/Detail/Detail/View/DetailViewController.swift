@@ -32,11 +32,14 @@ final class DetailViewController: UIViewController, DetailViewInput {
     func setupInitialState(weather: DetailedWeatherEntity) {
         ddm.clearCellGenerators()
 
-        let dailyGenerator = BaseCellGenerator<DetailTemperatureCell>(with: weather)
-        ddm.addCellGenerator(dailyGenerator)
+        let currentGenerator = BaseCellGenerator<DetailTemperatureCell>(with: weather)
+        ddm.addCellGenerator(currentGenerator)
 
         let hourlyGenerator = BaseCellGenerator<DetailHourlyTemperatureCell>(with: weather)
         ddm.addCellGenerator(hourlyGenerator)
+
+        let dailyGenerator = BaseCellGenerator<DetailDailyTemperatureCell>(with: weather)
+        ddm.addCellGenerator(dailyGenerator)
 
         ddm.forceRefill()
     }
@@ -63,5 +66,6 @@ private extension DetailViewController {
         // FIXME - Добавить фон
         view.backgroundColor = .red
         tableView.backgroundColor = .red
+        tableView.showsVerticalScrollIndicator = false
     }
 }

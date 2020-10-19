@@ -16,6 +16,8 @@ extension DateFormatter {
     enum DateFormatterStyle {
         /// HH:mm
         case hoursAndMinutes
+        /// EEEE
+        case dayName
     }
 
     // MARK: - Public Methods
@@ -26,6 +28,8 @@ extension DateFormatter {
         switch style {
         case .hoursAndMinutes:
             formatter.dateFormat = "HH:mm"
+        case .dayName:
+            formatter.dateFormat = "EEEE"
         }
         formatter.locale = Constants.defaultLocale
         return formatter
