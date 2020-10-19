@@ -8,14 +8,15 @@
 import UIKit
 import ReactiveDataDisplayManager
 
-final class AddCityCell: UITableViewCell {
-
+final class CityListAddCityCell: UITableViewCell {
+    lazy var plusImage = UIImageView()
+    lazy var titleLabel = UILabel()
 }
 
 // MARK: - Configure Appearence
 
-private extension AddCityCell {
+private extension CityListAddCityCell {
     func configureAppearence() {
-        
+        self.backgroundColor = Asset.Color.darkGrey.color
     }
 }

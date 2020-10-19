@@ -14,7 +14,7 @@ final class CitiesListModuleConfigurator {
                                       bundle: Bundle.main).instantiateInitialViewController() as? CitiesListViewController else {
             fatalError("Can't load CitiesListViewController from storyboard, check that controller is initial view controller")
         }
-        let presenter = CitiesListPresenter()
+        let presenter = CitiesListPresenter(citiesRepo: CityCacheRepositoryFactory().produce())
 
         presenter.view = view
         view.output = presenter
