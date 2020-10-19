@@ -12,28 +12,28 @@ class AppDelegate: PluggableApplicationDelegate {
 
     // MARK: - Properties
 
-    fileprivate static var coreDataInitService = CoreDataIntApplicationService()
+    fileprivate static var coreDataInitService = CoreDataIntApplicationService(repo: CityCacheRepositoryFactory().produce())
 
     override var services: [ApplicationService] {
-        let re = CityCacheRepositoryFactory().produce()
-        re.getCityBy(name: "Ярославль").onCompleted {
-            re.save(city: $0)
-        }
-        re.getCityBy(name: "Минск").onCompleted {
-            re.save(city: $0)
-        }
-        re.getCityBy(name: "Курск").onCompleted {
-            re.save(city: $0)
-        }
-        re.getCityBy(name: "Киров").onCompleted {
-            re.save(city: $0)
-        }
-        re.getCityBy(name: "Вашингтон").onCompleted {
-            re.save(city: $0)
-        }
-        re.getCityBy(name: "Бали").onCompleted {
-            re.save(city: $0)
-        }
+//        let re = CityCacheRepositoryFactory().produce()
+//        re.getCityBy(name: "Ярославль").onCompleted {
+//            re.save(city: $0)
+//        }
+//        re.getCityBy(name: "Минск").onCompleted {
+//            re.save(city: $0)
+//        }
+//        re.getCityBy(name: "Курск").onCompleted {
+//            re.save(city: $0)
+//        }
+//        re.getCityBy(name: "Киров").onCompleted {
+//            re.save(city: $0)
+//        }
+//        re.getCityBy(name: "Вашингтон").onCompleted {
+//            re.save(city: $0)
+//        }
+//        re.getCityBy(name: "Бали").onCompleted {
+//            re.save(city: $0)
+//        }
         return [
             LaunchingApplicationService(),
             AppDelegate.coreDataInitService

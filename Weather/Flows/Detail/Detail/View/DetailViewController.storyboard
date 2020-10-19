@@ -30,7 +30,7 @@
                         <constraints>
                             <constraint firstItem="c0e-HK-xEV" firstAttribute="top" secondItem="YWU-9O-L7t" secondAttribute="top" id="0lv-4G-JwB"/>
                             <constraint firstItem="FXW-WY-ECU" firstAttribute="top" secondItem="cA6-JB-jfU" secondAttribute="top" id="TBD-Qv-aWH"/>
-                            <constraint firstItem="YWU-9O-L7t" firstAttribute="bottom" secondItem="c0e-HK-xEV" secondAttribute="bottom" id="c50-7t-fTy"/>
+                            <constraint firstAttribute="bottom" secondItem="c0e-HK-xEV" secondAttribute="bottom" id="c50-7t-fTy"/>
                             <constraint firstItem="YWU-9O-L7t" firstAttribute="trailing" secondItem="c0e-HK-xEV" secondAttribute="trailing" id="en3-zL-qFn"/>
                             <constraint firstAttribute="trailing" secondItem="FXW-WY-ECU" secondAttribute="trailing" id="fh8-nv-zd0"/>
                             <constraint firstItem="c0e-HK-xEV" firstAttribute="leading" secondItem="YWU-9O-L7t" secondAttribute="leading" id="ieW-WZ-fF2"/>

@@ -15,7 +15,8 @@ final class AddCityModuleConfigurator {
             fatalError("Can't load AddCityViewController from storyboard, check that controller is initial view controller")
         }
         let presenter = AddCityPresenter(geoService: GeocodingNetworkService(),
-                                         cityService: CityNetworkService())
+                                         cityService: CityNetworkService(),
+                                         repo: CityCacheRepositoryFactory().produce())
 
         presenter.view = view
         view.output = presenter

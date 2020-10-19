@@ -117,10 +117,39 @@ struct CityCacheCoreDataService: CityCacheService {
             model.city = city.toCache(context: context)
             model.cityId = Int32(city.cityId)
             model.detailedWeather = detailedWeather.toCache(context: context)
-
+            model.createdAt = Date()
             do {
                 try context.save()
                 result.emit(data: ())
+            } catch {
+                result.emit(error: error)
+            }
+
+        }
+
+        return result.dispatchOn(.main)
+    }
+
+    func getCityBy(coords: CoordEntity) -> Observer<CityCacheResponse> {
+        let context = persistenceContainerProvider.get().newBackgroundContext()
+        let result = Context<CityCacheResponse>()
+
+        context.perform {
+            let request: NSFetchRequest<CacheWholeCityInfo> = CacheWholeCityInfo.fetchRequest()
+
+            do {
+                let models = try request.execute()
+
+                let closerModel = models.first { item in
+                    return item.city.coords.lat.distance(to: coords.lat) < 0.5
+                        && item.city.coords.lon.distance(to: coords.lon) < 0.5
+                }
+
+                guard let model = closerModel else {
+                    result.emit(error: CityCacheCoreDataServiceError.notFound)
+                    return
+                }
+                result.emit(data: .init(with: model))
             } catch {
                 result.emit(error: error)
             }

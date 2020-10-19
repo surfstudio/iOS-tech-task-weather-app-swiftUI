@@ -22,4 +22,5 @@ protocol CityCacheService {
     func delete(by id: Int) -> Observer<Void>
     func save(cites: [CityDetailedEntity]) -> Observer<Void>
     func save(detailedWeather: DetailedWeatherEntity, for city: CityDetailedEntity) -> Observer<Void>
+    func getCityBy(coords: CoordEntity) -> Observer<CityCacheResponse>
 }
