@@ -2,12 +2,15 @@
 
 "Common.Button.repeat" = "Повторить";
 "Common.Button.addCity" = "Добавить город";
+"Common.Button.edit" = "Изменить";
+"Common.Button.cancel" = "Отмена";
+"Common.Button.done" = "Готово";
 
 // MARK: - Error
 
 "Error.noInternetConnection" = "Отсутствует соединение с интернетом. Попробуйте позже";
 "Error.notDefined" = "Что-то пошло не так. Не удалось загрузить данные";
-"Error.dataIsExpired" = "Данные могут быть не актуальны. Мы уже их обновляем";
+"Error.dataIsExpired" = "Данные не актуальны. Обновляем";
 
 // MARK: - Empty
 
@@ -18,6 +21,7 @@
 
 "List.Cells.AddCity.title" = "Добавить город";
 "List.Cells.City.temperature" = "%.0f°";
+"List.title" = "Города";
 
 // MARK: - TextField
 

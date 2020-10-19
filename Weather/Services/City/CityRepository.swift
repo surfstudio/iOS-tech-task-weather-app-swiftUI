@@ -16,4 +16,5 @@ protocol CityRepository {
     func save(city: CityDetailedEntity) -> Observer<Void>
     func getCityDetails(by id: Int, coords: CoordEntity) -> CacheContext<CityDetailedEntity>
     func getCityBy(coords: CoordEntity) -> Observer<CityDetailedEntity>
+    func delete(by id: Int) -> Observer<Void>
 }

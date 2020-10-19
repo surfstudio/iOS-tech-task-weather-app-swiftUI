@@ -3,9 +3,7 @@
 //  Weather
 //
 
-protocol CitiesListViewInput: class, SnackDisplayable, MultiStatesPresentable {
-    /// Method for setup initial state of view
+protocol CitiesListViewInput: class, SnackDisplayable, LoaderDisplayable, StateConfigurable {
     func setupInitialState()
-
     func show(cities: [CityDetailedEntity])
 }

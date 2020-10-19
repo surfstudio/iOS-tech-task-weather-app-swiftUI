@@ -195,6 +195,14 @@ extension CityCacheRepository: CityRepository {
         return result.dispatch(on: .main)
     }
 
+    /// Удаляет город из кэша
+    /// С сетью не работает
+    ///
+    /// Подробнее смотри `CityCacheService` и его реализацию
+    @discardableResult
+    func delete(by id: Int) -> Observer<Void> {
+        return self.cache.delete(by: id)
+    }
 }
 
 // MARK: - Helpers
