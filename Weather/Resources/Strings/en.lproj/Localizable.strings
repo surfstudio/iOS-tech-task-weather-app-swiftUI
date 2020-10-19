@@ -21,6 +21,7 @@
 // MARK: - List
 
 "List.Cells.AddCity.title" = "Добавить город";
+"List.Cells.City.temperature" = "%.0f°";
 
 // MARK: - Detail
 

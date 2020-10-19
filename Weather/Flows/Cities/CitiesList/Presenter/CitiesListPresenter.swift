@@ -24,6 +24,7 @@ final class CitiesListPresenter: CitiesListModuleInput, CitiesListModuleOutput {
 
     func viewLoaded() {
         view?.setupInitialState()
+        self.loadCities()
     }
 }
 

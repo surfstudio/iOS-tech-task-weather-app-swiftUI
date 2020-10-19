@@ -64,6 +64,12 @@ public enum L10n {
         /// Добавить город
         public static let title = L10n.tr("Localizable", "List.Cells.AddCity.title")
       }
+      public enum City {
+        /// %.0f°
+        public static func temperature(_ p1: Float) -> String {
+          return L10n.tr("Localizable", "List.Cells.City.temperature", p1)
+        }
+      }
     }
   }
 }
