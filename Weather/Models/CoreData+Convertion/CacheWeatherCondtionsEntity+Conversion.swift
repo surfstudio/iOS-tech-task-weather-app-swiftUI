@@ -23,6 +23,7 @@ extension WeatherConditionsEntity {
         model.id = Int32(self.id)
         model.main = self.main
         model.descriptionInfo = self.description
+        model.type = Int32(self.type.rawValue)
 
         return model
     }

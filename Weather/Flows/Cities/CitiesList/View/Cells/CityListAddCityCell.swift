@@ -8,15 +8,7 @@
 import UIKit
 import ReactiveDataDisplayManager
 
-extension Configurable where Model == Void {
-    func configure(with model: Void) { }
-}
-
-final class CityListAddCityCell: UICollectionViewCell, SelectableItem, Configurable {
-
-    // MARK: - Configurable
-
-    typealias Model = Void
+final class CityListAddCityCell: UICollectionViewCell, SelectableItem {
 
     // MARK: - Events
 
@@ -56,6 +48,17 @@ final class CityListAddCityCell: UICollectionViewCell, SelectableItem, Configura
             self.plusImage.alpha = alpha
         }
     }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.addParalax(with: 10)
+    }
+}
+
+extension CityListAddCityCell: Configurable {
+    func configure(with model: Void) {
+        self.setNeedsLayout()
+    }
 }
 
 // MARK: - Configure Appearence
@@ -77,12 +80,13 @@ private extension CityListAddCityCell {
 
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 14),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -14),
-            self.titleLabel.topAnchor.constraint(equalTo: self.plusImage.bottomAnchor, constant: 12),
+            self.titleLabel.topAnchor.constraint(equalTo: self.plusImage.bottomAnchor, constant: 12)
         ])
     }
 
     func configureAppearence() {
-        self.backgroundColor = Asset.Color.darkGrey.color
+        self.contentView.backgroundColor = Asset.Color.darkGrey.color
+        self.backgroundColor = Asset.Color.white.color
         self.plusImage.image = Asset.Image.Utils.plus.image
         self.titleLabel.text = L10n.List.Cells.AddCity.title
         self.titleLabel.apply(style: .TR16WhiteCenter)

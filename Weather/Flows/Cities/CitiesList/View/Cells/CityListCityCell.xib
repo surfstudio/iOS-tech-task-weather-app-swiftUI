@@ -18,7 +18,7 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image/Background/clear" translatesAutoresizingMaskIntoConstraints="NO" id="9Hy-JB-aOY">
                     <rect key="frame" x="0.0" y="0.0" width="156" height="147"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="156" id="SZU-UN-Dny"/>
+                        <constraint firstAttribute="width" priority="999" constant="157" id="SZU-UN-Dny"/>
                         <constraint firstAttribute="height" constant="147" id="fmy-o1-YGf"/>
                     </constraints>
                 </imageView>
@@ -75,7 +75,7 @@
                 <outlet property="temperatureLabel" destination="ACb-W2-BxQ" id="wrc-Df-K6t"/>
                 <outlet property="weatherImage" destination="aE1-eW-VYp" id="8YK-e5-eMS"/>
             </connections>
-            <point key="canvasLocation" x="-559.4202898550725" y="259.48660714285711"/>
+            <point key="canvasLocation" x="-570" y="201"/>
         </view>
     </objects>
     <resources>

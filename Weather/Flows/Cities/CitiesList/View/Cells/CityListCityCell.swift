@@ -38,6 +38,11 @@ final class CityListCityCell: UICollectionViewCell, SelectableItem {
             self.contentView.alpha = newValue ? 0.5 : 1
         }
     }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.backgroundImage.addParalax(with: 10)
+    }
 }
 
 // MARK: - Configurable
@@ -78,6 +83,8 @@ extension CityListCityCell: Configurable {
         } else {
             self.cityLabel.isHidden = true
         }
+
+        self.setNeedsLayout()
     }
 }
 
