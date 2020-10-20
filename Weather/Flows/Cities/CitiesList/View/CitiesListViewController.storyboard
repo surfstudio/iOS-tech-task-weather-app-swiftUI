@@ -33,7 +33,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ndw-Jt-Fbm" firstAttribute="top" secondItem="YWU-9O-L7t" secondAttribute="top" id="1Te-QA-JwJ"/>
-                            <constraint firstItem="YWU-9O-L7t" firstAttribute="bottom" secondItem="ndw-Jt-Fbm" secondAttribute="bottom" id="A0B-Lh-cSu"/>
+                            <constraint firstAttribute="bottom" secondItem="ndw-Jt-Fbm" secondAttribute="bottom" id="A0B-Lh-cSu"/>
                             <constraint firstItem="YWU-9O-L7t" firstAttribute="trailing" secondItem="ndw-Jt-Fbm" secondAttribute="trailing" id="DU5-CO-56t"/>
                             <constraint firstItem="ndw-Jt-Fbm" firstAttribute="leading" secondItem="YWU-9O-L7t" secondAttribute="leading" id="TWU-rC-O4j"/>
                         </constraints>

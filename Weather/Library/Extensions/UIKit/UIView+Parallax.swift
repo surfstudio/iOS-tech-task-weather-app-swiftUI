@@ -10,6 +10,8 @@ import UIKit
 extension UIView {
     func addParalax(with offset: CGFloat) {
 
+        guard self.motionEffects.isEmpty else { return }
+
         let horizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         horizontal.minimumRelativeValue = -offset
         horizontal.maximumRelativeValue = offset
