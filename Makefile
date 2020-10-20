@@ -5,6 +5,9 @@ init:
   		echo "bundler gem is not installed!";\
   		-sudo gem install bundler;\
 	fi
+
+	sh add_xcodegen.sh
+
 	-bundle update
 	-bundle install --path .bundle
 	-bundle exec pod repo update
