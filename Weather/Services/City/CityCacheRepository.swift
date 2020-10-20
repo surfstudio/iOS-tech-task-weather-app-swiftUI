@@ -68,7 +68,7 @@ extension CityCacheRepository: CityRepository {
             // если есть итемы  у которых протух кеш, то идем дальше
             // если у всех кеш свежий, то просто выходим
             guard !expiredItems.isEmpty else { return }
-
+            print("## EXPIRED \(expiredItems.map { $0.value.cityName})")
             // перезапрашиваем из сети те итемы, у которых протух кеш
             result.emitStartLoading()
             self.cityNetwork.getCitiesDetailedWeather(by: expiredItems.map { $0.value.cityId })
@@ -79,9 +79,11 @@ extension CityCacheRepository: CityRepository {
                     let newItems = items.compactMap { item -> CityDetailedEntity? in
                         guard item.isExpired else { return item.value }
 
-                        return cities.first(where: { $0.cityId == item.value.cityId })
+                        return cities.first(where: { $0.cityId == item.value.cityId }) ?? item.value
                     }
-
+                    print("## WILL EMIT NEW: \(cities.map { $0.cityName})")
+                    print("## WILL EMIT OLD: \(items.map { $0.value.cityName}) \(items.map { $0.isExpired })")
+                    print("## WILL EMIT: \(newItems.map { $0.cityName})")
                     result.emit(data: newItems)
 
                     // Сохраняем то что пришло

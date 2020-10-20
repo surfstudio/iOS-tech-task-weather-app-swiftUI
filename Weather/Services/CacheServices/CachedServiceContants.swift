@@ -11,5 +11,5 @@ enum CachedServiceContants {
     /// Время "жизни" для кеша
     /// В случае, если кеш лежит в базе дольше указанного времени
     /// То считается, что данные уже устрели
-    static let timeToLife = TimeInterval(3 * 60 * 60)
+    static let timeToLife = TimeInterval(60)
 }

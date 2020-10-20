@@ -8,6 +8,9 @@ extension SnackDisplayable {
     func showSnack(with text: String) {
         let view = MessageView.viewFromNib(layout: .statusLine)
         view.bodyLabel?.text = text
+        view.layer.borderColor = Asset.Color.darkGrey.color.cgColor
+        view.layer.borderWidth = 2
+        view.layer.cornerRadius = 16
         var config = SwiftMessages.Config()
         config.presentationContext = .window(windowLevel: .normal)
         SwiftMessages.show(config: config, view: view)

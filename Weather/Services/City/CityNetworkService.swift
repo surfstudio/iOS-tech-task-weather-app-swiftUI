@@ -13,6 +13,7 @@ struct CityNetworkService: CityService {
         static let getGroupQueryParameter = "id"
         static let getCoordsLatQueryParameter = "lat"
         static let getCoordsLonQueryParameter = "lon"
+        static let idsSeparator = ","
 
         static let query: Json = [
             "appid": ServicesConstants.Weather.apiKey,
@@ -40,10 +41,11 @@ struct CityNetworkService: CityService {
     func getCitiesDetailedWeather(by ids: [Int]) -> Observer<[CityDetailedEntity]> {
         var query = Consts.query
         query[Consts.getGroupQueryParameter] = ids
+            .map { "\($0)" }
+            .joined(separator: Consts.idsSeparator)
         return self.builder
             .route(.get, .getSeverCitiesWeather)
             .set(query: query)
-            .set(arrayEncodingStrategy: .noBrackets)
             .build()
             .process()
             .map { (result: CityDetailedListEntity) in

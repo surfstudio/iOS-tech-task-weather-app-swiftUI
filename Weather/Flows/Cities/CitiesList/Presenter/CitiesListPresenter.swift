@@ -55,6 +55,7 @@ private extension CitiesListPresenter {
         self.citiesRepo
             .getAllSaved()
             .onCacheSuccess { [weak self] (data, isExpired) in
+                print("##CACHE \(data.count) \(data.map { $0.cityName })")
                 self?.view?.stopLoader()
                 self?.view?.show(cities: data)
                 self?.view?.set(state: .normal)
@@ -62,9 +63,8 @@ private extension CitiesListPresenter {
                 if isExpired {
                     self?.view?.showSnack(with: Localized.Error.dataIsExpired)
                 }
-            }.onLoadingStarted { [weak self] in
-                self?.view?.startLoader()
             }.onCompleted { [weak self] data in
+                print("##COMPL \(data.count) \(data.map { $0.cityName })")
                 self?.view?.stopLoader()
                 self?.view?.show(cities: data)
                 self?.view?.set(state: .normal)

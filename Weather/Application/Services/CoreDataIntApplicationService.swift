@@ -33,6 +33,7 @@ class CoreDataIntApplicationService: NSObject, ApplicationService {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         guard !UserDefaults.standard.isNotFirstLaunch else { return true }
+        UserDefaults.standard.isNotFirstLaunch = true
         // Москва
         _ = self.repo
             .getCityBy(coords: .init(lon: 37.6155600, lat: 55.7522200))

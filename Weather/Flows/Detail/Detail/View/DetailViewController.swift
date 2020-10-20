@@ -38,10 +38,9 @@ final class DetailViewController: UIViewController, DetailViewInput {
 
     func setupInitialState(weather: CityDetailedEntity) {
         navigationItem.title = weather.cityName
+        setBackground(weather: weather.weather?.first?.type)
 
         guard let detailedWeather = weather.detailedWeather else { return }
-
-        setBackground(weather: detailedWeather)
 
         ddm.clearCellGenerators()
 
@@ -98,16 +97,9 @@ private extension DetailViewController {
         backgroundImageView.contentMode = .scaleAspectFill
     }
 
-    func setBackground(weather: DetailedWeatherEntity) {
-        let currentHourTemperature = weather.hourly?.first { entity in
-            guard let date = entity.forecastDate else { return false }
-            let hour = Calendar.current.dateComponents([.hour], from: date)
-            let currentHour = Calendar.current.dateComponents([.hour], from: Date())
-
-            return hour == currentHour
-        }
-
-        self.backgroundImageView.image = currentHourTemperature?.weather?.first?.type.backgroundAsset.image
+    func setBackground(weather: WeatherType?) {
+        guard let type = weather else { return }
+        self.backgroundImageView.image = type.backgroundAsset.image
     }
 
     @objc

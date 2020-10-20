@@ -40,7 +40,6 @@ enum WeatherType: Int {
 extension WeatherType {
     var dayAsset: ImageAsset {
         switch self {
-        // FIXME: Добавить иконки для типов дождя
         case .thunderstorm, .drizzle, .rain:
             return Asset.Image.Weather.rain
         case .snow:
@@ -58,7 +57,6 @@ extension WeatherType {
 
     var nightAsset: ImageAsset {
         switch self {
-        // FIXME: Добавить иконки для типов дождя
         case .thunderstorm, .drizzle, .rain:
             return Asset.Image.Weather.rain
         case .snow:
