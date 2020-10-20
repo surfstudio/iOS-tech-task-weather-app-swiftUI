@@ -64,6 +64,8 @@ public enum L10n {
     public static let noInternetConnection = L10n.tr("Localizable", "Error.noInternetConnection")
     /// Что-то пошло не так. Не удалось загрузить данные
     public static let notDefined = L10n.tr("Localizable", "Error.notDefined")
+    /// Ничего не нашлось по этому запросу ):
+    public static let notFound = L10n.tr("Localizable", "Error.notFound")
   }
 
   public enum List {
